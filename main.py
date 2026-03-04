@@ -308,6 +308,38 @@ def get_leaderboard(limit: int = 10):
     
     return leaderboard
 
+# Admin endpoint - list all users
+@app.get("/api/admin/users")
+def get_all_users():
+    conn = sqlite3.connect(DATABASE)
+    c = conn.cursor()
+    
+    c.execute("""
+        SELECT u.id, u.username, u.email, u.is_pro, u.created_at, 
+               p.questions_answered, p.correct_answers, p.best_streak
+        FROM users u
+        LEFT JOIN progress p ON u.id = p.user_id
+        ORDER BY u.created_at DESC
+    """)
+    
+    rows = c.fetchall()
+    conn.close()
+    
+    users = []
+    for row in rows:
+        users.append({
+            "id": row[0],
+            "username": row[1],
+            "email": row[2],
+            "is_pro": bool(row[3]),
+            "created_at": row[4],
+            "questions_answered": row[5] or 0,
+            "correct_answers": row[6] or 0,
+            "best_streak": row[7] or 0
+        })
+    
+    return {"users": users, "total": len(users)}
+
 # Stripe subscription endpoints
 @app.post("/api/subscriptions/create-checkout")
 def create_checkout_session(user_id: int = 1, price_id: str = "price_pro_monthly"):
