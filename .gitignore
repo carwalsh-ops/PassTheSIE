@@ -12,3 +12,4 @@ venv/
 # Node/OpenClaw
 node_modules/
 .openclaw/
+kalshi-*.pem
