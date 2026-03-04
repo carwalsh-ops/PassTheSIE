@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pass The SIE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        /* Login Screen */
+        .login-screen {
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        .login-logo {
+            font-size: 64px;
+            margin-bottom: 15px;
+        }
+        
+        .login-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: #1a1a2e;
+            margin-bottom: 5px;
+        }
+        
+        .login-subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        
+        .login-input {
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        
+        .login-input:focus {
+            border-color: #6366f1;
+        }
+        
+        .login-btn {
+            padding: 15px 30px;
+            background: #6366f1;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .login-btn:hover {
+            background: #4f46e5;
+        }
+        
+        .login-switch {
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .login-switch a {
+            color: #6366f1;
+            text-decoration: none;
+            margin-left: 5px;
+        }
+        
+        .users-list {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .users-title {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 15px;
+        }
+        
+        .user-chip {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #f5f5f5;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .user-chip:hover {
+            background: #e8e8e8;
+        }
+        
+        .user-chip.current {
+            background: #6366f1;
+            color: white;
+        }
+        
+        .header {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .title {
+            font-size: 24px;
+            font-weight: 800;
+            color: #1a1a2e;
+        }
+        
+        .stats {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .stat {
+            background: #f5f5f5;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .stat.xp { color: #f59e0b; }
+        .stat.streak { color: #10b981; }
+        
+        .level-bar {
+            background: #e0e0e0;
+            height: 8px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .level-fill {
+            background: linear-gradient(90deg, #10b981, #34d399);
+            height: 100%;
+            border-radius: 4px;
+            -webkit-transition: width 0.5s ease;
+            transition: width 0.5s ease;
+            width: 0%;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+        }
+        
+        .question-container {
+            display: none;
+        }
+        
+        .question-container.active {
+            display: block;
+        }
+        
+        .category {
+            background: #6366f1;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .question {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        
+        .options {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .option {
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            cursor: pointer;
+            -webkit-transition: all 0.2s;
+            transition: all 0.2s;
+            font-size: 16px;
+        }
+        
+        .option:hover {
+            border-color: #6366f1;
+            background: #f8f8ff;
+        }
+        
+        .option.correct {
+            border-color: #10b981;
+            background: #d1fae5;
+        }
+        
+        .option.incorrect {
+            border-color: #ef4444;
+            background: #fee2e2;
+        }
+        
+        .explanation {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f9ff;
+            border-left: 4px solid #6366f1;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .explanation.show {
+            display: block;
+        }
+        
+        .explanation h4 {
+            color: #6366f1;
+            margin-bottom: 8px;
+        }
+        
+        .results {
+            text-align: center;
+            display: none;
+        }
+        
+        .results.show {
+            display: block;
+        }
+        
+        .results h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .results .score {
+            font-size: 48px;
+            font-weight: 800;
+            color: #6366f1;
+        }
+        
+        .results .xp-earned {
+            font-size: 24px;
+            color: #f59e0b;
+            margin: 20px 0;
+        }
+        
+        .btn {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        
+        .btn:hover {
+            background: #4f46e5;
+        }
+        
+        .progress-text {
+            text-align: center;
+            color: #888;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        
+        /* Dashboard Styles */
+        .dashboard {
+            text-align: center;
+        }
+        
+        .dash-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #1a1a2e;
+        }
+        
+        .dash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .dash-subtitle {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .user-greeting {
+            text-align: right;
+        }
+        
+        .user-greeting #userGreeting {
+            display: block;
+            font-size: 14px;
+            color: #6366f1;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .logout-btn {
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 12px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        
+        .logout-btn:hover {
+            color: #666;
+        }
+        
+        .player-card {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 15px;
+            padding: 20px;
+            color: white;
+            margin-bottom: 25px;
+        }
+        
+        .player-level {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .player-title {
+            font-size: 16px;
+            opacity: 0.9;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-top: 8px;
+            margin-bottom: 10px;
+        }
+        
+        .level-progress-text {
+            font-size: 14px;
+            color: white;
+            margin-top: 8px;
+        }
+        
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        
+        .tab-btn {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            background: #f5f5f5;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        
+        .tab-btn:hover {
+            background: #e8e8e8;
+        }
+        
+        .tab-btn.active {
+            background: #6366f1;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .coming-soon {
+            text-align: center;
+            padding: 40px 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+        
+        .coming-soon-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .coming-soon h3 {
+            color: #1a1a2e;
+            margin-bottom: 10px;
+        }
+        
+        .coming-soon p {
+            color: #666;
+        }
+        
+        /* Leaderboard */
+        .leaderboard-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .leaderboard-header h3 {
+            color: #1a1a2e;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .leaderboard-header p {
+            color: #888;
+            font-size: 14px;
+        }
+        
+        .leaderboard-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .leaderboard-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .leaderboard-item.current {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+        }
+        
+        .leaderboard-rank {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            margin-right: 15px;
+        }
+        
+        .leaderboard-item.current .leaderboard-rank {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .leaderboard-item:nth-child(1) .leaderboard-rank {
+            background: #ffd700;
+            color: #000;
+        }
+        
+        .leaderboard-item:nth-child(2) .leaderboard-rank {
+            background: #c0c0c0;
+            color: #000;
+        }
+        
+        .leaderboard-item:nth-child(3) .leaderboard-rank {
+            background: #cd7f32;
+            color: #fff;
+        }
+        
+        .leaderboard-info {
+            flex: 1;
+        }
+        
+        .leaderboard-name {
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .leaderboard-stats {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        .leaderboard-level {
+            text-align: right;
+        }
+        
+        .leaderboard-level .level-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* Memory Game */
+        .memory-header {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .memory-header h3 {
+            color: #1a1a2e;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .memory-header p {
+            color: #888;
+            font-size: 13px;
+        }
+        
+        .memory-stats {
+            display: flex;
+            justify-content: space-around;
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .memory-stats b {
+            color: #6366f1;
+        }
+        
+        .memory-game {
+            min-height: 300px;
+        }
+        
+        .memory-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        
+        .memory-card {
+            height: 100px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .memory-card:hover {
+            transform: scale(1.02);
+        }
+        
+        .memory-card.flipped {
+            background: white;
+            border: 2px solid #6366f1;
+        }
+        
+        .memory-card.matched {
+            background: #10b981;
+            border: none;
+        }
+        
+        .memory-card .card-content {
+            display: none;
+            font-size: 13px;
+            font-weight: 600;
+            color: #1a1a2e;
+            word-wrap: break-word;
+        }
+        
+        .memory-card.flipped .card-content,
+        .memory-card.matched .card-content {
+            display: block;
+        }
+        
+        .memory-card .card-front {
+            display: block;
+            font-size: 24px;
+        }
+        
+        .memory-card.flipped .card-front,
+        .memory-card.matched .card-front {
+            display: none;
+        }
+        
+        .memory-restart {
+            width: 100%;
+            padding: 12px;
+            background: #6366f1;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        
+        .memory-restart:hover {
+            background: #4f46e5;
+        }
+        
+        .player-card .level-bar {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .mode-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        
+        .mode-card {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .mode-card:hover {
+            border-color: #6366f1;
+            transform: translateY(-2px);
+        }
+        
+        .mode-icon {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .mode-name {
+            font-weight: 600;
+            color: #1a1a2e;
+            font-size: 14px;
+        }
+        
+        .mode-desc {
+            font-size: 11px;
+            color: #888;
+            margin-top: 3px;
+        }
+        
+        .stats-row {
+            display: flex;
+            justify-content: space-around;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .stat-box {
+            text-align: center;
+        }
+        
+        .stat-num {
+            font-size: 24px;
+            font-weight: 700;
+            color: #6366f1;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #888;
+        }
+        
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .quiz-header .title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #6366f1;
+        }
+        
+        .progress-indicator {
+            font-size: 14px;
+            color: #888;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Login Screen -->
+        <div id="loginScreen" class="login-screen">
+            <div class="login-logo">📚</div>
+            <div class="login-title">Pass The SIE</div>
+            <div class="login-subtitle">Master the Securities Industry Essentials Exam</div>
+            
+            <div class="login-form">
+                <input type="text" id="usernameInput" class="login-input" placeholder="Enter your username" maxlength="20">
+                <input type="password" id="passwordInput" class="login-input" placeholder="Password" style="display:none">
+                <input type="email" id="emailInput" class="login-input" placeholder="Email (for new accounts)" style="display:none">
+                <button class="login-btn" id="loginBtn" onclick="handleAuth()">Start Learning</button>
+            </div>
+            
+            <div class="login-switch">
+                <span id="loginModeText">New here?</span>
+                <a href="#" id="loginModeLink" onclick="toggleLoginMode(); return false;">Create account</a>
+            </div>
+            
+            <div class="users-list" id="usersList"></div>
+            
+            <div style="margin-top:20px; font-size:12px; color:#888;">
+                <label>
+                    <input type="checkbox" id="offlineMode" onchange="toggleOfflineMode()"> 
+                    Use offline mode (localStorage)
+                </label>
+            </div>
+        </div>
+        
+        <!-- Dashboard -->
+        <div id="dashboard" class="dashboard" style="display:none">
+            <div class="dash-header">
+                <div>
+                    <div class="dash-title">Pass The SIE</div>
+                    <div class="dash-subtitle">Master the Securities Industry Essentials Exam</div>
+                </div>
+                <div class="user-greeting">
+                    <span id="userGreeting">Hey!</span>
+                    <button class="logout-btn" onclick="logout()">Switch User</button>
+                </div>
+            </div>
+            
+            <div class="player-card">
+                <div class="player-level">Level <span id="dashLevel">1</span></div>
+                <div class="player-title" id="dashTitle">Intern</div>
+                <div class="level-bar">
+                    <div class="level-fill" id="dashLevelFill"></div>
+                </div>
+                <div class="level-progress-text" id="levelProgressText">0/5 to next level</div>
+            </div>
+            
+            <!-- Tab Navigation -->
+            <div class="tab-nav">
+                <div class="tab-btn active" onclick="showTab('quizzes', this)">📝 Quizzes</div>
+                <div class="tab-btn" onclick="showTab('memory', this)">🎮 Memory</div>
+                <div class="tab-btn" onclick="showTab('review', this)">📚 Review</div>
+                <div class="tab-btn" onclick="showTab('leaderboard', this)">🏆</div>
+            </div>
+            
+            <!-- Quizzes Tab -->
+            <div id="tab-quizzes" class="tab-content active">
+            <div class="mode-grid">
+                <div class="mode-card" onclick="startQuiz(10)">
+                    <div class="mode-icon">📝</div>
+                    <div class="mode-name">Quick Quiz</div>
+                    <div class="mode-desc">10 random questions</div>
+                </div>
+                <div class="mode-card" onclick="startQuiz(55)">
+                    <div class="mode-icon">🏋️</div>
+                    <div class="mode-name">Full Practice</div>
+                    <div class="mode-desc">All 55 questions</div>
+                </div>
+                <div class="mode-card" onclick="startCategory('Options')">
+                    <div class="mode-icon">📈</div>
+                    <div class="mode-name">Options Focus</div>
+                    <div class="mode-desc">Options questions only</div>
+                </div>
+                <div class="mode-card" onclick="startCategory('Suitability')">
+                    <div class="mode-icon">✅</div>
+                    <div class="mode-name">Suitability</div>
+                    <div class="mode-desc">Suitability rules</div>
+                </div>
+                <div class="mode-card" onclick="startCategory('Regulation')">
+                    <div class="mode-icon">⚖️</div>
+                    <div class="mode-name">Regulation</div>
+                    <div class="mode-desc">FINRA rules & regs</div>
+                </div>
+                <div class="mode-card" onclick="startSprint()">
+                    <div class="mode-icon">⚡</div>
+                    <div class="mode-name">Sprint Mode</div>
+                    <div class="mode-desc">5 min speed run</div>
+                </div>
+            </div>
+            </div>
+            
+            <!-- Memory Games Tab -->
+            <div id="tab-memory" class="tab-content">
+                <div class="memory-header">
+                    <h3>🎮 Vocabulary Match</h3>
+                    <p>Match the terms to their definitions</p>
+                </div>
+                
+                <div class="memory-stats">
+                    <span>Moves: <b id="memoryMoves">0</b></span>
+                    <span>Time: <b id="memoryTime">0:00</b></span>
+                    <span>Pairs: <b id="memoryPairs">0</b>/5</span>
+                </div>
+                
+                <div class="memory-game" id="memoryGame">
+                    <div class="memory-cards" id="memoryCards"></div>
+                </div>
+                
+                <button class="memory-restart" onclick="initMemoryGame()">New Game</button>
+            </div>
+            
+            <!-- Review Tab -->
+            <div id="tab-review" class="tab-content">
+                <div class="coming-soon">
+                    <div class="coming-soon-icon">📚</div>
+                    <h3>Review Mode</h3>
+                    <p>Review missed questions and weak areas. Coming soon!</p>
+                </div>
+            </div>
+            
+            <!-- Leaderboard Tab -->
+            <div id="tab-leaderboard" class="tab-content">
+                <div class="leaderboard-header">
+                    <h3>🏆 Top Traders</h3>
+                    <p>Ranked by questions answered</p>
+                </div>
+                <div class="leaderboard-list" id="leaderboardList"></div>
+            </div>
+            
+            <div class="stats-row">
+                <div class="stat-box">
+                    <div class="stat-num" id="totalAnswered">0</div>
+                    <div class="stat-label">Questions</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num" id="totalCorrect">0%</div>
+                    <div class="stat-label">Accuracy</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-num" id="bestStreak">0</div>
+                    <div class="stat-label">Best Streak</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quiz View -->
+        <div id="quizView" style="display:none">
+        <div class="quiz-header">
+            <div class="title" style="cursor:pointer" onclick="backToDashboard()">←</div>
+            <div class="progress-indicator" id="progressIndicator">1/10</div>
+            <div class="stats" style="gap:8px">
+                <div class="stat" style="font-size:12px">Lvl <span id="level">1</span></div>
+                <div class="stat streak" style="font-size:12px">🔥 <span id="streak">0</span></div>
+            </div>
+        </div>
+        
+        <div class="progress-text">Level <span id="level">1</span></div>
+        
+        <div id="questionContainer" class="question-container active">
+            <div class="category" id="category">Securities Products</div>
+            <div class="question" id="question">Question goes here</div>
+            <div class="options" id="options"></div>
+            <div class="explanation" id="explanation">
+                <h4>Explanation</h4>
+                <p id="explanationText"></p>
+            </div>
+            <button class="btn" id="nextBtn" style="display:none" onclick="nextQuestion()">Next Question</button>
+        </div>
+        
+        <div id="results" class="results">
+            <h2>Quiz Complete!</h2>
+            <div class="score"><span id="finalScore">0</span>/<span id="totalQuestions">20</span></div>
+            <div class="xp-earned" id="levelResult">Level <span id="levelEarned">1</span> - <span id="titleEarned">Intern</span></div>
+            <button class="btn" onclick="restart()">Back to Dashboard</button>
+        </div>
+    </div>
+
+    <script>
+        // API Configuration
+        var API_BASE = 'http://localhost:8000';
+        var useOffline = false;
+        var isRegisterMode = false;
+        var authToken = null;
+        
+        // User Management
+        var currentUser = null;
+        var users = {};
+        var currentUserStats = null;
+        
+        function toggleOfflineMode() {
+            useOffline = document.getElementById('offlineMode').checked;
+            document.getElementById('passwordInput').style.display = useOffline ? 'none' : 'block';
+            document.getElementById('emailInput').style.display = (useOffline || !isRegisterMode) ? 'none' : 'block';
+            if (useOffline) {
+                document.getElementById('loginBtn').textContent = 'Start Learning';
+            }
+        }
+        
+        function toggleLoginMode() {
+            isRegisterMode = !isRegisterMode;
+            var passwordInput = document.getElementById('passwordInput');
+            var emailInput = document.getElementById('emailInput');
+            var loginBtn = document.getElementById('loginBtn');
+            var loginModeText = document.getElementById('loginModeText');
+            var loginModeLink = document.getElementById('loginModeLink');
+            
+            if (isRegisterMode) {
+                passwordInput.style.display = 'block';
+                emailInput.style.display = useOffline ? 'none' : 'block';
+                loginBtn.textContent = 'Create Account';
+                loginModeText.textContent = 'Already have an account?';
+                loginModeLink.textContent = 'Sign in';
+            } else {
+                passwordInput.style.display = useOffline ? 'none' : 'block';
+                emailInput.style.display = 'none';
+                loginBtn.textContent = 'Sign In';
+                loginModeText.textContent = 'New here?';
+                loginModeLink.textContent = 'Create account';
+            }
+        }
+        
+        // API Functions
+        async function apiCall(endpoint, method = 'GET', body = null) {
+            try {
+                var options = {
+                    method: method,
+                    headers: { 'Content-Type': 'application/json' }
+                };
+                if (authToken) {
+                    options.headers['Authorization'] = 'Bearer ' + authToken;
+                }
+                if (body) {
+                    options.body = JSON.stringify(body);
+                }
+                var response = await fetch(API_BASE + endpoint, options);
+                if (!response.ok) {
+                    var error = await response.json();
+                    throw new Error(error.detail || 'API Error');
+                }
+                return await response.json();
+            } catch(e) {
+                console.error('API Error:', e);
+                throw e;
+            }
+        }
+        
+        async function handleAuth() {
+            var username = document.getElementById('usernameInput').value.trim().toLowerCase();
+            var password = document.getElementById('passwordInput').value;
+            var email = document.getElementById('emailInput').value;
+            
+            if (!username) {
+                alert('Please enter a username');
+                return;
+            }
+            
+            if (useOffline) {
+                // Offline mode - use localStorage
+                offlineLogin(username);
+                return;
+            }
+            
+            try {
+                if (isRegisterMode) {
+                    // Register new user
+                    if (!password || !email) {
+                        alert('Please enter password and email');
+                        return;
+                    }
+                    await apiCall('/api/auth/register', 'POST', {
+                        username: username,
+                        email: email,
+                        password: password
+                    });
+                    // Auto-login after register
+                    var loginResult = await apiCall('/api/auth/login', 'POST', {
+                        username: username,
+                        password: password
+                    });
+                    authToken = loginResult.token;
+                } else {
+                    // Login
+                    if (!password) {
+                        alert('Please enter your password');
+                        return;
+                    }
+                    var loginResult = await apiCall('/api/auth/login', 'POST', {
+                        username: username,
+                        password: password
+                    });
+                    authToken = loginResult.token;
+                }
+                
+                currentUser = username;
+                saveCurrentUser();
+                loadStatsFromAPI();
+                showDashboard();
+            } catch(e) {
+                alert('Auth failed: ' + e.message + '\n\nTry offline mode if backend is not running.');
+            }
+        }
+        
+        function offlineLogin(username) {
+            currentUser = username;
+            if (!users[username]) {
+                users[username] = { answered: 0, correct: 0, bestStreak: 0 };
+            }
+            saveUsers();
+            saveCurrentUser();
+            loadStats();
+            showDashboard();
+        }
+        
+        function loadUsers() {
+            try {
+                var saved = localStorage.getItem('siePrepUsers');
+                if (saved) {
+                    users = JSON.parse(saved);
+                }
+            } catch(e) {
+                users = {};
+            }
+        }
+        
+        function saveUsers() {
+            try {
+                localStorage.setItem('siePrepUsers', JSON.stringify(users));
+            } catch(e) {}
+        }
+        
+        function saveCurrentUser() {
+            try {
+                localStorage.setItem('siePrepCurrentUser', currentUser);
+            } catch(e) {}
+        }
+        
+        function loadCurrentUser() {
+            try {
+                return localStorage.getItem('siePrepCurrentUser');
+            } catch(e) {
+                return null;
+            }
+        }
+        
+        function showLogin() {
+            document.getElementById('loginScreen').style.display = 'block';
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('usernameInput').value = '';
+            loadUsers();
+            showUsersList();
+        }
+        
+        function showUsersList() {
+            var list = document.getElementById('usersList');
+            var userKeys = Object.keys(users);
+            
+            if (userKeys.length === 0) {
+                list.innerHTML = '<div class="users-title">No accounts yet. Create one above!</div>';
+                return;
+            }
+            
+            var html = '<div class="users-title">Or select an existing user:</div>';
+            for (var i = 0; i < userKeys.length; i++) {
+                var u = userKeys[i];
+                html += '<div class="user-chip" onclick="switchUser(\'' + u + '\')">' + u + '</div>';
+            }
+            list.innerHTML = html;
+        }
+        
+        function switchUser(username) {
+            currentUser = username;
+            saveCurrentUser();
+            showDashboard();
+        }
+        
+        function showDashboard() {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            document.getElementById('userGreeting').textContent = 'Hey, ' + currentUser + '!';
+            if (useOffline) {
+                loadStats();
+            } else {
+                loadStatsFromAPI();
+            }
+            updateDashboard();
+        }
+        
+        function logout() {
+            currentUser = null;
+            authToken = null;
+            currentUserStats = null;
+            try {
+                localStorage.removeItem('siePrepCurrentUser');
+            } catch(e) {}
+            showLogin();
+        }
+
+        var questions = [
+            {
+                id: 1,
+                category: "Securities Products",
+                question: "A customer buys 100 shares of ABC stock at $50 per share and writes a covered call with a strike price of $55. If the stock price rises to $60 at expiration, what is the maximum profit?",
+                options: ["$500", "$550", "$1,000", "$600"],
+                correct: 0,
+                explanation: "Covered call max profit = (Strike - Stock Price) + Premium. The stock is called away at $55, so profit = ($55-$50) x 100 = $500, plus premium received."
+            },
+            {
+                id: 21,
+                category: "Suitability",
+                question: "A customer has a moderate risk tolerance and 10-year investment horizon. Which investment is MOST suitable?",
+                options: ["Individual bonds", "Growth stocks", "Treasury bills", "Options"],
+                correct: 1,
+                explanation: "With moderate risk and long horizon, growth stocks are suitable. Higher risk tolerance allows for equity exposure over bonds."
+            },
+            {
+                id: 2,
+                category: "Economics",
+                question: "If the Federal Reserve increases the discount rate, what is the most likely immediate effect on the economy?",
+                options: ["Increased inflation", "Decreased borrowing", "Higher unemployment", "Lower GDP growth"],
+                correct: 1,
+                explanation: "Higher discount rate = higher borrowing costs = less borrowing = less economic activity."
+            },
+            {
+                id: 3,
+                category: "Client Accounts",
+                question: "Which account type allows for the highest contribution limits?",
+                options: ["Traditional IRA", "Roth IRA", "401(k)", "HSA"],
+                correct: 2,
+                explanation: "401(k) limits are highest ($23,000 in 2024), much higher than IRA limits."
+            },
+            {
+                id: 4,
+                category: "Ethics",
+                question: "A broker recommends a security that is suitable but also pays a higher commission than alternative products. What must the broker disclose?",
+                options: ["Nothing", "The conflict of interest", "Only to the compliance department", "Only at account opening"],
+                correct: 1,
+                explanation: "Brokers must disclose material conflicts of interest that could affect their recommendations."
+            },
+            {
+                id: 5,
+                category: "Regulation",
+                question: "What is the primary purpose of FINRA's Rule 2111 (Suitability)?",
+                options: ["Prevent fraud", "Ensure recommendations are suitable", "Protect customer assets", "Enforce licensing requirements"],
+                correct: 1,
+                explanation: "Rule 2111 requires brokers to obtain reasonable grounds for believing recommendations are suitable."
+            },
+            {
+                id: 6,
+                category: "Options",
+                question: "What is the maximum loss for buying a call option?",
+                options: ["Unlimited", "The premium paid", "Strike price minus premium", "Stock price minus strike"],
+                correct: 1,
+                explanation: "Call buyers risk only the premium paid. If the stock goes down, the option expires worthless."
+            },
+            {
+                id: 7,
+                category: "Suitability",
+                question: "Before recommending a securities transaction, a broker must obtain information about the customer's:",
+                options: ["Favorite sports team", "Investment objectives, risk tolerance, and financial situation", "Political affiliation", "Social media activity"],
+                correct: 1,
+                explanation: "Know Your Customer (KYC) rule requires brokers to know the customer's investment objectives, risk tolerance, financial situation, and investment experience."
+            },
+            {
+                id: 8,
+                category: "Options",
+                question: "A customer writes a naked put option. What is the maximum loss?",
+                options: ["The premium received", "Unlimited", "Strike price times contract size", "The strike price minus premium"],
+                correct: 1,
+                explanation: "Naked put writers have unlimited downside risk if the stock falls to zero. They keep the premium if the stock stays above strike."
+            },
+            {
+                id: 9,
+                category: "Regulation",
+                question: "What does FINRA Rule 3310 (AML) require firms to do?",
+                options: ["Report every trade to the SEC", "Develop policies to detect and prevent money laundering", "Submit customer trades to the FBI", "Freeze all international transfers"],
+                correct: 1,
+                explanation: "Anti-Money Laundering (AML) rules require firms to develop policies and procedures to detect and prevent money laundering activities."
+            },
+            {
+                id: 10,
+                category: "Options",
+                question: "Which option strategy profits when the underlying stock stays within a certain price range?",
+                options: ["Long call", "Long straddle", "Iron condor", "Long put"],
+                correct: 2,
+                explanation: "An iron condor (or any bull/bear spread combination) profits when the stock stays within a range. It's a neutral strategy."
+            },
+            {
+                id: 11,
+                category: "Suitability",
+                question: "A senior citizen with fixed income wants to invest in volatile growth stocks. The broker should:",
+                options: ["Proceed with the recommendation", "Recommend a suitable alternative with lower risk", "SuggestOptions trading", "Refer them to another broker"],
+                correct: 1,
+                explanation: "The broker must recommend investments suitable for the customer's risk tolerance and financial situation. Volatile stocks may not be suitable for someone with fixed income."
+            },
+            {
+                id: 12,
+                category: "Regulation",
+                question: "What is the purpose of Regulation FD (Fair Disclosure)?",
+                options: ["Ensure all investors receive material information simultaneously", "Limit short selling", "Set margin requirements", "Define market maker obligations"],
+                correct: 0,
+                explanation: "Reg FD requires companies to disclose material information to all investors at the same time, preventing selective disclosure to analysts or institutional investors."
+            },
+            {
+                id: 13,
+                category: "Options",
+                question: "An option is described as 'at-the-money' when:",
+                options: ["The option has no intrinsic value", "The strike price equals the underlying stock price", "The option is about to expire", "The option is out of the money"],
+                correct: 1,
+                explanation: "At-the-money (ATM) means the strike price equals the current market price of the underlying security."
+            },
+            {
+                id: 14,
+                category: "Suitability",
+                question: "What information must be disclosed when a broker executes a principal transaction?",
+                options: ["The broker's personal trading history", "The markup or markdown applied", "The customer's account number", "The firm's quarterly earnings"],
+                correct: 1,
+                explanation: "In principal transactions, firms must disclose the price differential (markup/markdown) so customers know the firm is trading as principal."
+            },
+            {
+                id: 15,
+                category: "Options",
+                question: "What happens to a long option position at expiration if it is out-of-the-money?",
+                options: ["It automatically exercises for a profit", "It expires worthless", "It converts to a short position", "It rolls over to the next month"],
+                correct: 1,
+                explanation: "Out-of-the-money options expire worthless. The buyer loses the premium paid."
+            },
+            {
+                id: 16,
+                category: "Regulation",
+                question: "How much time does a broker have to respond to a customer complaint?",
+                options: ["24 hours", "48 hours", "Within 30 days", "No specific timeframe"],
+                correct: 2,
+                explanation: "FINRA Rule 4530 requires firms to respond to customer complaints within 30 days and investigate thoroughly."
+            },
+            {
+                id: 17,
+                category: "Options",
+                question: "Which Greek measures an option's sensitivity to time decay?",
+                options: ["Delta", "Gamma", "Theta", "Vega"],
+                correct: 2,
+                explanation: "Theta measures time decay - how much value an option loses as expiration approaches."
+            },
+            {
+                id: 18,
+                category: "Suitability",
+                question: "A customer wants to 'chase' a hot stock tip they heard on TV. The broker should:",
+                options: ["Execute the order immediately as requested", "Determine suitability and educate the customer about risks", "Refuse to execute the trade", "Execute a smaller than requested amount"],
+                correct: 1,
+                explanation: "Even with eager customers, brokers must ensure recommendations are suitable and educate about risks, not just follow instructions blindly."
+            },
+            {
+                id: 19,
+                category: "Regulation",
+                question: "What is the maximum penalty for a first-time FINRA rule violation?",
+                options: ["$5,000", "$10,000", "$25,000", "There is no limit"],
+                correct: 3,
+                explanation: "FINRA can impose significant fines and suspensions. Penalties vary widely based on severity and repeat offenses."
+            },
+            {
+                id: 20,
+                category: "Options",
+                question: "A protective put strategy involves:",
+                options: ["Selling a put to generate income", "Buying stock and buying a put for protection", "Writing covered calls", "Buying calls and puts simultaneously"],
+                correct: 1,
+                explanation: "A protective put is owning the stock + buying a put as insurance. It limits downside risk while maintaining upside potential."
+            }
+        ,{
+            id: 21,
+            category: "Options",
+            question: "What is the delta of an option?",
+            options: ["Rate of time decay", "Change in option price per $1 change in stock price", "Change in gamma per $1 change in stock price", "Sensitivity to volatility"],
+            correct: 1,
+            explanation: "Delta measures the option's price change for every $1 change in the underlying stock price."
+        },
+        {
+            id: 22,
+            category: "Options",
+            question: "A straddle involves:",
+            options: ["Buying a call and put at different strikes", "Buying a call and put at the same strike", "Selling a call and put at different strikes", "Writing covered calls"],
+            correct: 1,
+            explanation: "A straddle is buying both a call and put at the same strike price. It profits from big moves in either direction."
+        },
+        {
+            id: 23,
+            category: "Options",
+            question: "What is the effect of high implied volatility on option prices?",
+            options: ["Decreases prices", "Has no effect", "Increases prices", "Only affects puts"],
+            correct: 2,
+            explanation: "Higher implied volatility increases option premiums because there's a greater chance the option finishes in-the-money."
+        },
+        {
+            id: 24,
+            category: "Options",
+            question: "In a bull call spread, you:",
+            options: ["Buy a call, sell a call at higher strike", "Buy a call, sell a call at lower strike", "Buy a put, sell a call", "Sell a call, buy a put"],
+            correct: 0,
+            explanation: "Bull call spread = buy lower strike call + sell higher strike call. Profits when stock goes up but limits risk."
+        },
+        {
+            id: 25,
+            category: "Options",
+            question: "What happens to a short option position at expiration if it is in-the-money?",
+            options: ["It expires worthless", "The option is automatically exercised", "It rolls over", "Nothing happens"],
+            correct: 1,
+            explanation: "Short in-the-money options are automatically exercised at expiration, meaning the seller must deliver the stock."
+        },
+        {
+            id: 26,
+            category: "Suitability",
+            question: "A customer says they need income but also wants high growth. This is an example of:",
+            options: ["A suitable investment objective", "Conflicting investment objectives", "A conservative risk tolerance", "A short-term objective"],
+            correct: 1,
+            explanation: "Income and high growth are often conflicting objectives. The broker must help the customer prioritize or find a balance."
+        },
+        {
+            id: 27,
+            category: "Suitability",
+            question: "What is concentration in the context of portfolio suitability?",
+            options: ["Diversifying across asset classes", "Having too much invested in one security or sector", "Investing in concentrated positions", "A type of bond"],
+            correct: 1,
+            explanation: "Concentration means too much in one investment. It increases risk and may violate suitability rules."
+        },
+        {
+            id: 28,
+            category: "Suitability",
+            question: "Before opening a margin account, the broker must:",
+            options: ["Get a blood test", "Obtain margin agreement and assess suitability", "Check the customer's credit score only", "Require a minimum $1 million deposit"],
+            correct: 1,
+            explanation: "Customers must sign a margin agreement and the broker must assess whether margin trading is suitable."
+        },
+        {
+            id: 29,
+            category: "Suitability",
+            question: "A customer suddenly wants to make a large, aggressive trade after inheriting money. The broker should:",
+            options: ["Execute immediately", "Wait 30 days before executing", "Assess suitability and educate about risks", "Refuse the trade"],
+            correct: 2,
+            explanation: "Sudden wealth or aggressive moves need suitability review and education about risks."
+        },
+        {
+            id: 30,
+            category: "Suitability",
+            question: "What is the suitability triad?",
+            options: ["Customer, broker, and lawyer", "Know your customer, suitability rules, and best execution", "Risk, return, and time horizon", "Three types of accounts"],
+            correct: 1,
+            explanation: "The suitability triad includes knowing the customer, ensuring recommendations are suitable, and best execution."
+        },
+        {
+            id: 31,
+            category: "Regulation",
+            question: "Who enforces the rules for broker-dealers?",
+            options: ["SEC only", "FINRA only", "SEC and self-regulatory organizations", "Federal Reserve"],
+            correct: 2,
+            explanation: "Broker-dealers are regulated by the SEC and self-regulatory organizations like FINRA."
+        },
+        {
+            id: 32,
+            category: "Regulation",
+            question: "What is best execution?",
+            options: ["Executing at the lowest price", "Executing quickly regardless of price", "Executing at the best overall price and terms", "Only using market orders"],
+            correct: 2,
+            explanation: "Best execution means getting the best overall price considering speed, price, and likelihood of execution."
+        },
+        {
+            id: 33,
+            category: "Regulation",
+            question: "How must securities be held at a brokerage?",
+            options: ["In the broker's personal account", "In customer's name or street name", "In the firm's name only", "In an overseas account"],
+            correct: 1,
+            explanation: "Securities are held in the customer's name or street name (the brokerage's name) for safekeeping."
+        },
+        {
+            id: 34,
+            category: "Regulation",
+            question: "What is a control relationship under securities law?",
+            options: ["Having trading control over an account", "One entity has power to influence another company's management", "A broker's supervisory duties", "A margin account"],
+            correct: 1,
+            explanation: "Control relationships exist when one entity can influence another company's business decisions."
+        },
+        {
+            id: 35,
+            category: "Regulation",
+            question: "What is the purpose of the Uniform Practice Code?",
+            options: ["Set trading hours", "Standardize brokerage industry practices", "Define tax treatment", "Limit customer complaints"],
+            correct: 1,
+            explanation: "The UPC standardizes practices like trade settlement, delivery, and customer account handling."
+        },
+        {
+            id: 36,
+            category: "Securities Products",
+            question: "A bond with a coupon rate higher than market interest rates will trade at:",
+            options: ["Par value", "A discount", "A premium", "Cannot be determined"],
+            correct: 2,
+            explanation: "Higher coupon bonds are more valuable, so they trade at a premium to par when rates are lower."
+        },
+        {
+            id: 37,
+            category: "Securities Products",
+            question: "What type of bond has the lowest credit risk?",
+            options: ["High-yield bonds", "Investment grade bonds", "Treasury bonds", "Municipal bonds"],
+            correct: 2,
+            explanation: "U.S. Treasury bonds are considered the safest as they're backed by the full faith and credit of the government."
+        },
+        {
+            id: 38,
+            category: "Securities Products",
+            question: "What is a bull market?",
+            options: ["A market with falling prices", "A market with rising prices", "A market with stable prices", "A market for bonds only"],
+            correct: 1,
+            explanation: "A bull market is characterized by rising prices and investor optimism."
+        },
+        {
+            id: 39,
+            category: "Securities Products",
+            question: "What is the primary difference between a stock and a bond?",
+            options: ["Bonds have voting rights", "Stocks represent ownership, bonds represent debt", "They are the same thing", "Bonds always pay more"],
+            correct: 1,
+            explanation: "Stock = ownership (equity). Bond = debt (creditor). Stockholders own part of company, bondholders are creditors."
+        },
+        {
+            id: 40,
+            category: "Securities Products",
+            question: "What is diversification?",
+            options: ["Putting all money in one stock", "Spreading investments across different assets", "Only buying bonds", "Avoiding the market"],
+            correct: 1,
+            explanation: "Diversification means spreading investments to reduce risk. Don't put all eggs in one basket."
+        },
+        {
+            id: 41,
+            category: "Economics",
+            question: "Inflation primarily hurts:",
+            options: ["Borrowers", "Lenders", "The government only", "Investors in bonds only"],
+            correct: 1,
+            explanation: "Lenders lose because money is worth less when repaid. Borrowers benefit."
+        },
+        {
+            id: 42,
+            category: "Economics",
+            question: "What does a trade deficit mean?",
+            options: ["Country exports more than imports", "Country imports more than exports", "Balanced trade", "No trade"],
+            correct: 1,
+            explanation: "Trade deficit = imports > exports. Trade surplus = exports > imports."
+        },
+        {
+            id: 43,
+            category: "Economics",
+            question: "What happens when the Fed sells government securities?",
+            options: ["Interest rates decrease", "Money supply decreases", "Inflation increases", "Bond prices increase"],
+            correct: 1,
+            explanation: "Selling securities removes money from circulation, reducing the money supply, which can raise rates."
+        },
+        {
+            id: 44,
+            category: "Economics",
+            question: "GDP stands for:",
+            options: ["Gross Domestic Product", "General Debt Payment", "Government Spending", "Gold Deposit Ratio"],
+            correct: 0,
+            explanation: "GDP = Gross Domestic Product. The total value of goods and services produced in a country."
+        },
+        {
+            id: 45,
+            category: "Economics",
+            question: "What is a recession?",
+            options: ["Two consecutive quarters of declining GDP", "A period of rapid growth", "When unemployment is below 5%", "A stock market crash"],
+            correct: 0,
+            explanation: "Recession = two consecutive quarters of negative GDP growth. Signs include rising unemployment and reduced spending."
+        },
+        {
+            id: 46,
+            category: "Client Accounts",
+            question: "A joint tenants with rights of survivorship (JTWROS) account means:",
+            options: ["Each owner can sell their share independently", "If one owner dies, their share goes to the other owners", "Accounts are separate", "No survivorship rights"],
+            correct: 1,
+            explanation: "JTWROS = if one owner dies, their interest automatically transfers to surviving owners."
+        },
+        {
+            id: 47,
+            category: "Client Accounts",
+            question: "A custodial account is:",
+            options: ["An account for minors supervised by a guardian", "A retirement account", "An account that cannot be closed", "A joint account only"],
+            correct: 0,
+            explanation: "Custodial accounts are for minors (under 18/21), managed by an adult custodian until the minor reaches majority."
+        },
+        {
+            id: 48,
+            category: "Client Accounts",
+            question: "A traditional IRA is MOST advantageous for someone who:",
+            options: ["Wants tax-free withdrawals now", "Expects lower taxes in retirement", "Is self-employed", "Wants immediate access to funds"],
+            correct: 1,
+            explanation: "Traditional IRA = contributions may be tax-deductible, taxed on withdrawal. Best if in lower tax bracket now, higher later."
+        },
+        {
+            id: 49,
+            category: "Client Accounts",
+            question: "A margin account allows:",
+            options: ["Buying securities with borrowed money", "Avoiding all risk", "Trading options only", "Short selling only"],
+            correct: 0,
+            explanation: "Margin = borrowing money from broker to buy securities. Amplifies both gains and losses."
+        },
+        {
+            id: 50,
+            category: "Client Accounts",
+            question: "A 401(k) differs from an IRA in that 401(k):",
+            options: ["Has higher contribution limits", "Is always Roth only", "Cannot be invested in stocks", "Has no tax benefits"],
+            correct: 0,
+            explanation: "401(k) limits are much higher ($23,000 vs $7,000 for IRA). Employers can also match contributions."
+        },
+        {
+            id: 51,
+            category: "Ethics",
+            question: "Churning is:",
+            options: ["A dance move", "Excessive trading for commissions", "A type of bond", "Legal trading"],
+            correct: 1,
+            explanation: "Churning = excessive buying/selling in customer's account primarily to generate commissions for the broker."
+        },
+        {
+            id: 52,
+            category: "Ethics",
+            question: "Front-running is:",
+            options: ["Running ahead of customers to trade first", "The first trade of the day", "A type of options strategy", "Legal market making"],
+            correct: 0,
+            explanation: "Front-running = trading ahead of customer orders to profit from the expected price move. Illegal."
+        },
+        {
+            id: 53,
+            category: "Ethics",
+            question: "A material fact is information that:",
+            options: ["Is publicly available", "Would affect a reasonable investor's decision", "Is trivial", "Has already been disclosed"],
+            correct: 1,
+            explanation: "Material facts = information that would matter to a reasonable investor making an investment decision."
+        },
+        {
+            id: 54,
+            category: "Ethics",
+            question: "Suitability requires brokers to:",
+            options: ["Recommend whatever the customer asks", "Match investments to customer's profile", "Only recommend bonds", "Avoid all risk"],
+            correct: 1,
+            explanation: "Suitability = recommendations must match the customer's financial situation, goals, and risk tolerance."
+        },
+        {
+            id: 55,
+            category: "Ethics",
+            question: "Trading ahead of customer orders (front-running) is:",
+            options: ["A best practice", "Illegal", "Only wrong if broker loses money", "Allowed in certain circumstances"],
+            correct: 1,
+            explanation: "Front-running is strictly prohibited. It exploits material nonpublic information about customer orders."
+        }
+        ];
+
+        var player = { level: 1, streak: 0, correct: 0, total: 0 };
+        var currentQuestion = 0;
+        var answered = false;
+        var quizQuestions = [];
+        var totalStats = { answered: 0, correct: 0 };
+
+        // Level titles
+        function getTitle(level) {
+            if (level >= 50) return 'CEO';
+            if (level >= 40) return 'Managing Director';
+            if (level >= 30) return 'VP';
+            if (level >= 20) return 'Associate';
+            if (level >= 10) return 'Analyst';
+            if (level >= 5) return 'Senior Intern';
+            return 'Intern';
+        }
+
+        function getLevelFromQuestions(total) {
+            return Math.floor(total / 5) + 1;
+        }
+
+        // Load stats from API or localStorage
+        async function loadStatsFromAPI() {
+            try {
+                var data = await apiCall('/api/users/progress?user_id=1');
+                currentUserStats = {
+                    answered: data.questions_answered,
+                    correct: data.correct_answers,
+                    bestStreak: data.best_streak,
+                    level: data.level
+                };
+                updateStatsUI();
+            } catch(e) {
+                console.error('Failed to load stats from API:', e);
+                loadStats();
+            }
+        }
+        
+        function loadStats() {
+            if (useOffline) {
+                if (!currentUser || !users[currentUser]) {
+                    totalStats = { answered: 0, correct: 0, bestStreak: 0 };
+                } else {
+                    totalStats = users[currentUser];
+                }
+            } else if (currentUserStats) {
+                totalStats = currentUserStats;
+            } else {
+                totalStats = { answered: 0, correct: 0, bestStreak: 0 };
+            }
+            updateStatsUI();
+        }
+        
+        function updateStatsUI() {
+            document.getElementById('totalAnswered').textContent = totalStats.answered;
+            document.getElementById('totalCorrect').textContent = totalStats.answered > 0 ? Math.round(totalStats.correct/totalStats.answered*100) + '%' : '0%';
+            document.getElementById('bestStreak').textContent = totalStats.bestStreak || 0;
+            player.level = getLevelFromQuestions(totalStats.answered);
+        }
+
+        async function saveStats(wasCorrect) {
+            if (useOffline) {
+                if (currentUser && users[currentUser]) {
+                    users[currentUser] = totalStats;
+                    saveUsers();
+                }
+            } else {
+                // Save to API - send whether last answer was correct
+                try {
+                    await apiCall('/api/users/progress?user_id=1&correct=' + (wasCorrect ? 'true' : 'false'), 'PUT');
+                    // Reload stats from API to get updated values
+                    await loadStatsFromAPI();
+                } catch(e) {
+                    console.error('Failed to save stats to API:', e);
+                }
+            }
+        }
+
+        function shuffleArray(array) {
+            var newArray = array.slice();
+            for (var i = newArray.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var temp = newArray[i];
+                newArray[i] = newArray[j];
+                newArray[j] = temp;
+            }
+            return newArray;
+        }
+
+        // Tab Navigation
+        // Memory Game
+        var memoryCards = [];
+        var memoryFlipped = [];
+        var memoryMatched = 0;
+        var memoryMoves = 0;
+        var memoryTimer = null;
+        var memorySeconds = 0;
+        
+        var memoryTerms = [
+            { term: "Bull Market", definition: "A market characterized by rising prices and investor optimism" },
+            { term: "Bear Market", definition: "A market with falling prices and pessimism" },
+            { term: "Dividend", definition: "A portion of company profits paid to shareholders" },
+            { term: "Arbitrage", definition: "Profiting from price differences in different markets" },
+            { term: "Liquidity", definition: "How easily an asset can be bought or sold without affecting its price" }
+        ];
+        
+        function shuffleArray(array) {
+            var newArray = array.slice();
+            for (var i = newArray.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var temp = newArray[i];
+                newArray[i] = newArray[j];
+                newArray[j] = temp;
+            }
+            return newArray;
+        }
+        
+        function initMemoryGame() {
+            var cards = [];
+            
+            // Create pairs (term cards and definition cards)
+            for (var i = 0; i < memoryTerms.length; i++) {
+                cards.push({ id: i, type: 'term', content: memoryTerms[i].term });
+                cards.push({ id: i, type: 'def', content: memoryTerms[i].definition });
+            }
+            
+            // Shuffle cards
+            cards = shuffleArray(cards);
+            
+            // Reset state
+            memoryCards = [];
+            memoryFlipped = [];
+            memoryMatched = 0;
+            memoryMoves = 0;
+            memorySeconds = 0;
+            
+            if (memoryTimer) clearInterval(memoryTimer);
+            memoryTimer = setInterval(function() {
+                memorySeconds++;
+                var mins = Math.floor(memorySeconds / 60);
+                var secs = memorySeconds % 60;
+                document.getElementById('memoryTime').textContent = mins + ':' + (secs < 10 ? '0' : '') + secs;
+            }, 1000);
+            
+            // Update UI
+            document.getElementById('memoryMoves').textContent = '0';
+            document.getElementById('memoryPairs').textContent = '0/5';
+            
+            // Render cards
+            var html = '';
+            for (var i = 0; i < cards.length; i++) {
+                html += '<div class="memory-card" data-index="' + i + '" data-id="' + cards[i].id + '" data-type="' + cards[i].type + '" onclick="flipCard(this)">';
+                html += '<span class="card-front">?</span>';
+                html += '<span class="card-content">' + cards[i].content + '</span>';
+                html += '</div>';
+            }
+            document.getElementById('memoryCards').innerHTML = html;
+        }
+        
+        function flipCard(card) {
+            // Ignore if already flipped or matched
+            if (card.classList.contains('flipped') || card.classList.contains('matched')) return;
+            if (memoryFlipped.length >= 2) return;
+            
+            // Flip the card
+            card.classList.add('flipped');
+            memoryFlipped.push(card);
+            
+            if (memoryFlipped.length === 1) return;
+            
+            // Second card flipped - check for match
+            memoryMoves++;
+            document.getElementById('memoryMoves').textContent = memoryMoves;
+            
+            var card1 = memoryFlipped[0];
+            var card2 = memoryFlipped[1];
+            
+            if (card1.dataset.id === card2.dataset.id) {
+                // Match!
+                setTimeout(function() {
+                    card1.classList.add('matched');
+                    card2.classList.add('matched');
+                    memoryMatched++;
+                    document.getElementById('memoryPairs').textContent = memoryMatched + '/5';
+                    memoryFlipped = [];
+                    
+                    if (memoryMatched === 5) {
+                        clearInterval(memoryTimer);
+                        // Award XP for winning
+                        totalStats.answered += 10;
+                        totalStats.correct += 5;
+                        saveStats(true);
+                        player.level = getLevelFromQuestions(totalStats.answered);
+                        updateDashboard();
+                        alert('🎉 Congratulations! You matched all pairs in ' + memoryMoves + ' moves!');
+                    }
+                }, 500);
+            } else {
+                // No match - flip back
+                setTimeout(function() {
+                    card1.classList.remove('flipped');
+                    card2.classList.remove('flipped');
+                    memoryFlipped = [];
+                }, 1000);
+            }
+        }
+
+        function showTab(tabName, btn) {
+            // Hide all tab content
+            var contents = document.querySelectorAll('.tab-content');
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].classList.remove('active');
+            }
+            // Remove active from all buttons
+            var buttons = document.querySelectorAll('.tab-btn');
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove('active');
+            }
+            // Show selected tab
+            document.getElementById('tab-' + tabName).classList.add('active');
+            // Add active to clicked button
+            btn.classList.add('active');
+        }
+
+        function init() {
+            loadUsers();
+            currentUser = loadCurrentUser();
+            if (currentUser && users[currentUser]) {
+                showDashboard();
+            } else {
+                showLogin();
+            }
+        }
+
+        function updateDashboard() {
+            document.getElementById('dashLevel').textContent = player.level;
+            document.getElementById('dashTitle').textContent = getTitle(player.level);
+
+        // Progress to next level (every 5 questions = level up)
+        var questionsInLevel = totalStats.answered % 5;
+        var needed = 5 - questionsInLevel;
+        var percent = (questionsInLevel / 5) * 100;
+        document.getElementById('dashLevelFill').style.width = percent + '%';
+        document.getElementById('levelProgressText').textContent = needed + ' more to next level';
+        
+        updateLeaderboard();
+        }
+
+        function updateLeaderboard() {
+            var list = document.getElementById('leaderboardList');
+            if (!list) return;
+            
+            // Get all users and sort by questions answered
+            var userKeys = Object.keys(users);
+            var sortedUsers = [];
+            
+            for (var i = 0; i < userKeys.length; i++) {
+                var u = userKeys[i];
+                sortedUsers.push({
+                    username: u,
+                    answered: users[u].answered || 0,
+                    correct: users[u].correct || 0,
+                    bestStreak: users[u].bestStreak || 0
+                });
+            }
+            
+            // Sort by questions answered (descending)
+            sortedUsers.sort(function(a, b) {
+                return b.answered - a.answered;
+            });
+            
+            if (sortedUsers.length === 0) {
+                list.innerHTML = '<div class="coming-soon"><p>No users yet. Be the first!</p></div>';
+                return;
+            }
+            
+            var html = '';
+            for (var i = 0; i < sortedUsers.length; i++) {
+                var u = sortedUsers[i];
+                var isCurrent = u.username === currentUser;
+                var level = Math.floor(u.answered / 5) + 1;
+                var title = getTitle(level);
+                var accuracy = u.answered > 0 ? Math.round(u.correct / u.answered * 100) : 0;
+                
+                html += '<div class="leaderboard-item' + (isCurrent ? ' current' : '') + '">';
+                html += '<div class="leaderboard-rank">' + (i + 1) + '</div>';
+                html += '<div class="leaderboard-info">';
+                html += '<div class="leaderboard-name">' + u.username + (isCurrent ? ' (You)' : '') + '</div>';
+                html += '<div class="leaderboard-stats">' + u.answered + ' questions • ' + accuracy + '% accuracy • 🔥 ' + u.bestStreak + '</div>';
+                html += '</div>';
+                html += '<div class="leaderboard-level">';
+                html += '<div class="level-badge">Lvl ' + level + ' ' + title + '</div>';
+                html += '</div>';
+                html += '</div>';
+            }
+            
+            list.innerHTML = html;
+        }
+
+        function startQuiz(count) {
+            quizQuestions = shuffleArray(questions).slice(0, count);
+            player = { level: 1, streak: 0, correct: 0, total: 0 };
+            currentQuestion = 0;
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('quizView').style.display = 'block';
+            document.getElementById('progressIndicator').textContent = '1/' + quizQuestions.length;
+            showQuestion();
+        }
+
+        function startCategory(category) {
+            var filtered = questions.filter(function(q) { return q.category === category; });
+            if (filtered.length === 0) {
+                alert('No questions in this category yet!');
+                return;
+            }
+            quizQuestions = shuffleArray(filtered);
+            player = { level: 1, streak: 0, correct: 0, total: 0 };
+            currentQuestion = 0;
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('quizView').style.display = 'block';
+            document.getElementById('progressIndicator').textContent = '1/' + quizQuestions.length;
+            showQuestion();
+        }
+
+        function startSprint() {
+            alert('Sprint Mode: Answer as many as you can in 5 minutes! Coming soon!');
+        }
+
+        function backToDashboard() {
+            document.getElementById('quizView').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            loadStats();
+            updateDashboard();
+        }
+
+        function updateUI() {
+            document.getElementById('streak').textContent = player.streak;
+            player.level = getLevelFromQuestions(totalStats.answered);
+            document.getElementById('level').textContent = player.level;
+        }
+
+        function showQuestion() {
+            var q = quizQuestions[currentQuestion];
+            document.getElementById('category').textContent = q.category;
+            document.getElementById('question').textContent = q.question;
+            document.getElementById('progressIndicator').textContent = (currentQuestion + 1) + '/' + quizQuestions.length;
+            
+            var optionsEl = document.getElementById('options');
+            optionsEl.innerHTML = '';
+            
+            for (var i = 0; i < q.options.length; i++) {
+                var btn = document.createElement('div');
+                btn.className = 'option';
+                btn.textContent = q.options[i];
+                btn.onclick = (function(index) {
+                    return function() { selectAnswer(index); };
+                })(i);
+                optionsEl.appendChild(btn);
+            }
+            
+            document.getElementById('explanation').classList.remove('show');
+            document.getElementById('nextBtn').style.display = 'none';
+            answered = false;
+            updateUI();
+        }
+
+        function selectAnswer(idx) {
+            if (answered) return;
+            answered = true;
+            
+            var q = quizQuestions[currentQuestion];
+            var options = document.querySelectorAll('.option');
+            
+            if (idx === q.correct) {
+                options[idx].classList.add('correct');
+                player.correct++;
+                player.streak++;
+            } else {
+                options[idx].classList.add('incorrect');
+                options[q.correct].classList.add('correct');
+                player.streak = 0;
+            }
+            
+            player.total++;
+            
+            // Track stats
+            if (idx === q.correct) {
+                totalStats.correct++;
+                totalStats.answered++;
+                if (player.streak > totalStats.bestStreak) {
+                    totalStats.bestStreak = player.streak;
+                }
+                saveStats(true);
+            } else {
+                totalStats.answered++;
+                player.streak = 0;
+                saveStats(false);
+            }
+            
+            // Update level based on total questions
+            player.level = getLevelFromQuestions(totalStats.answered);
+            
+            document.getElementById('explanationText').textContent = q.explanation;
+            document.getElementById('explanation').classList.add('show');
+            document.getElementById('nextBtn').style.display = 'block';
+            updateUI();
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion >= quizQuestions.length) {
+                showResults();
+            } else {
+                showQuestion();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('questionContainer').classList.remove('active');
+            document.getElementById('results').classList.add('show');
+            document.getElementById('finalScore').textContent = player.correct;
+            document.getElementById('totalQuestions').textContent = quizQuestions.length;
+            document.getElementById('levelEarned').textContent = player.level;
+            document.getElementById('titleEarned').textContent = getTitle(player.level);
+        }
+
+        function restart() {
+            player = { level: 1, streak: 0, correct: 0, total: 0 };
+            currentQuestion = 0;
+            quizQuestions = shuffleArray(questions);
+            document.getElementById('results').classList.remove('show');
+            document.getElementById('questionContainer').classList.add('active');
+            backToDashboard();
+        }
+
+        init();
+    </script>
+</body>
+</html>

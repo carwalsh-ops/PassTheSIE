@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+*.db
+.env
+
+# Mac
+.DS_Store
+
+# Node/OpenClaw
+node_modules/
+.openclaw/
