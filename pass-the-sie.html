@@ -166,10 +166,11 @@
         .dropdown {
             position: relative;
             display: inline-block;
+            margin-right: 10px;
         }
         
         .dropbtn {
-            background: #1e1e3f;
+            background: #6366f1;
             color: white;
             padding: 8px 16px;
             border: none;
@@ -179,10 +180,15 @@
             font-weight: 600;
         }
         
+        .dropbtn:hover {
+            background: #4f46e5;
+        }
+        
         .dropdown-content {
             display: none;
             position: absolute;
-            right: 0;
+            left: 0;
+            top: 100%;
             background: white;
             min-width: 200px;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
@@ -972,8 +978,8 @@
         <div id="loginScreen" class="login-screen">
             <div style="text-align:right; margin-bottom:10px;">
                 <div class="dropdown">
-                    <button class="dropbtn" onclick="toggleDropdown()">☰ Menu</button>
-                    <div class="dropdown-content" id="myDropdown">
+                    <button class="dropbtn" onclick="toggleDropdown(this)">☰ Menu</button>
+                    <div class="dropdown-content">
                         <a onclick="showSection('what-is-sie')">📚 What is the SIE</a>
                         <a onclick="showSection('resources')">📖 Resources</a>
                         <a onclick="showSection('about')">ℹ️ About</a>
@@ -1070,8 +1076,8 @@
                 </div>
                 <div class="user-greeting">
                     <div class="dropdown">
-                        <button class="dropbtn" onclick="toggleDropdown()">☰ Menu</button>
-                        <div class="dropdown-content" id="myDropdown">
+                        <button class="dropbtn" onclick="toggleDropdown(this)">☰ Menu</button>
+                        <div class="dropdown-content">
                             <a onclick="showSection('what-is-sie')">📚 What is the SIE</a>
                             <a onclick="showSection('resources')">📖 Resources</a>
                             <a onclick="showSection('about')">ℹ️ About</a>
@@ -1414,8 +1420,9 @@
         }
         
         // Dropdown functions
-        function toggleDropdown() {
-            document.getElementById('myDropdown').classList.toggle('show');
+        function toggleDropdown(btn) {
+            var dropdown = btn.nextElementSibling;
+            dropdown.classList.toggle('show');
         }
         
         function showSection(sectionId) {
@@ -1450,8 +1457,8 @@
         }
         
         // Close dropdown when clicking outside
-        window.onclick = function(event) {
-            if (!event.target.matches('.dropbtn')) {
+        document.addEventListener('click', function(event) {
+            if (!event.target.matches('.dropbtn') && !event.target.closest('.dropdown')) {
                 var dropdowns = document.getElementsByClassName('dropdown-content');
                 for (var i = 0; i < dropdowns.length; i++) {
                     var openDropdown = dropdowns[i];
@@ -1460,7 +1467,7 @@
                     }
                 }
             }
-        }
+        });
         
         function showLogin() {
             document.getElementById('loginScreen').style.display = 'block';
