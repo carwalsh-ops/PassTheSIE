@@ -162,6 +162,97 @@
             color: #1a1a2e;
         }
         
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropbtn {
+            background: #1e1e3f;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border-radius: 10px;
+            z-index: 1000;
+            overflow: hidden;
+        }
+        
+        .dropdown-content.show {
+            display: block;
+        }
+        
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .dropdown-content a:hover {
+            background: #f5f5f5;
+        }
+        
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-section {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            display: none;
+        }
+        
+        .dropdown-section.active {
+            display: block;
+        }
+        
+        .dropdown-section h2 {
+            color: #1a1a2e;
+            margin-bottom: 15px;
+        }
+        
+        .dropdown-section p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .dropdown-section ul {
+            margin-left: 20px;
+            color: #555;
+        }
+        
+        .dropdown-section li {
+            margin-bottom: 8px;
+        }
+        
+        .back-btn {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        
         .stats {
             display: -webkit-box;
             display: -ms-flexbox;
@@ -879,6 +970,16 @@
     <div class="container">
         <!-- Login Screen -->
         <div id="loginScreen" class="login-screen">
+            <div style="text-align:right; margin-bottom:10px;">
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="toggleDropdown()">☰ Menu</button>
+                    <div class="dropdown-content" id="myDropdown">
+                        <a onclick="showSection('what-is-sie')">📚 What is the SIE</a>
+                        <a onclick="showSection('resources')">📖 Resources</a>
+                        <a onclick="showSection('about')">ℹ️ About</a>
+                    </div>
+                </div>
+            </div>
             <div class="login-logo">📚</div>
             <div class="login-title">Pass The SIE</div>
             <div class="login-subtitle">Master the Securities Industry Essentials Exam</div>
@@ -905,6 +1006,61 @@
             </div>
         </div>
         
+        <!-- Dropdown Content Sections -->
+        <div id="section-what-is-sie" class="dropdown-section">
+            <button class="back-btn" onclick="showMainContent()">← Back to Quiz</button>
+            <h2>📚 What is the SIE Exam?</h2>
+            <p>The Securities Industry Essentials (SIE) exam is a foundational exam for anyone looking to enter the securities industry. It's designed to test your knowledge of basic securities industry concepts.</p>
+            <h3>Key Facts:</h3>
+            <ul>
+                <li><strong>Format:</strong> 75 multiple-choice questions</li>
+                <li><strong>Time:</strong> 105 minutes</li>
+                <li><strong>Passing Score:</strong> 70%</li>
+                <li><strong>Prerequisite:</strong> None - anyone can take it</li>
+                <li><strong>Validity:</strong> 4 years</li>
+            </ul>
+            <h3>Topics Covered:</h3>
+            <ul>
+                <li>Securities Products & Markets</li>
+                <li>Investment Risks</li>
+                <li>Regulation & Compliance</li>
+                <li>Client Accounts & Suitability</li>
+                <li>Professional Conduct & Ethics</li>
+            </ul>
+        </div>
+        
+        <div id="section-resources" class="dropdown-section">
+            <button class="back-btn" onclick="showMainContent()">← Back to Quiz</button>
+            <h2>📖 SIE Exam Resources</h2>
+            <h3>Official Links:</h3>
+            <ul>
+                <li><a href="https://www.finra.org" target="_blank">FINRA.org</a> - Official regulator</li>
+                <li><a href="https://www.sec.gov" target="_blank">SEC.gov</a> - Securities & Exchange Commission</li>
+            </ul>
+            <h3>Study Tips:</h3>
+            <ul>
+                <li>Focus on suitability rules and regulations</li>
+                <li>Understand options strategies thoroughly</li>
+                <li>Know the different account types (IRAs, 401k, etc.)</li>
+                <li>Practice with as many questions as possible</li>
+            </ul>
+        </div>
+        
+        <div id="section-about" class="dropdown-section">
+            <button class="back-btn" onclick="showMainContent()">← Back to Quiz</button>
+            <h2>ℹ️ About Pass The SIE</h2>
+            <p><strong>Pass The SIE</strong> is a gamified exam prep app designed to help you pass the Securities Industry Essentials exam.</p>
+            <h3>Features:</h3>
+            <ul>
+                <li>500+ practice questions</li>
+                <li>Multiple quiz modes</li>
+                <li>Memory & matching games</li>
+                <li>Progress tracking & leaderboards</li>
+                <li>XP & level system</li>
+            </ul>
+            <p style="margin-top:20px; color:#888; font-size:14px;">Version 1.0 - Built with 💜 for future finance professionals</p>
+        </div>
+        
         <!-- Dashboard -->
         <div id="dashboard" class="dashboard" style="display:none">
             <div class="dash-header">
@@ -913,6 +1069,14 @@
                     <div class="dash-subtitle">Master the Securities Industry Essentials Exam</div>
                 </div>
                 <div class="user-greeting">
+                    <div class="dropdown">
+                        <button class="dropbtn" onclick="toggleDropdown()">☰ Menu</button>
+                        <div class="dropdown-content" id="myDropdown">
+                            <a onclick="showSection('what-is-sie')">📚 What is the SIE</a>
+                            <a onclick="showSection('resources')">📖 Resources</a>
+                            <a onclick="showSection('about')">ℹ️ About</a>
+                        </div>
+                    </div>
                     <span id="userGreeting">Hey!</span>
                     <button class="logout-btn share-btn" onclick="shareApp()">Share 🔗</button>
                     <button class="logout-btn" onclick="logout()">Switch User</button>
@@ -1246,6 +1410,55 @@
                 return localStorage.getItem('siePrepCurrentUser');
             } catch(e) {
                 return null;
+            }
+        }
+        
+        // Dropdown functions
+        function toggleDropdown() {
+            document.getElementById('myDropdown').classList.toggle('show');
+        }
+        
+        function showSection(sectionId) {
+            // Close dropdown
+            document.getElementById('myDropdown').classList.remove('show');
+            
+            // Hide main content
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'none';
+            
+            // Hide all sections
+            document.querySelectorAll('.dropdown-section').forEach(function(el) {
+                el.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById('section-' + sectionId).classList.add('active');
+        }
+        
+        function showMainContent() {
+            // Hide all sections
+            document.querySelectorAll('.dropdown-section').forEach(function(el) {
+                el.classList.remove('active');
+            });
+            
+            // Show either login or dashboard
+            if (currentUser && users[currentUser]) {
+                document.getElementById('dashboard').style.display = 'block';
+            } else {
+                document.getElementById('loginScreen').style.display = 'block';
+            }
+        }
+        
+        // Close dropdown when clicking outside
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName('dropdown-content');
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
             }
         }
         
