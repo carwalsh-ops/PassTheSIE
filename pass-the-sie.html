@@ -370,10 +370,24 @@
             font-size: 12px;
             cursor: pointer;
             text-decoration: underline;
+            margin-left: 8px;
         }
         
         .logout-btn:hover {
             color: #666;
+        }
+        
+        .share-btn {
+            background: #10b981;
+            color: white !important;
+            padding: 8px 14px;
+            border-radius: 20px;
+            text-decoration: none !important;
+            font-weight: 600;
+        }
+        
+        .share-btn:hover {
+            background: #059669;
         }
         
         .player-card {
@@ -668,6 +682,113 @@
             background: #4f46e5;
         }
         
+        /* Game Selector */
+        .game-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .game-btn {
+            flex: 1;
+            padding: 12px;
+            background: #1e1e3f;
+            color: #aaa;
+            border: 2px solid #333;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .game-btn.active {
+            background: #6366f1;
+            color: white;
+            border-color: #6366f1;
+        }
+        
+        /* Match Game */
+        .match-game {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            min-height: 350px;
+            padding: 10px;
+        }
+        
+        .match-column {
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 2;
+        }
+        
+        .match-item {
+            padding: 12px 10px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 8px;
+            color: white;
+            font-size: 13px;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .match-item:hover {
+            transform: scale(1.02);
+        }
+        
+        .match-item.selected {
+            background: #f59e0b;
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+        }
+        
+        .match-item.matched {
+            background: #10b981;
+        }
+        
+        .match-item.wrong {
+            background: #ef4444;
+            animation: shake 0.5s;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
+        .match-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .match-line {
+            stroke: #6366f1;
+            stroke-width: 3;
+            fill: none;
+        }
+        
+        .match-line.correct {
+            stroke: #10b981;
+        }
+        
+        .match-line.wrong {
+            stroke: #ef4444;
+        }
+        
         .player-card .level-bar {
             background: rgba(255,255,255,0.3);
         }
@@ -793,6 +914,7 @@
                 </div>
                 <div class="user-greeting">
                     <span id="userGreeting">Hey!</span>
+                    <button class="logout-btn share-btn" onclick="shareApp()">Share 🔗</button>
                     <button class="logout-btn" onclick="logout()">Switch User</button>
                 </div>
             </div>
@@ -809,7 +931,7 @@
             <!-- Tab Navigation -->
             <div class="tab-nav">
                 <div class="tab-btn active" onclick="showTab('quizzes', this)">📝 Quizzes</div>
-                <div class="tab-btn" onclick="showTab('memory', this)">🎮 Memory</div>
+                <div class="tab-btn" onclick="showTab('memory', this)">🎮 Games</div>
                 <div class="tab-btn" onclick="showTab('review', this)">📚 Review</div>
                 <div class="tab-btn" onclick="showTab('leaderboard', this)">🏆</div>
             </div>
@@ -853,21 +975,45 @@
             <!-- Memory Games Tab -->
             <div id="tab-memory" class="tab-content">
                 <div class="memory-header">
-                    <h3>🎮 Vocabulary Match</h3>
-                    <p>Match the terms to their definitions</p>
+                    <h3>🎮 Games</h3>
+                    <p>Pick a game to play</p>
                 </div>
                 
-                <div class="memory-stats">
-                    <span>Moves: <b id="memoryMoves">0</b></span>
-                    <span>Time: <b id="memoryTime">0:00</b></span>
-                    <span>Pairs: <b id="memoryPairs">0</b>/5</span>
+                <div class="game-selector">
+                    <button class="game-btn active" onclick="showGame('memory')">🃏 Flip Match</button>
+                    <button class="game-btn" onclick="showGame('match')">🔗 Connect Terms</button>
                 </div>
                 
-                <div class="memory-game" id="memoryGame">
-                    <div class="memory-cards" id="memoryCards"></div>
+                <!-- Flip Match Game -->
+                <div id="game-memory">
+                    <div class="memory-stats">
+                        <span>Moves: <b id="memoryMoves">0</b></span>
+                        <span>Time: <b id="memoryTime">0:00</b></span>
+                        <span>Pairs: <b id="memoryPairs">0</b>/5</span>
+                    </div>
+                    
+                    <div class="memory-game" id="memoryGame">
+                        <div class="memory-cards" id="memoryCards"></div>
+                    </div>
+                    
+                    <button class="memory-restart" onclick="initMemoryGame()">New Game</button>
                 </div>
                 
-                <button class="memory-restart" onclick="initMemoryGame()">New Game</button>
+                <!-- Connect Terms Game -->
+                <div id="game-match" style="display:none;">
+                    <div class="memory-stats">
+                        <span>Matches: <b id="matchScore">0</b>/5</span>
+                        <span>Time: <b id="matchTime">0:00</b></span>
+                    </div>
+                    
+                    <div class="match-game" id="matchGame">
+                        <div class="match-column" id="matchTerms"></div>
+                        <div class="match-column" id="matchDefs"></div>
+                        <svg class="match-lines" id="matchLines"></svg>
+                    </div>
+                    
+                    <button class="memory-restart" onclick="initMatchGame()">New Game</button>
+                </div>
             </div>
             
             <!-- Review Tab -->
@@ -1154,6 +1300,30 @@
                 localStorage.removeItem('siePrepCurrentUser');
             } catch(e) {}
             showLogin();
+        }
+        
+        function shareApp() {
+            var shareUrl = 'https://pass-the-sie.netlify.app';
+            var shareText = 'Check out Pass The SIE - Master the Securities Industry Essentials Exam! 📚';
+            
+            if (navigator.share) {
+                // Use Web Share API (mobile)
+                navigator.share({
+                    title: 'Pass The SIE',
+                    text: shareText,
+                    url: shareUrl
+                }).catch(function(e) {
+                    // User cancelled or error
+                });
+            } else {
+                // Fallback: copy to clipboard
+                navigator.clipboard.writeText(shareUrl).then(function() {
+                    alert('Link copied to clipboard! 📋\n\nShare it: ' + shareUrl);
+                }).catch(function() {
+                    // Clipboard not available
+                    prompt('Copy this link to share:', shareUrl);
+                });
+            }
         }
 
         var questions = [
@@ -1812,6 +1982,149 @@
                     memoryFlipped = [];
                 }, 1000);
             }
+        }
+        
+        // Match Game Variables
+        var matchTerms = [];
+        var matchSelected = null;
+        var matchScore = 0;
+        var matchTimer = null;
+        var matchSeconds = 0;
+        
+        function showGame(gameName) {
+            document.querySelectorAll('.game-btn').forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            document.getElementById('game-memory').style.display = gameName === 'memory' ? 'block' : 'none';
+            document.getElementById('game-match').style.display = gameName === 'match' ? 'block' : 'none';
+            
+            if (gameName === 'match') {
+                initMatchGame();
+            } else {
+                initMemoryGame();
+            }
+        }
+        
+        function initMatchGame() {
+            // Get 5 random terms
+            var shuffled = shuffleArray(memoryTerms.slice());
+            matchTerms = shuffled.slice(0, 5);
+            
+            // Create terms column (shuffled)
+            var termsList = shuffleArray(matchTerms.slice());
+            
+            // Create definitions column (shuffled)
+            var defsList = shuffleArray(matchTerms.slice());
+            
+            // Reset state
+            matchSelected = null;
+            matchScore = 0;
+            matchSeconds = 0;
+            
+            if (matchTimer) clearInterval(matchTimer);
+            matchTimer = setInterval(function() {
+                matchSeconds++;
+                var mins = Math.floor(matchSeconds / 60);
+                var secs = matchSeconds % 60;
+                document.getElementById('matchTime').textContent = mins + ':' + (secs < 10 ? '0' : '') + secs;
+            }, 1000);
+            
+            // Update UI
+            document.getElementById('matchScore').textContent = '0';
+            
+            // Render terms column
+            var termsHtml = '';
+            termsList.forEach(function(item, index) {
+                termsHtml += '<div class="match-item" data-term="' + item.term + '" data-index="' + index + '" onclick="selectMatchItem(this, \'term\')">' + item.term + '</div>';
+            });
+            document.getElementById('matchTerms').innerHTML = termsHtml;
+            
+            // Render definitions column
+            var defsHtml = '';
+            defsList.forEach(function(item, index) {
+                defsHtml += '<div class="match-item" data-def="' + item.definition + '" data-index="' + index + '" onclick="selectMatchItem(this, \'def\')">' + item.definition + '</div>';
+            });
+            document.getElementById('matchDefs').innerHTML = defsHtml;
+            
+            // Clear lines
+            document.getElementById('matchLines').innerHTML = '';
+        }
+        
+        function selectMatchItem(item, type) {
+            if (item.classList.contains('matched')) return;
+            
+            if (matchSelected === null) {
+                // First selection
+                matchSelected = { element: item, type: type, data: type === 'term' ? item.dataset.term : item.dataset.def };
+                item.classList.add('selected');
+            } else if (matchSelected.type === type) {
+                // Same type selected - deselect and select new
+                matchSelected.element.classList.remove('selected');
+                matchSelected = { element: item, type: type, data: type === 'term' ? item.dataset.term : item.dataset.def };
+                item.classList.add('selected');
+            } else {
+                // Second selection - check match
+                var termData = matchSelected.type === 'term' ? matchSelected.data : item.dataset.term;
+                var defData = matchSelected.type === 'def' ? matchSelected.data : item.dataset.definition;
+                
+                // Find the matching term-def pair
+                var correctPair = matchTerms.find(function(t) {
+                    return t.term === termData && t.definition === defData;
+                });
+                
+                if (correctPair) {
+                    // Correct match!
+                    matchSelected.element.classList.remove('selected');
+                    matchSelected.element.classList.add('matched');
+                    item.classList.add('matched');
+                    
+                    // Draw line
+                    drawMatchLine(matchSelected.element, item, true);
+                    
+                    matchScore++;
+                    document.getElementById('matchScore').textContent = matchScore;
+                    
+                    if (matchScore === 5) {
+                        clearInterval(matchTimer);
+                        setTimeout(function() {
+                            alert('🎉 Congratulations! You matched all ' + matchScore + ' pairs in ' + matchSeconds + ' seconds!');
+                        }, 500);
+                    }
+                } else {
+                    // Wrong match
+                    item.classList.add('wrong');
+                    matchSelected.element.classList.add('wrong');
+                    
+                    setTimeout(function() {
+                        item.classList.remove('wrong', 'selected');
+                        matchSelected.element.classList.remove('wrong', 'selected');
+                        matchSelected = null;
+                    }, 500);
+                    return;
+                }
+                
+                matchSelected = null;
+            }
+        }
+        
+        function drawMatchLine(el1, el2, correct) {
+            var svg = document.getElementById('matchLines');
+            var rect1 = el1.getBoundingClientRect();
+            var rect2 = el2.getBoundingClientRect();
+            var container = document.getElementById('matchGame').getBoundingClientRect();
+            
+            var x1 = rect1.right - container.left;
+            var y1 = rect1.top + rect1.height / 2 - container.top;
+            var x2 = rect2.left - container.left;
+            var y2 = rect2.top + rect2.height / 2 - container.top;
+            
+            var line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            var midX = (x1 + x2) / 2;
+            line.setAttribute('d', 'M ' + x1 + ' ' + y1 + ' C ' + midX + ' ' + y1 + ', ' + midX + ' ' + y2 + ', ' + x2 + ' ' + y2);
+            line.setAttribute('class', 'match-line ' + (correct ? 'correct' : 'wrong'));
+            svg.appendChild(line);
         }
 
         function showTab(tabName, btn) {
