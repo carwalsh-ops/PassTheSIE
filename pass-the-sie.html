@@ -1547,455 +1547,4052 @@
         }
 
         var questions = [
-            {
-                id: 1,
-                category: "Securities Products",
-                question: "A customer buys 100 shares of ABC stock at $50 per share and writes a covered call with a strike price of $55. If the stock price rises to $60 at expiration, what is the maximum profit?",
-                options: ["$500", "$550", "$1,000", "$600"],
-                correct: 0,
-                explanation: "Covered call max profit = (Strike - Stock Price) + Premium. The stock is called away at $55, so profit = ($55-$50) x 100 = $500, plus premium received."
-            },
-            {
-                id: 21,
-                category: "Suitability",
-                question: "A customer has a moderate risk tolerance and 10-year investment horizon. Which investment is MOST suitable?",
-                options: ["Individual bonds", "Growth stocks", "Treasury bills", "Options"],
-                correct: 1,
-                explanation: "With moderate risk and long horizon, growth stocks are suitable. Higher risk tolerance allows for equity exposure over bonds."
-            },
-            {
-                id: 2,
-                category: "Economics",
-                question: "If the Federal Reserve increases the discount rate, what is the most likely immediate effect on the economy?",
-                options: ["Increased inflation", "Decreased borrowing", "Higher unemployment", "Lower GDP growth"],
-                correct: 1,
-                explanation: "Higher discount rate = higher borrowing costs = less borrowing = less economic activity."
-            },
-            {
-                id: 3,
-                category: "Client Accounts",
-                question: "Which account type allows for the highest contribution limits?",
-                options: ["Traditional IRA", "Roth IRA", "401(k)", "HSA"],
-                correct: 2,
-                explanation: "401(k) limits are highest ($23,000 in 2024), much higher than IRA limits."
-            },
-            {
-                id: 4,
-                category: "Ethics",
-                question: "A broker recommends a security that is suitable but also pays a higher commission than alternative products. What must the broker disclose?",
-                options: ["Nothing", "The conflict of interest", "Only to the compliance department", "Only at account opening"],
-                correct: 1,
-                explanation: "Brokers must disclose material conflicts of interest that could affect their recommendations."
-            },
-            {
-                id: 5,
-                category: "Regulation",
-                question: "What is the primary purpose of FINRA's Rule 2111 (Suitability)?",
-                options: ["Prevent fraud", "Ensure recommendations are suitable", "Protect customer assets", "Enforce licensing requirements"],
-                correct: 1,
-                explanation: "Rule 2111 requires brokers to obtain reasonable grounds for believing recommendations are suitable."
-            },
-            {
-                id: 6,
-                category: "Options",
-                question: "What is the maximum loss for buying a call option?",
-                options: ["Unlimited", "The premium paid", "Strike price minus premium", "Stock price minus strike"],
-                correct: 1,
-                explanation: "Call buyers risk only the premium paid. If the stock goes down, the option expires worthless."
-            },
-            {
-                id: 7,
-                category: "Suitability",
-                question: "Before recommending a securities transaction, a broker must obtain information about the customer's:",
-                options: ["Favorite sports team", "Investment objectives, risk tolerance, and financial situation", "Political affiliation", "Social media activity"],
-                correct: 1,
-                explanation: "Know Your Customer (KYC) rule requires brokers to know the customer's investment objectives, risk tolerance, financial situation, and investment experience."
-            },
-            {
-                id: 8,
-                category: "Options",
-                question: "A customer writes a naked put option. What is the maximum loss?",
-                options: ["The premium received", "Unlimited", "Strike price times contract size", "The strike price minus premium"],
-                correct: 1,
-                explanation: "Naked put writers have unlimited downside risk if the stock falls to zero. They keep the premium if the stock stays above strike."
-            },
-            {
-                id: 9,
-                category: "Regulation",
-                question: "What does FINRA Rule 3310 (AML) require firms to do?",
-                options: ["Report every trade to the SEC", "Develop policies to detect and prevent money laundering", "Submit customer trades to the FBI", "Freeze all international transfers"],
-                correct: 1,
-                explanation: "Anti-Money Laundering (AML) rules require firms to develop policies and procedures to detect and prevent money laundering activities."
-            },
-            {
-                id: 10,
-                category: "Options",
-                question: "Which option strategy profits when the underlying stock stays within a certain price range?",
-                options: ["Long call", "Long straddle", "Iron condor", "Long put"],
-                correct: 2,
-                explanation: "An iron condor (or any bull/bear spread combination) profits when the stock stays within a range. It's a neutral strategy."
-            },
-            {
-                id: 11,
-                category: "Suitability",
-                question: "A senior citizen with fixed income wants to invest in volatile growth stocks. The broker should:",
-                options: ["Proceed with the recommendation", "Recommend a suitable alternative with lower risk", "SuggestOptions trading", "Refer them to another broker"],
-                correct: 1,
-                explanation: "The broker must recommend investments suitable for the customer's risk tolerance and financial situation. Volatile stocks may not be suitable for someone with fixed income."
-            },
-            {
-                id: 12,
-                category: "Regulation",
-                question: "What is the purpose of Regulation FD (Fair Disclosure)?",
-                options: ["Ensure all investors receive material information simultaneously", "Limit short selling", "Set margin requirements", "Define market maker obligations"],
-                correct: 0,
-                explanation: "Reg FD requires companies to disclose material information to all investors at the same time, preventing selective disclosure to analysts or institutional investors."
-            },
-            {
-                id: 13,
-                category: "Options",
-                question: "An option is described as 'at-the-money' when:",
-                options: ["The option has no intrinsic value", "The strike price equals the underlying stock price", "The option is about to expire", "The option is out of the money"],
-                correct: 1,
-                explanation: "At-the-money (ATM) means the strike price equals the current market price of the underlying security."
-            },
-            {
-                id: 14,
-                category: "Suitability",
-                question: "What information must be disclosed when a broker executes a principal transaction?",
-                options: ["The broker's personal trading history", "The markup or markdown applied", "The customer's account number", "The firm's quarterly earnings"],
-                correct: 1,
-                explanation: "In principal transactions, firms must disclose the price differential (markup/markdown) so customers know the firm is trading as principal."
-            },
-            {
-                id: 15,
-                category: "Options",
-                question: "What happens to a long option position at expiration if it is out-of-the-money?",
-                options: ["It automatically exercises for a profit", "It expires worthless", "It converts to a short position", "It rolls over to the next month"],
-                correct: 1,
-                explanation: "Out-of-the-money options expire worthless. The buyer loses the premium paid."
-            },
-            {
-                id: 16,
-                category: "Regulation",
-                question: "How much time does a broker have to respond to a customer complaint?",
-                options: ["24 hours", "48 hours", "Within 30 days", "No specific timeframe"],
-                correct: 2,
-                explanation: "FINRA Rule 4530 requires firms to respond to customer complaints within 30 days and investigate thoroughly."
-            },
-            {
-                id: 17,
-                category: "Options",
-                question: "Which Greek measures an option's sensitivity to time decay?",
-                options: ["Delta", "Gamma", "Theta", "Vega"],
-                correct: 2,
-                explanation: "Theta measures time decay - how much value an option loses as expiration approaches."
-            },
-            {
-                id: 18,
-                category: "Suitability",
-                question: "A customer wants to 'chase' a hot stock tip they heard on TV. The broker should:",
-                options: ["Execute the order immediately as requested", "Determine suitability and educate the customer about risks", "Refuse to execute the trade", "Execute a smaller than requested amount"],
-                correct: 1,
-                explanation: "Even with eager customers, brokers must ensure recommendations are suitable and educate about risks, not just follow instructions blindly."
-            },
-            {
-                id: 19,
-                category: "Regulation",
-                question: "What is the maximum penalty for a first-time FINRA rule violation?",
-                options: ["$5,000", "$10,000", "$25,000", "There is no limit"],
-                correct: 3,
-                explanation: "FINRA can impose significant fines and suspensions. Penalties vary widely based on severity and repeat offenses."
-            },
-            {
-                id: 20,
-                category: "Options",
-                question: "A protective put strategy involves:",
-                options: ["Selling a put to generate income", "Buying stock and buying a put for protection", "Writing covered calls", "Buying calls and puts simultaneously"],
-                correct: 1,
-                explanation: "A protective put is owning the stock + buying a put as insurance. It limits downside risk while maintaining upside potential."
-            }
-        ,{
-            id: 21,
-            category: "Options",
-            question: "What is the delta of an option?",
-            options: ["Rate of time decay", "Change in option price per $1 change in stock price", "Change in gamma per $1 change in stock price", "Sensitivity to volatility"],
-            correct: 1,
-            explanation: "Delta measures the option's price change for every $1 change in the underlying stock price."
-        },
-        {
-            id: 22,
-            category: "Options",
-            question: "A straddle involves:",
-            options: ["Buying a call and put at different strikes", "Buying a call and put at the same strike", "Selling a call and put at different strikes", "Writing covered calls"],
-            correct: 1,
-            explanation: "A straddle is buying both a call and put at the same strike price. It profits from big moves in either direction."
-        },
-        {
-            id: 23,
-            category: "Options",
-            question: "What is the effect of high implied volatility on option prices?",
-            options: ["Decreases prices", "Has no effect", "Increases prices", "Only affects puts"],
-            correct: 2,
-            explanation: "Higher implied volatility increases option premiums because there's a greater chance the option finishes in-the-money."
-        },
-        {
-            id: 24,
-            category: "Options",
-            question: "In a bull call spread, you:",
-            options: ["Buy a call, sell a call at higher strike", "Buy a call, sell a call at lower strike", "Buy a put, sell a call", "Sell a call, buy a put"],
-            correct: 0,
-            explanation: "Bull call spread = buy lower strike call + sell higher strike call. Profits when stock goes up but limits risk."
-        },
-        {
-            id: 25,
-            category: "Options",
-            question: "What happens to a short option position at expiration if it is in-the-money?",
-            options: ["It expires worthless", "The option is automatically exercised", "It rolls over", "Nothing happens"],
-            correct: 1,
-            explanation: "Short in-the-money options are automatically exercised at expiration, meaning the seller must deliver the stock."
-        },
-        {
-            id: 26,
-            category: "Suitability",
-            question: "A customer says they need income but also wants high growth. This is an example of:",
-            options: ["A suitable investment objective", "Conflicting investment objectives", "A conservative risk tolerance", "A short-term objective"],
-            correct: 1,
-            explanation: "Income and high growth are often conflicting objectives. The broker must help the customer prioritize or find a balance."
-        },
-        {
-            id: 27,
-            category: "Suitability",
-            question: "What is concentration in the context of portfolio suitability?",
-            options: ["Diversifying across asset classes", "Having too much invested in one security or sector", "Investing in concentrated positions", "A type of bond"],
-            correct: 1,
-            explanation: "Concentration means too much in one investment. It increases risk and may violate suitability rules."
-        },
-        {
-            id: 28,
-            category: "Suitability",
-            question: "Before opening a margin account, the broker must:",
-            options: ["Get a blood test", "Obtain margin agreement and assess suitability", "Check the customer's credit score only", "Require a minimum $1 million deposit"],
-            correct: 1,
-            explanation: "Customers must sign a margin agreement and the broker must assess whether margin trading is suitable."
-        },
-        {
-            id: 29,
-            category: "Suitability",
-            question: "A customer suddenly wants to make a large, aggressive trade after inheriting money. The broker should:",
-            options: ["Execute immediately", "Wait 30 days before executing", "Assess suitability and educate about risks", "Refuse the trade"],
-            correct: 2,
-            explanation: "Sudden wealth or aggressive moves need suitability review and education about risks."
-        },
-        {
-            id: 30,
-            category: "Suitability",
-            question: "What is the suitability triad?",
-            options: ["Customer, broker, and lawyer", "Know your customer, suitability rules, and best execution", "Risk, return, and time horizon", "Three types of accounts"],
-            correct: 1,
-            explanation: "The suitability triad includes knowing the customer, ensuring recommendations are suitable, and best execution."
-        },
-        {
-            id: 31,
-            category: "Regulation",
-            question: "Who enforces the rules for broker-dealers?",
-            options: ["SEC only", "FINRA only", "SEC and self-regulatory organizations", "Federal Reserve"],
-            correct: 2,
-            explanation: "Broker-dealers are regulated by the SEC and self-regulatory organizations like FINRA."
-        },
-        {
-            id: 32,
-            category: "Regulation",
-            question: "What is best execution?",
-            options: ["Executing at the lowest price", "Executing quickly regardless of price", "Executing at the best overall price and terms", "Only using market orders"],
-            correct: 2,
-            explanation: "Best execution means getting the best overall price considering speed, price, and likelihood of execution."
-        },
-        {
-            id: 33,
-            category: "Regulation",
-            question: "How must securities be held at a brokerage?",
-            options: ["In the broker's personal account", "In customer's name or street name", "In the firm's name only", "In an overseas account"],
-            correct: 1,
-            explanation: "Securities are held in the customer's name or street name (the brokerage's name) for safekeeping."
-        },
-        {
-            id: 34,
-            category: "Regulation",
-            question: "What is a control relationship under securities law?",
-            options: ["Having trading control over an account", "One entity has power to influence another company's management", "A broker's supervisory duties", "A margin account"],
-            correct: 1,
-            explanation: "Control relationships exist when one entity can influence another company's business decisions."
-        },
-        {
-            id: 35,
-            category: "Regulation",
-            question: "What is the purpose of the Uniform Practice Code?",
-            options: ["Set trading hours", "Standardize brokerage industry practices", "Define tax treatment", "Limit customer complaints"],
-            correct: 1,
-            explanation: "The UPC standardizes practices like trade settlement, delivery, and customer account handling."
-        },
-        {
-            id: 36,
-            category: "Securities Products",
-            question: "A bond with a coupon rate higher than market interest rates will trade at:",
-            options: ["Par value", "A discount", "A premium", "Cannot be determined"],
-            correct: 2,
-            explanation: "Higher coupon bonds are more valuable, so they trade at a premium to par when rates are lower."
-        },
-        {
-            id: 37,
-            category: "Securities Products",
-            question: "What type of bond has the lowest credit risk?",
-            options: ["High-yield bonds", "Investment grade bonds", "Treasury bonds", "Municipal bonds"],
-            correct: 2,
-            explanation: "U.S. Treasury bonds are considered the safest as they're backed by the full faith and credit of the government."
-        },
-        {
-            id: 38,
-            category: "Securities Products",
-            question: "What is a bull market?",
-            options: ["A market with falling prices", "A market with rising prices", "A market with stable prices", "A market for bonds only"],
-            correct: 1,
-            explanation: "A bull market is characterized by rising prices and investor optimism."
-        },
-        {
-            id: 39,
-            category: "Securities Products",
-            question: "What is the primary difference between a stock and a bond?",
-            options: ["Bonds have voting rights", "Stocks represent ownership, bonds represent debt", "They are the same thing", "Bonds always pay more"],
-            correct: 1,
-            explanation: "Stock = ownership (equity). Bond = debt (creditor). Stockholders own part of company, bondholders are creditors."
-        },
-        {
-            id: 40,
-            category: "Securities Products",
-            question: "What is diversification?",
-            options: ["Putting all money in one stock", "Spreading investments across different assets", "Only buying bonds", "Avoiding the market"],
-            correct: 1,
-            explanation: "Diversification means spreading investments to reduce risk. Don't put all eggs in one basket."
-        },
-        {
-            id: 41,
-            category: "Economics",
-            question: "Inflation primarily hurts:",
-            options: ["Borrowers", "Lenders", "The government only", "Investors in bonds only"],
-            correct: 1,
-            explanation: "Lenders lose because money is worth less when repaid. Borrowers benefit."
-        },
-        {
-            id: 42,
-            category: "Economics",
-            question: "What does a trade deficit mean?",
-            options: ["Country exports more than imports", "Country imports more than exports", "Balanced trade", "No trade"],
-            correct: 1,
-            explanation: "Trade deficit = imports > exports. Trade surplus = exports > imports."
-        },
-        {
-            id: 43,
-            category: "Economics",
-            question: "What happens when the Fed sells government securities?",
-            options: ["Interest rates decrease", "Money supply decreases", "Inflation increases", "Bond prices increase"],
-            correct: 1,
-            explanation: "Selling securities removes money from circulation, reducing the money supply, which can raise rates."
-        },
-        {
-            id: 44,
-            category: "Economics",
-            question: "GDP stands for:",
-            options: ["Gross Domestic Product", "General Debt Payment", "Government Spending", "Gold Deposit Ratio"],
-            correct: 0,
-            explanation: "GDP = Gross Domestic Product. The total value of goods and services produced in a country."
-        },
-        {
-            id: 45,
-            category: "Economics",
-            question: "What is a recession?",
-            options: ["Two consecutive quarters of declining GDP", "A period of rapid growth", "When unemployment is below 5%", "A stock market crash"],
-            correct: 0,
-            explanation: "Recession = two consecutive quarters of negative GDP growth. Signs include rising unemployment and reduced spending."
-        },
-        {
-            id: 46,
-            category: "Client Accounts",
-            question: "A joint tenants with rights of survivorship (JTWROS) account means:",
-            options: ["Each owner can sell their share independently", "If one owner dies, their share goes to the other owners", "Accounts are separate", "No survivorship rights"],
-            correct: 1,
-            explanation: "JTWROS = if one owner dies, their interest automatically transfers to surviving owners."
-        },
-        {
-            id: 47,
-            category: "Client Accounts",
-            question: "A custodial account is:",
-            options: ["An account for minors supervised by a guardian", "A retirement account", "An account that cannot be closed", "A joint account only"],
-            correct: 0,
-            explanation: "Custodial accounts are for minors (under 18/21), managed by an adult custodian until the minor reaches majority."
-        },
-        {
-            id: 48,
-            category: "Client Accounts",
-            question: "A traditional IRA is MOST advantageous for someone who:",
-            options: ["Wants tax-free withdrawals now", "Expects lower taxes in retirement", "Is self-employed", "Wants immediate access to funds"],
-            correct: 1,
-            explanation: "Traditional IRA = contributions may be tax-deductible, taxed on withdrawal. Best if in lower tax bracket now, higher later."
-        },
-        {
-            id: 49,
-            category: "Client Accounts",
-            question: "A margin account allows:",
-            options: ["Buying securities with borrowed money", "Avoiding all risk", "Trading options only", "Short selling only"],
-            correct: 0,
-            explanation: "Margin = borrowing money from broker to buy securities. Amplifies both gains and losses."
-        },
-        {
-            id: 50,
-            category: "Client Accounts",
-            question: "A 401(k) differs from an IRA in that 401(k):",
-            options: ["Has higher contribution limits", "Is always Roth only", "Cannot be invested in stocks", "Has no tax benefits"],
-            correct: 0,
-            explanation: "401(k) limits are much higher ($23,000 vs $7,000 for IRA). Employers can also match contributions."
-        },
-        {
-            id: 51,
-            category: "Ethics",
-            question: "Churning is:",
-            options: ["A dance move", "Excessive trading for commissions", "A type of bond", "Legal trading"],
-            correct: 1,
-            explanation: "Churning = excessive buying/selling in customer's account primarily to generate commissions for the broker."
-        },
-        {
-            id: 52,
-            category: "Ethics",
-            question: "Front-running is:",
-            options: ["Running ahead of customers to trade first", "The first trade of the day", "A type of options strategy", "Legal market making"],
-            correct: 0,
-            explanation: "Front-running = trading ahead of customer orders to profit from the expected price move. Illegal."
-        },
-        {
-            id: 53,
-            category: "Ethics",
-            question: "A material fact is information that:",
-            options: ["Is publicly available", "Would affect a reasonable investor's decision", "Is trivial", "Has already been disclosed"],
-            correct: 1,
-            explanation: "Material facts = information that would matter to a reasonable investor making an investment decision."
-        },
-        {
-            id: 54,
-            category: "Ethics",
-            question: "Suitability requires brokers to:",
-            options: ["Recommend whatever the customer asks", "Match investments to customer's profile", "Only recommend bonds", "Avoid all risk"],
-            correct: 1,
-            explanation: "Suitability = recommendations must match the customer's financial situation, goals, and risk tolerance."
-        },
-        {
-            id: 55,
-            category: "Ethics",
-            question: "Trading ahead of customer orders (front-running) is:",
-            options: ["A best practice", "Illegal", "Only wrong if broker loses money", "Allowed in certain circumstances"],
-            correct: 1,
-            explanation: "Front-running is strictly prohibited. It exploits material nonpublic information about customer orders."
-        }
-        ];
+    // OPTIONS
+    {
+        id: 1,
+        category: "Options",
+        question: "What is the maximum loss for buying a call option?",
+        options: ["Unlimited", "The premium paid", "Strike price minus premium", "Stock price minus strike"],
+        correct: 1,
+        explanation: "Call buyers risk only the premium paid - they can never lose more than what they paid for the option."
+    },
+    {
+        id: 2,
+        category: "Options",
+        question: "A call option gives the holder the right to:",
+        options: ["Sell the stock at the strike price", "Buy the stock at the strike price", "Buy the stock at market price", "Sell the stock at market price"],
+        correct: 1,
+        explanation: "A call option gives the RIGHT TO BUY the underlying stock at the strike price."
+    },
+    {
+        id: 3,
+        category: "Options",
+        question: "A put option gives the holder the right to:",
+        options: ["Buy the stock at the strike price", "Sell the stock at the strike price", "Buy the stock at market price", "Exercise at any price"],
+        correct: 1,
+        explanation: "A put gives the RIGHT TO SELL the underlying at the strike price."
+    },
+    {
+        id: 4,
+        category: "Options",
+        question: "What happens when you sell a put?",
+        options: ["You have the right to buy", "You have the obligation to buy if assigned", "You have the obligation to sell if assigned", "You have no obligation"],
+        correct: 1,
+        explanation: "Writing (selling) a put obligates you to buy the stock at strike if assigned."
+    },
+    {
+        id: 5,
+        category: "Options",
+        question: "A covered call strategy involves:",
+        options: ["Selling call options without owning the stock", "Buying stock and selling call options on it", "Buying both calls and puts", "None of the above"],
+        correct: 1,
+        explanation: "Covered call = owning the stock and selling call options against it."
+    },
+    {
+        id: 6,
+        category: "Options",
+        question: "The time value of an option is highest when:",
+        options: ["The option is deep in-the-money", "The option is at-the-money", "The option is far out-of-the-money", "At expiration"],
+        correct: 1,
+        explanation: "ATM options have highest time value as there's maximum uncertainty."
+    },
+    {
+        id: 7,
+        category: "Options",
+        question: "An option that gives the right to buy 100 shares would control:",
+        options: ["100 shares", "10 shares", "1000 shares", "1 share"],
+        correct: 0,
+        explanation: "One option contract controls 100 shares of the underlying."
+    },
+    {
+        id: 8,
+        category: "Options",
+        question: "If IBM is trading at $150, a $160 call is:",
+        options: ["In-the-money", "At-the-money", "Out-of-the-money", "Expired"],
+        correct: 2,
+        explanation: "Strike ($160) > Market ($150) = OTM for calls."
+    },
+    {
+        id: 9,
+        category: "Options",
+        question: "A protective put is:",
+        options: ["Selling calls against stock", "Buying puts to protect stock holdings", "Buying calls for leverage", "Selling puts for income"],
+        correct: 1,
+        explanation: "Protective put = long stock + long put for downside protection."
+    },
+    {
+        id: 10,
+        category: "Options",
+        question: "The break-even point for a long call is:",
+        options: ["The premium paid", "Strike plus premium", "Strike minus premium", "Stock price"],
+        correct: 1,
+        explanation: "Break-even = Strike + Premium paid for calls."
+    },
+    {
+        id: 11,
+        category: "Options",
+        question: "Which option strategy profits when stock stays flat?",
+        options: ["Long call", "Long put", "Short straddle", "Long stock"],
+        correct: 2,
+        explanation: "Short straddle (short call + short put) profits from low volatility."
+    },
+    {
+        id: 12,
+        category: "Options",
+        question: "A LEAP is:",
+        options: ["A short-term option", "A long-term equity anticipation security", "A futures contract", "A bond"],
+        correct: 1,
+        explanation: "LEAP = Long-Term Equity Anticipation Securities - long-dated options."
+    },
+    {
+        id: 13,
+        category: "Options",
+        question: "Delta measures:",
+        options: ["Time decay", "Volatility sensitivity", "Price change relative to stock", "Interest rate sensitivity"],
+        correct: 2,
+        explanation: "Delta = option price change per $1 stock move."
+    },
+    {
+        id: 14,
+        category: "Options",
+        question: "Theta measures:",
+        options: ["Price sensitivity", "Time decay", "Volatility", "Interest rates"],
+        correct: 1,
+        explanation: "Theta = time decay - how much value lost per day."
+    },
+    {
+        id: 15,
+        category: "Options",
+        question: "Vega measures:",
+        options: ["Price change", "Time decay", "Volatility sensitivity", "Interest rate risk"],
+        correct: 2,
+        explanation: "Vega = option's sensitivity to volatility changes."
+    },
+    {
+        id: 16,
+        category: "Options",
+        question: "An in-the-money call option has:",
+        options: ["Strike > Stock price", "Strike < Stock price", "Strike = Stock price", "No relationship"],
+        correct: 1,
+        explanation: "ITM call = strike < stock price."
+    },
+    {
+        id: 17,
+        category: "Options",
+        question: "Maximum loss for selling a naked call is:",
+        options: ["The premium received", "Unlimited", "Strike price", "Stock price"],
+        correct: 1,
+        explanation: "Naked call seller has unlimited upside risk."
+    },
+    {
+        id: 18,
+        category: "Options",
+        question: "A bull call spread uses:",
+        options: ["Two puts", "Two calls", "One call and one put", "Stock and bonds"],
+        correct: 1,
+        explanation: "Bull spread = buy lower strike call, sell higher strike call."
+    },
+    {
+        id: 19,
+        category: "Options",
+        question: "A bear put spread uses:",
+        options: ["Two calls", "Two puts", "One call and one put", "Stock only"],
+        correct: 1,
+        explanation: "Bear put spread = buy higher strike put, sell lower strike put."
+    },
+    {
+        id: 20,
+        category: "Options",
+        question: "Options on ETFs behave similarly to:",
+        options: ["Individual stocks", "Bonds", "Real estate", "Commodities"],
+        correct: 0,
+        explanation: "ETF options work like stock options."
+    },
+    // SUITABILITY
+    {
+        id: 21,
+        category: "Suitability",
+        question: "Before recommending a securities transaction, a broker must obtain:",
+        options: ["Social security number", "Investment objectives, risk tolerance, and financial situation", "Political affiliation", "Employment history"],
+        correct: 1,
+        explanation: "FINRA Rule 2111 requires knowing customer's objectives, risk tolerance, and financial situation (KYC)."
+    },
+    {
+        id: 22,
+        category: "Suitability",
+        question: "Know Your Customer (KYC) requires:",
+        options: ["Just name verification", "Investment profile and financial situation", "Only tax returns", "Credit score"],
+        correct: 1,
+        explanation: "KYC requires investment objectives, financial situation, risk tolerance."
+    },
+    {
+        id: 23,
+        category: "Suitability",
+        question: "A conservative investor should typically own:",
+        options: ["Penny stocks", "Growth stocks", "Bonds and stable equities", "Options and futures"],
+        correct: 2,
+        explanation: "Conservative investors prioritize capital preservation with bonds/stable equities."
+    },
+    {
+        id: 24,
+        category: "Suitability",
+        question: "An aggressive investor seeks:",
+        options: ["Low risk, stable returns", "High risk, high potential returns", "Fixed income only", "Cash equivalents"],
+        correct: 1,
+        explanation: "Aggressive investors accept volatility for higher returns."
+    },
+    {
+        id: 25,
+        category: "Suitability",
+        question: "Suitability documentation must include:",
+        options: ["Customer's investment profile", "Only the recommendation", "Trade confirmation", "Account password"],
+        correct: 0,
+        explanation: "Must document the basis for all recommendations."
+    },
+    {
+        id: 26,
+        category: "Suitability",
+        question: "A senior citizen with fixed income should likely avoid:",
+        options: ["Treasury bonds", "Penny stocks", "Blue chip stocks", "Mutual funds"],
+        correct: 1,
+        explanation: "High-risk investments unsuitable for conservative seniors."
+    },
+    {
+        id: 27,
+        category: "Suitability",
+        question: "Unsuitable recommendations include:",
+        options: ["Anything the customer wants", "Recommendations mismatched to customer profile", "Any stock recommendation", "All options trades"],
+        correct: 1,
+        explanation: "Unsuitable = doesn't match customer's situation and goals."
+    },
+    {
+        id: 28,
+        category: "Suitability",
+        question: "A young investor with long horizon can typically take:",
+        options: ["No risk", "Moderate to higher risk", "Only bank products", "No stocks"],
+        correct: 1,
+        explanation: "Young investors can recover from losses - more risk appropriate."
+    },
+    {
+        id: 29,
+        category: "Suitability",
+        question: "The four main suitability factors are:",
+        options: ["Age, religion, politics, income", "Investment objectives, financial situation, risk tolerance, time horizon", "Bank, stock, bond, options", "Buy, sell, hold, trade"],
+        correct: 1,
+        explanation: "Suitability = objectives, financial situation, risk tolerance, time horizon."
+    },
+    {
+        id: 30,
+        category: "Suitability",
+        question: "A customer with 'growth' objective wants:",
+        options: ["Income and preservation", "Capital appreciation", "Principal protection", "Tax-free returns"],
+        correct: 1,
+        explanation: "Growth = capital appreciation."
+    },
+    {
+        id: 31,
+        category: "Suitability",
+        question: "A customer with 'income' objective wants:",
+        options: ["Aggressive growth", "Regular payouts", "Speculation", "Options trading"],
+        correct: 1,
+        explanation: "Income = regular dividend/coupon payments."
+    },
+    {
+        id: 32,
+        category: "Suitability",
+        question: "Unsuitable trades can result in:",
+        options: ["Happy customers", "FINRA violations and liability", "Increased commissions", "Referrals"],
+        correct: 1,
+        explanation: "Unsuitable = regulatory violations."
+    },
+    {
+        id: 33,
+        category: "Suitability",
+        question: "A customer who lost 40% in a month is experiencing:",
+        options: ["Normal volatility", "Market timing", "Significant deviation from expectations", "Guaranteed returns"],
+        correct: 2,
+        explanation: "Large losses may indicate unsuitable risk assessment."
+    },
+    {
+        id: 34,
+        category: "Suitability",
+        question: "The investment policy statement should include:",
+        options: ["Trade secrets", "Risk tolerance and objectives", "Competitor information", "Employee data"],
+        correct: 1,
+        explanation: "IPS documents risk tolerance and objectives."
+    },
+    {
+        id: 35,
+        category: "Suitability",
+        question: "Switching investments just for commissions is:",
+        options: ["Always suitable", "Churning", "Appropriate", "Required"],
+        correct: 1,
+        explanation: "Churning = trading excessively for commissions."
+    },
+    {
+        id: 36,
+        category: "Suitability",
+        question: "A widow with limited income needs:",
+        options: ["High-risk investments", "Income-generating stable investments", "Penny stocks", "Options"],
+        correct: 1,
+        explanation: "Income focus for someone needing regular cash flow."
+    },
+    {
+        id: 37,
+        category: "Suitability",
+        question: "A trust account's suitability is based on:",
+        options: ["Beneficiary only", "Trust document terms and beneficiary needs", "Trustee preferences", "No suitability needed"],
+        correct: 1,
+        explanation: "Trust investments must meet trust purpose and beneficiary needs."
+    },
+    {
+        id: 38,
+        category: "Suitability",
+        question: "Elder financial exploitation involves:",
+        options: ["Helping seniors", "Taking advantage of seniors", "Proper planning", "Family meetings"],
+        correct: 1,
+        explanation: "Elder financial exploitation = illegal taking advantage of seniors."
+    },
+    {
+        id: 39,
+        category: "Suitability",
+        question: "A minor's account must be:",
+        options: ["In the broker's name", "Custodial with adult", "Anonymous", "Joint with stranger"],
+        correct: 1,
+        explanation: "Minors need custodial accounts with adults."
+    },
+    {
+        id: 40,
+        category: "Suitability",
+        question: "Discretionary authority requires:",
+        options: ["No documentation", "Written authorization", "Phone approval", "Email only"],
+        correct: 1,
+        explanation: "Discretion needs written client authorization."
+    },
+    // REGULATION
+    {
+        id: 41,
+        category: "Regulation",
+        question: "FINRA regulates:",
+        options: ["Banks", "Broker-dealers", "Insurance companies", "Real estate"],
+        correct: 1,
+        explanation: "FINRA = Financial Industry Regulatory Authority - regulates broker-dealers."
+    },
+    {
+        id: 42,
+        category: "Regulation",
+        question: "The SEC protects:",
+        options: ["Banks only", "Investors and markets", "Companies only", "Brokers"],
+        correct: 1,
+        explanation: "SEC = Securities and Exchange Commission - protects investors."
+    },
+    {
+        id: 43,
+        category: "Regulation",
+        question: "SIPC protection covers:",
+        options: ["Investment losses", "Broker-dealer failures", "Market losses", "Company bankruptcy"],
+        correct: 1,
+        explanation: "SIPC protects customers if brokerage fails."
+    },
+    {
+        id: 44,
+        category: "Regulation",
+        question: "A registered representative must pass:",
+        options: ["Bar exam", "Series 7 and state exam", "No exam", "CFA only"],
+        correct: 1,
+        explanation: "Series 7 = General Securities Representative exam."
+    },
+    {
+        id: 45,
+        category: "Regulation",
+        question: "Form U4 is:",
+        options: ["Tax form", "Registration application", "Trade confirmation", "Bankruptcy filing"],
+        correct: 1,
+        explanation: "U4 = Uniform Application for Securities Registration."
+    },
+    {
+        id: 46,
+        category: "Regulation",
+        question: "Disclosable events on U4 include:",
+        options: ["Vacation plans", "Criminal convictions", "Golf handicap", "Family recipes"],
+        correct: 1,
+        explanation: "Criminal matters must be disclosed on U4."
+    },
+    {
+        id: 47,
+        category: "Regulation",
+        question: "Continuing Education is required for:",
+        options: ["No one", "Registered representatives", "Customers only", "Only managers"],
+        correct: 1,
+        explanation: "CE required for registered professionals."
+    },
+    {
+        id: 48,
+        category: "Regulation",
+        question: "Best execution means:",
+        options: ["Cheapest trade", "Most favorable terms", "Fastest trade", "Any trade"],
+        correct: 1,
+        explanation: "Best execution = most favorable overall terms."
+    },
+    {
+        id: 49,
+        category: "Regulation",
+        question: "Markups must be:",
+        options: ["Undisclosed", "Fair and reasonable", "Hidden in commission", "Percentage-based only"],
+        correct: 1,
+        explanation: "Markups must be fair and reasonable."
+    },
+    {
+        id: 50,
+        category: "Regulation",
+        question: "A breakpoint is:",
+        options: ["Stop loss level", "Volume discount threshold", "Trading halt", "Commission rate"],
+        correct: 1,
+        explanation: "Breakpoint = mutual fund sales charge discount level."
+    },
+    // ECONOMICS
+    {
+        id: 51,
+        category: "Economics",
+        question: "If the Fed increases the discount rate:",
+        options: ["Inflation increases", "Borrowing becomes more expensive", "Stock prices typically rise", "Money supply increases"],
+        correct: 1,
+        explanation: "Higher discount rate = tighter monetary policy = less borrowing."
+    },
+    {
+        id: 52,
+        category: "Economics",
+        question: "Quantitative easing involves:",
+        options: ["Selling bonds", "Buying securities to increase money supply", "Raising rates", "Balancing the budget"],
+        correct: 1,
+        explanation: "QE = Fed buys securities to inject liquidity."
+    },
+    {
+        id: 53,
+        category: "Economics",
+        question: "A strong dollar typically:",
+        options: ["Hurts exporters", "Helps importers", "Increases inflation", "Reduces rates"],
+        correct: 1,
+        explanation: "Strong dollar = cheaper imports, more expensive exports."
+    },
+    {
+        id: 54,
+        category: "Economics",
+        question: "Inflation typically hurts:",
+        options: ["Lenders", "Borrowers", "Bondholders", "Fixed income"],
+        correct: 0,
+        explanation: "Inflation erodes loan purchasing power = hurts lenders."
+    },
+    {
+        id: 55,
+        category: "Economics",
+        question: "Fiscal policy includes:",
+        options: ["Fed operations", "Taxing and spending", "Interest rates", "Money supply"],
+        correct: 1,
+        explanation: "Fiscal = government taxing and spending."
+    },
+    {
+        id: 56,
+        category: "Economics",
+        question: "Monetary policy involves:",
+        options: ["Taxes", "Interest rates and money supply", "Government spending", "Budgets"],
+        correct: 1,
+        explanation: "Monetary = Fed controls money supply/rates."
+    },
+    {
+        id: 57,
+        category: "Economics",
+        question: "Recession indicators include:",
+        options: ["Rising GDP", "Negative growth for 2+ quarters", "Low unemployment", "Bull market"],
+        correct: 1,
+        explanation: "Recession = negative GDP growth."
+    },
+    {
+        id: 58,
+        category: "Economics",
+        question: "Leading economic indicators predict:",
+        options: ["Past performance", "Future economic activity", "Company earnings", "Stock prices"],
+        correct: 1,
+        explanation: "Leading indicators forecast future activity."
+    },
+    {
+        id: 59,
+        category: "Economics",
+        question: "GDP measures:",
+        options: ["Stock market value", "Total goods and services produced", "Government spending only", "Trade deficit"],
+        correct: 1,
+        explanation: "GDP = total domestic production."
+    },
+    {
+        id: 60,
+        category: "Economics",
+        question: "Trade deficit means:",
+        options: ["More exports than imports", "More imports than exports", "Balanced trade", "No trade"],
+        correct: 1,
+        explanation: "Deficit = more imports than exports."
+    },
+    // CLIENT ACCOUNTS
+    {
+        id: 61,
+        category: "Client Accounts",
+        question: "Which account has the highest contribution limits?",
+        options: ["Traditional IRA", "Roth IRA", "401(k)", "HSA"],
+        correct: 2,
+        explanation: "401(k) limits are highest ($23,000 in 2024)."
+    },
+    {
+        id: 62,
+        category: "Client Accounts",
+        question: "A Traditional IRA offers:",
+        options: ["Tax-free withdrawals", "Tax-deductible contributions", "No limits", "Unlimited contributions"],
+        correct: 1,
+        explanation: "Traditional IRA = tax-deductible contributions."
+    },
+    {
+        id: 63,
+        category: "Client Accounts",
+        question: "A Roth IRA requires:",
+        options: ["No income limits", "Income limits for contributions", "Minimum age 70", "Employer sponsorship"],
+        correct: 1,
+        explanation: "Roth IRA has income limits for contributions."
+    },
+    {
+        id: 64,
+        category: "Client Accounts",
+        question: "A 401(k) typically offers:",
+        options: ["No employer match", "Employer match opportunity", "Limited options", "No retirement benefits"],
+        correct: 1,
+        explanation: "401(k) often includes employer match."
+    },
+    {
+        id: 65,
+        category: "Client Accounts",
+        question: "Custodial accounts are for:",
+        options: ["Adults only", "Minors", "Corporations", "Banks only"],
+        correct: 1,
+        explanation: "Custodial accounts = minor accounts with adult responsible."
+    },
+    {
+        id: 66,
+        category: "Client Accounts",
+        question: "Joint tenancy includes:",
+        options: ["Individual ownership", "Right of survivorship", "No rights", "Tenants in common"],
+        correct: 1,
+        explanation: "Joint tenancy = survivorship rights."
+    },
+    {
+        id: 67,
+        category: "Client Accounts",
+        question: "UGMA/UGTA accounts are:",
+        options: ["Retirement accounts", "Custodial for minors", "Tax-deferred", "Corporate accounts"],
+        answer: "Custodial for minors",
+        correct: 1,
+        explanation: "UGMA/UGTA = custodial accounts for minors."
+    },
+    {
+        id: 68,
+        category: "Client Accounts",
+        question: "IRA contributions are tax-deductible for:",
+        options: ["Everyone equally", "Depends on income and plan", "No one", "Only businesses"],
+        correct: 1,
+        explanation: "IRA deductibility depends on income and workplace plan."
+    },
+    {
+        id: 69,
+        category: "Client Accounts",
+        question: "Required Minimum Distribution starts at:",
+        options: ["Age 59½", "Age 70", "Age 73", "Age 65"],
+        correct: 2,
+        explanation: "RMDs now start at age 73."
+    },
+    {
+        id: 70,
+        category: "Client Accounts",
+        question: "A defined benefit plan is:",
+        options: ["401(k)", "Pension plan", "IRA", "Profit sharing"],
+        correct: 1,
+        explanation: "Defined benefit = pension with guaranteed payments."
+    },
+    // EQUITIES
+    {
+        id: 71,
+        category: "Equities",
+        question: "Common stock represents:",
+        options: ["Debt ownership", "Ownership claim", "Fixed payments", "No risk"],
+        correct: 1,
+        explanation: "Common stock = equity ownership."
+    },
+    {
+        id: 72,
+        category: "Equities",
+        question: "Preferred stock has:",
+        options: ["No dividends", "Fixed dividends first", "Voting rights only", "Unlimited upside"],
+        correct: 1,
+        explanation: "Preferred = fixed dividends paid first."
+    },
+    {
+        id: 73,
+        category: "Equities",
+        question: "A dividend is:",
+        options: ["Interest payment", "Profit distribution", "Stock split", "Capital loss"],
+        correct: 1,
+        explanation: "Dividend = profit distribution to shareholders."
+    },
+    {
+        id: 74,
+        category: "Equities",
+        question: "P/E ratio shows:",
+        options: ["Debt level", "Price relative to earnings", "Dividend yield", "Growth rate"],
+        correct: 1,
+        explanation: "P/E = price divided by earnings per share."
+    },
+    {
+        id: 75,
+        category: "Equities",
+        question: "Market cap equals:",
+        options: ["Debt", "Share price times shares outstanding", "Revenue", "Book value"],
+        correct: 1,
+        explanation: "Market cap = share price × shares outstanding."
+    },
+    {
+        id: 76,
+        category: "Equities",
+        question: "A stock split:",
+        options: ["Increases value", "Increases shares proportionally", "Decreases shares", "No change"],
+        correct: 1,
+        explanation: "Split = more shares, same total value."
+    },
+    {
+        id: 77,
+        category: "Equities",
+        question: "IPO is:",
+        options: ["Initial Public Offering", "Internal Purchase", "Interest Payment", "Insider Only"],
+        correct: 0,
+        explanation: "IPO = first time stock offered to public."
+    },
+    {
+        id: 78,
+        category: "Equities",
+        question: "Blue chip stocks are:",
+        options: ["Penny stocks", "Large, established companies", "New startups", "Bankrupt companies"],
+        correct: 1,
+        explanation: "Blue chip = large, stable companies."
+    },
+    {
+        id: 79,
+        category: "Equities",
+        question: "A proxy vote is:",
+        options: ["In-person voting", "Mail/flex electronic voting", "No voting rights", "Only for bonds"],
+        correct: 1,
+        explanation: "Proxy = absentee/delegated voting."
+    },
+    {
+        id: 80,
+        category: "Equities",
+        question: "Stockholders have preemptive right to:",
+        options: ["Buy new offerings first", "Vote on all decisions", "Fire executives", "Set salaries"],
+        correct: 0,
+        explanation: "Preemptive = right to maintain ownership % in new offerings."
+    },
+    // DEBT
+    {
+        id: 81,
+        category: "Debt",
+        question: "A bond is:",
+        options: ["Equity ownership", "Debt instrument", "Derivative", "Hedge fund"],
+        correct: 1,
+        explanation: "Bond = debt - fixed income security."
+    },
+    {
+        id: 82,
+        category: "Debt",
+        question: "Bond prices typically move opposite to:",
+        options: ["Interest rates", "Stock prices", "Dividends", "Earnings"],
+        correct: 0,
+        explanation: "Bond prices move opposite interest rates."
+    },
+    {
+        id: 83,
+        category: "Debt",
+        question: "A callable bond can be:",
+        options: ["Never redeemed", "Redeemed early by issuer", "Only extended", "Converted to stock"],
+        correct: 1,
+        explanation: "Callable = issuer can redeem early."
+    },
+    {
+        id: 84,
+        category: "Debt",
+        question: "Zero-coupon bonds pay:",
+        options: ["Quarterly interest", "No periodic interest", "Annual interest", "Monthly interest"],
+        correct: 1,
+        explanation: "Zero = no interest, sold at discount."
+    },
+    {
+        id: 85,
+        category: "Debt",
+        question: "Municipal bonds are generally:",
+        options: ["Fully taxable", "Tax-exempt or tax-advantaged", "Corporate only", "Foreign only"],
+        correct: 1,
+        explanation: "Muni bonds = often tax-exempt."
+    },
+    {
+        id: 86,
+        category: "Debt",
+        question: "Treasury bonds are backed by:",
+        options: ["Gold only", "Full faith and credit of US government", "Private insurance", "Nothing"],
+        correct: 1,
+        explanation: "Treasuries = US government guarantee."
+    },
+    {
+        id: 87,
+        category: "Debt",
+        question: "Yield to maturity includes:",
+        options: ["Coupon only", "All interest plus capital gains/loss", "Stock returns", "Dividends only"],
+        correct: 1,
+        explanation: "YTM = total return if held to maturity."
+    },
+    {
+        id: 88,
+        category: "Debt",
+        question: "Investment grade bonds are:",
+        options: ["Junk bonds", "Higher quality", "Unsecured", "Preferred only"],
+        correct: 1,
+        explanation: "Investment grade = better credit quality."
+    },
+    {
+        id: 89,
+        category: "Debt",
+        question: "Duration measures:",
+        options: ["Maturity only", "Interest rate sensitivity", "Credit risk only", "Tax exposure"],
+        correct: 1,
+        explanation: "Duration = interest rate sensitivity."
+    },
+    {
+        id: 90,
+        category: "Debt",
+        question: "A debenture is:",
+        options: ["Secured bond", "Unsecured bond", "Stock", "Equity"],
+        correct: 1,
+        explanation: "Debenture = unsecured debt."
+    },
+    // MUTUAL FUNDS
+    {
+        id: 91,
+        category: "Mutual Funds",
+        question: "A mutual fund pools:",
+        options: ["Individual investor money", "Bank deposits", "Company revenue", "Taxes"],
+        correct: 0,
+        explanation: "Mutual fund = pools investor money."
+    },
+    {
+        id: 92,
+        category: "Mutual Funds",
+        question: "Load funds charge:",
+        options: ["No fee", "Sales charge", "Management fee only", "Redemption fee"],
+        correct: 1,
+        explanation: "Load = sales charge."
+    },
+    {
+        id: 93,
+        category: "Mutual Funds",
+        question: "No-load funds have:",
+        options: ["Sales charge", "No sales charge", "Higher fees", "No NAV"],
+        correct: 1,
+        explanation: "No-load = no sales charge."
+    },
+    {
+        id: 94,
+        category: "Mutual Funds",
+        question: "12b-1 fees cover:",
+        options: ["Management", "Marketing/distribution", "Custodial fees", "Legal fees"],
+        correct: 1,
+        explanation: "12b-1 = marketing fees."
+    },
+    {
+        id: 95,
+        category: "Mutual Funds",
+        question: "A money market fund invests in:",
+        options: ["Stocks", "Short-term debt securities", "Real estate", "Options"],
+        correct: 1,
+        explanation: "Money market = short-term debt."
+    },
+    {
+        id: 96,
+        category: "Mutual Funds",
+        question: "A growth fund focuses on:",
+        options: ["Income", "Capital appreciation", "Preservation", "Tax-free income"],
+        correct: 1,
+        explanation: "Growth = capital appreciation."
+    },
+    {
+        id: 97,
+        category: "Mutual Funds",
+        question: "A balanced fund invests in:",
+        options: ["Only stocks", "Stocks and bonds", "Options only", "Commodities"],
+        correct: 1,
+        explanation: "Balanced = mix of stocks/bonds."
+    },
+    {
+        id: 98,
+        category: "Mutual Funds",
+        question: "NAV is:",
+        options: ["Share price per share", "Total assets", "Management fee", "Sales charge"],
+        correct: 0,
+        explanation: "NAV = net asset value per share."
+    },
+    {
+        id: 99,
+        category: "Mutual Funds",
+        question: "A sector fund invests in:",
+        options: ["All sectors", "One industry sector", "Bonds only", "Government securities"],
+        correct: 1,
+        explanation: "Sector fund = single industry."
+    },
+    {
+        id: 100,
+        category: "Mutual Funds",
+        question: "A fund's expense ratio includes:",
+        options: ["Trading commissions", "Management fees and expenses", "Sales charges", "Bid/ask spread"],
+        correct: 1,
+        explanation: "Expense ratio = annual fees/expenses."
+    },
+    // SUITABILITY
+    {
+        id: 101,
+        category: "Suitability",
+        question: "Before recommending a security, a registered representative must:",
+        options: ["Verify the customer's identity", "Conduct reasonable basis, customer, and quantitative suitability", "Check the customer's credit score", "Get written approval from compliance"],
+        correct: 1,
+        explanation: "RRs must conduct reasonable basis, customer, and quantitative suitability due diligence."
+    },
+    {
+        id: 102,
+        category: "Suitability",
+        question: "Reasonable basis suitability requires the broker-dealer to:",
+        options: ["Know the specific customer's finances", "Have adequate info about the security being recommended", "Review every trade the customer makes", "Get annual account updates"],
+        correct: 1,
+        explanation: "Reasonable basis = ensure the security is suitable for at least some investors."
+    },
+    {
+        id: 103,
+        category: "Suitability",
+        question: "Customer suitability requires knowing the customer's:",
+        options: ["Social security number only", "Investment objectives, financial situation, and needs", "Credit score", "Employer only"],
+        correct: 1,
+        explanation: "Know your customer - investment objectives, financial situation, and needs."
+    },
+    {
+        id: 104,
+        category: "Suitability",
+        question: "Quantitative suitability applies when:",
+        options: ["The customer has only one account", "The broker has control over customer accounts", "The customer is a institutional investor", "The customer trades options"],
+        correct: 1,
+        explanation: "Quantitative suitability applies when the broker has control or discretion over accounts."
+    },
+    {
+        id: 105,
+        category: "Suitability",
+        question: "A elderly customer with limited income and low risk tolerance should be recommended:",
+        options: ["Penny stocks", "Conservative investments like bonds or stable value funds", "Leveraged ETFs", "Options strategies"],
+        correct: 1,
+        explanation: "Suitability requires matching recommendations to the customer's situation."
+    },
+    {
+        id: 106,
+        category: "Suitability",
+        question: "Which customer profile indicates highest risk tolerance?",
+        options: ["Retiree living on fixed income", "Young professional with stable income and no debt", "Conservative investor", "Customer seeking capital preservation"],
+        correct: 1,
+        explanation: "Young professional with stable income and no debt can typically handle more risk."
+    },
+    {
+        id: 107,
+        category: "Suitability",
+        question: "Churning is:",
+        options: ["A suitable trading strategy", "Excessive trading in customer accounts for commissions", "A type of options strategy", "A margin technique"],
+        correct: 1,
+        explanation: "Churning = excessive trading primarily to generate commissions."
+    },
+    {
+        id: 108,
+        category: "Suitability",
+        question: "Unsuitable recommendations violate:",
+        options: ["Only internal policies", "FINRA rules and potentially securities laws", "Only state laws", "Only tax regulations"],
+        correct: 1,
+        explanation: "Unsuitable recommendations violate FINRA rules and may violate securities laws."
+    },
+    {
+        id: 109,
+        category: "Suitability",
+        question: "A breakpoint sale occurs when:",
+        options: ["A stock splits", "Mutual fund sales charges are reduced at certain investment levels", "An options contract expires", "A margin call is made"],
+        correct: 1,
+        explanation: "Breakpoints reduce sales charges as investment amount increases."
+    },
+    {
+        id: 110,
+        category: "Suitability",
+        question: "The purpose of breakpoints in mutual funds is to:",
+        options: ["Increase sales charges", "Provide volume discounts", "Charge higher fees", "Punish large investors"],
+        correct: 1,
+        explanation: "Breakpoints reward larger investments with lower sales charges."
+    },
+    // REGULATION
+    {
+        id: 111,
+        category: "Regulation",
+        question: "The Securities Exchange Act of 1934 primarily regulates:",
+        options: ["New securities offerings", "Secondary market trading and broker-dealers", "Mutual funds only", "Insurance products"],
+        correct: 1,
+        explanation: "1934 Act regulates secondary trading, broker-dealers, exchanges, and market participants."
+    },
+    {
+        id: 112,
+        category: "Regulation",
+        question: "FINRA is a:",
+        options: ["Government agency", "Self-regulatory organization", "International regulatory body", "State regulatory agency"],
+        correct: 1,
+        explanation: "FINRA is a self-regulatory organization (SRO) overseen by the SEC."
+    },
+    {
+        id: 113,
+        category: "Regulation",
+        question: "The SEC was created by:",
+        options: ["Securities Act of 1933", "Securities Exchange Act of 1934", "Investment Company Act of 1940", "Investment Advisers Act of 1940"],
+        correct: 1,
+        explanation: "SEC created by Securities Exchange Act of 1934."
+    },
+    {
+        id: 114,
+        category: "Regulation",
+        question: "Broker-dealers must register with:",
+        options: ["Only the SEC", "FINRA and/or state authorities", "Only state authorities", "The Federal Reserve"],
+        correct: 1,
+        explanation: "Broker-dealers register with SEC and FINRA, plus state authorities."
+    },
+    {
+        id: 115,
+        category: "Regulation",
+        question: "Investment advisers must register with:",
+        options: ["FINRA", "The SEC or state depending on AUM", "The Federal Reserve", "Only state governments"],
+        correct: 1,
+        explanation: "Investment advisers register with SEC (for $110M+ AUM) or state."
+    },
+    {
+        id: 116,
+        category: "Regulation",
+        question: "The Securities Act of 1933 primarily addresses:",
+        options: ["Broker-dealer registration", "New securities offerings (issuers)", "Secondary market trading", "Investment adviser regulation"],
+        correct: 1,
+        explanation: "1933 Act regulates NEW securities offerings and requires registration."
+    },
+    {
+        id: 117,
+        category: "Regulation",
+        question: "A registered representative must pass:",
+        options: ["Only the SIE", "SIE and one or more qualification exams", "CFA exam", "CPA exam"],
+        correct: 1,
+        explanation: "RRs must pass SIE plus appropriate qualification exams for products sold."
+    },
+    {
+        id: 118,
+        category: "Regulation",
+        question: "The SIE (Securities Industry Essentials) exam tests:",
+        options: ["Advanced trading strategies", "Basic securities industry knowledge", "Tax planning", "Real estate investing"],
+        correct: 1,
+        explanation: "SIE tests basic industry knowledge, products, and regulatory concepts."
+    },
+    {
+        id: 119,
+        category: "Regulation",
+        question: "Series 7 license allows representatives to:",
+        options: ["Only sell mutual funds", "Sell most securities including options", "Only handle commodities", "Provide investment advice"],
+        correct: 1,
+        explanation: "Series 7 General Securities Representative allows selling most securities."
+    },
+    {
+        id: 120,
+        category: "Regulation",
+        question: "Continuing education requirements for registered reps include:",
+        options: ["No continuing education", "Regulatory element and firm element", "Annual licensing exam", "College courses only"],
+        correct: 1,
+        explanation: "CE includes regulatory element (annual) and firm element (ongoing training)."
+    },
+    // ECONOMICS
+    {
+        id: 121,
+        category: "Economics",
+        question: "Fiscal policy involves:",
+        options: ["Federal Reserve actions", "Government spending and taxation", "Stock market manipulations", "International trade agreements"],
+        correct: 1,
+        explanation: "Fiscal policy = government spending and tax decisions."
+    },
+    {
+        id: 122,
+        category: "Economics",
+        question: "Monetary policy is controlled by:",
+        options: ["Congress", "The President", "The Federal Reserve", "The Treasury Department"],
+        correct: 2,
+        explanation: "Monetary policy set by Federal Reserve (Fed)."
+    },
+    {
+        id: 123,
+        category: "Economics",
+        question: "When the Fed lowers interest rates, it is attempting to:",
+        options: ["Fight inflation", "Slow economic growth", "Stimulate the economy", "Increase unemployment"],
+        correct: 2,
+        explanation: "Lower rates stimulate borrowing/spending to boost economy."
+    },
+    {
+        id: 124,
+        category: "Economics",
+        question: "Expansionary fiscal policy involves:",
+        options: ["Raising taxes", "Decreasing government spending", "Increasing spending and/or cutting taxes", "Balanced budgeting"],
+        correct: 2,
+        explanation: "Expansionary = increased spending and/or tax cuts to stimulate economy."
+    },
+    {
+        id: 125,
+        category: "Economics",
+        question: "GDP measures:",
+        options: ["Stock market performance", "Total value of goods and services produced", "Unemployment rate", "Inflation rate"],
+        correct: 1,
+        explanation: "GDP = gross domestic product = total value of goods/services in economy."
+    },
+    {
+        id: 126,
+        category: "Economics",
+        question: "Inflation causes:",
+        options: ["Decreased prices", "Increased purchasing power", "Decreased purchasing power", "Fixed incomes to increase"],
+        correct: 2,
+        explanation: "Inflation erodes purchasing power - same money buys less."
+    },
+    {
+        id: 127,
+        category: "Economics",
+        question: "The Federal Funds Rate is:",
+        options: ["Rate banks charge customers", "Rate banks charge each other for overnight loans", "Mortgage rate", "Savings account rate"],
+        correct: 1,
+        explanation: "Fed Funds Rate = rate banks lend/borrow overnight reserves from each other."
+    },
+    {
+        id: 128,
+        category: "Economics",
+        question: "A trade deficit occurs when:",
+        options: ["Exports exceed imports", "Imports exceed exports", "Government spending equals revenue", "Tax revenue exceeds spending"],
+        correct: 1,
+        explanation: "Trade deficit = imports > exports."
+    },
+    {
+        id: 129,
+        category: "Economics",
+        question: "The yield curve shows the relationship between:",
+        options: ["Stock prices and volume", "Bond yields and maturity dates", "Interest rates and inflation", "GDP and unemployment"],
+        correct: 1,
+        explanation: "Yield curve plots bond yields across different maturities."
+    },
+    {
+        id: 130,
+        category: "Economics",
+        question: "An inverted yield curve often signals:",
+        options: ["Economic expansion", "Economic recession", "Bull market", "Low inflation expectations"],
+        correct: 1,
+        explanation: "Inverted yield curve (short rates > long rates) often predicts recession."
+    },
+    // CLIENT ACCOUNTS
+    {
+        id: 131,
+        category: "Client Accounts",
+        question: "A discretionary account gives the broker the authority to:",
+        options: ["Only trade with client approval", "Make trades without prior client approval", "Access client bank accounts", "Withdraw client funds"],
+        correct: 1,
+        explanation: "Discretionary = broker can trade without prior client approval (within limits)."
+    },
+    {
+        id: 132,
+        category: "Client Accounts",
+        question: "A fiduciary duty means:",
+        options: ["Acting in client's best interest", "Maximizing commissions", "Following market trends", "Avoiding all risk"],
+        correct: 0,
+        explanation: "Fiduciary = legal duty to act in client's best interest."
+    },
+    {
+        id: 133,
+        category: "Client Accounts",
+        question: "Required disclosures for accounts include:",
+        options: ["Only the account number", "Risks, fees, and conflicts of interest", "Employee names", "Company revenue"],
+        correct: 1,
+        explanation: "Disclose risks, fees, and conflicts to clients."
+    },
+    {
+        id: 134,
+        category: "Client Accounts",
+        question: "A cash account requires:",
+        options: ["Margin trading", "Full payment for securities", "Special approval", "Minimum $10,000 balance"],
+        correct: 1,
+        explanation: "Cash accounts require full payment for purchases."
+    },
+    {
+        id: 135,
+        category: "Client Accounts",
+        question: "Margin trading allows:",
+        options: ["Buying securities with borrowed money", "Selling securities short", "Both A and B", "Only buying on cash"],
+        correct: 2,
+        explanation: "Margin = borrowing money to buy or selling short."
+    },
+    {
+        id: 136,
+        category: "Client Accounts",
+        question: "The initial margin requirement is typically:",
+        options: ["10%", "50%", "25%", "100%"],
+        correct: 1,
+        explanation: "Regulation T requires 50% initial margin for most securities."
+    },
+    {
+        id: 137,
+        category: "Client Accounts",
+        question: "A margin call occurs when:",
+        options: ["Customer requests more information", "Account equity falls below maintenance requirement", "Stock pays dividend", "Account reaches break-even"],
+        correct: 1,
+        explanation: "Margin call when equity falls below maintenance requirement."
+    },
+    {
+        id: 138,
+        category: "Client Accounts",
+        question: "Maintenance margin is typically:",
+        options: ["50% of purchase", "25% of value", "Minimum $2,000", "No minimum"],
+        correct: 1,
+        explanation: "Maintenance margin typically 25% or higher."
+    },
+    {
+        id: 139,
+        category: "Client Accounts",
+        question: "A tiered margin account:",
+        options: ["Has one margin rate", "Has different rates based on debit balance", "Requires no margin", "Is prohibited"],
+        correct: 1,
+        explanation: "Tiered accounts have varying margin rates based on debit balance."
+    },
+    {
+        id: 140,
+        category: "Client Accounts",
+        question: "Good faith deposits for new issues are required to:",
+        options: ["Increase broker profits", "Ensure adequate allocation", "Both A and B", "Comply with regulations"],
+        correct: 1,
+        explanation: "Good faith deposits ensure serious intent to purchase."
+    },
+    // EQUITIES
+    {
+        id: 141,
+        category: "Equities",
+        question: "Common stock represents:",
+        options: ["Debt ownership", "Equity ownership in a company", "Guaranteed returns", "First claim on assets"],
+        correct: 1,
+        explanation: "Common stock = equity/ownership in the company."
+    },
+    {
+        id: 142,
+        category: "Equities",
+        question: "Preferred stock typically offers:",
+        options: ["Higher risk", "Fixed dividends", "Voting rights", "Unlimited growth potential"],
+        correct: 1,
+        explanation: "Preferred = fixed dividends, less risk than common."
+    },
+    {
+        id: 143,
+        category: "Equities",
+        question: "A dividend is:",
+        options: ["A distribution of company profits to shareholders", "A fee charged by brokers", "A tax on investments", "A type of bond"],
+        correct: 0,
+        explanation: "Dividends = profit distributions to shareholders."
+    },
+    {
+        id: 144,
+        category: "Equities",
+        question: "A stock split:",
+        options: ["Decreases total value", "Increases shares outstanding at lower price", "Is a loss event", "Only affects preferred stock"],
+        correct: 1,
+        explanation: "Split increases shares but proportionately lowers price - total value unchanged."
+    },
+    {
+        id: 145,
+        category: "Equities",
+        question: "A reverse stock split:",
+        options: ["Increases shares outstanding", "Decreases shares at higher price", "Is the same as a dividend", "Has no effect on price"],
+        correct: 1,
+        explanation: "Reverse split reduces shares, increases price per share."
+    },
+    {
+        id: 146,
+        category: "Equities",
+        question: "Earnings per share (EPS) is:",
+        options: ["Stock price divided by shares", "Net income divided by shares outstanding", "Total revenue", "Dividend per share"],
+        correct: 1,
+        explanation: "EPS = net income / shares outstanding."
+    },
+    {
+        id: 147,
+        category: "Equities",
+        question: "P/E ratio measures:",
+        options: ["Profit to equity", "Price to earnings", "Performance index", "Probability of earnings"],
+        correct: 1,
+        explanation: "P/E = price per share / earnings per share."
+    },
+    {
+        id: 148,
+        category: "Equities",
+        question: "A bear market is characterized by:",
+        options: ["Rising prices", "Declining prices (typically 20%+)", "Stable prices", "High volume only"],
+        correct: 1,
+        explanation: "Bear market = declining prices, typically 20%+ from highs."
+    },
+    {
+        id: 149,
+        category: "Equities",
+        question: "A bull market is characterized by:",
+        options: ["Falling prices", "Rising prices", "Stable prices", "Low volume"],
+        correct: 1,
+        explanation: "Bull market = rising prices, optimism."
+    },
+    {
+        id: 150,
+        category: "Equities",
+        question: "Market capitalization is:",
+        options: ["Company debt", "Stock price times shares outstanding", "Annual revenue", "Net income"],
+        correct: 1,
+        explanation: "Market cap = share price x shares outstanding."
+    },
+    // DEBT SECURITIES
+    {
+        id: 151,
+        category: "Debt",
+        question: "A bond is essentially:",
+        options: ["Equity ownership", "A loan/debt instrument", "A derivative", "A type of mutual fund"],
+        correct: 1,
+        explanation: "Bonds are debt instruments - issuer borrows from investor."
+    },
+    {
+        id: 152,
+        category: "Debt",
+        question: "The face value of a bond is:",
+        options: ["Current market price", "Amount paid at maturity (par value)", "Annual coupon", "Total interest"],
+        correct: 1,
+        explanation: "Face/par value = amount paid at maturity."
+    },
+    {
+        id: 153,
+        category: "Debt",
+        question: "A coupon payment on a bond is:",
+        options: ["Principal repayment", "Interest payment", "Penalty fee", "Tax payment"],
+        correct: 1,
+        explanation: "Coupon = periodic interest payment."
+    },
+    {
+        id: 154,
+        category: "Debt",
+        question: "A bond selling at discount means:",
+        options: ["Price above par", "Price below par", "Price at par", "Invalid state"],
+        correct: 1,
+        explanation: "Discount = price below par."
+    },
+    {
+        id: 155,
+        category: "Debt",
+        question: "A bond selling at premium means:",
+        options: ["Price below par", "Price above par", "Price at par", "Worthless"],
+        correct: 1,
+        explanation: "Premium = price above par."
+    },
+    {
+        id: 156,
+        category: "Debt",
+        question: "Duration measures:",
+        options: ["Time to maturity", "Interest rate sensitivity", "Credit risk", "Liquidity risk"],
+        correct: 1,
+        explanation: "Duration measures price sensitivity to interest rate changes."
+    },
+    {
+        id: 157,
+        category: "Debt",
+        question: "When interest rates rise, bond prices:",
+        options: ["Rise", "Fall", "Stay the same", "Become volatile"],
+        correct: 1,
+        explanation: "Interest rates and bond prices move inversely."
+    },
+    {
+        id: 158,
+        category: "Debt",
+        question: "Investment grade bonds typically have ratings of:",
+        options: ["Below B", "BBB- or higher", "Only AAA", "C or below"],
+        correct: 1,
+        explanation: "Investment grade = BBB- or higher (S&P) / Baa3 or higher (Moody's)."
+    },
+    {
+        id: 159,
+        category: "Debt",
+        question: "Junk bonds have ratings of:",
+        options: ["BBB or higher", "BB or lower", "Only AAA", "Government bonds only"],
+        correct: 1,
+        explanation: "Junk/high-yield = BB or lower."
+    },
+    {
+        id: 160,
+        category: "Debt",
+        question: "A Treasury bond is backed by:",
+        options: ["Corporate assets", "U.S. government full faith and credit", "Foreign governments", "Private insurance"],
+        correct: 1,
+        explanation: "Treasuries backed by U.S. government."
+    },
+    // MUNICIPAL SECURITIES
+    {
+        id: 161,
+        category: "Municipal Securities",
+        question: "Municipal bonds are issued by:",
+        options: ["Federal government", "State and local governments", "Corporations", "Foreign governments"],
+        correct: 1,
+        explanation: "Munis issued by state/local governments."
+    },
+    {
+        id: 162,
+        category: "Municipal Securities",
+        question: "Interest from municipal bonds is generally:",
+        options: ["Fully taxable", "State tax-exempt", "Federal tax-exempt", "Fully tax-exempt"],
+        correct: 2,
+        explanation: "Muni interest generally federal tax-exempt."
+    },
+    {
+        id: 163,
+        category: "Municipal Securities",
+        question: "A general obligation (GO) bond is backed by:",
+        options: ["Project revenues", "Full faith and credit of issuer", "Federal guarantee", "Corporate revenues"],
+        correct: 1,
+        explanation: "GO bonds backed by issuer's full faith/credit."
+    },
+    {
+        id: 164,
+        category: "Municipal Securities",
+        question: "Revenue bonds are backed by:",
+        options: ["Issuer's general funds", "Project-specific revenues", "Federal government", "Stock collateral"],
+        correct: 1,
+        explanation: "Revenue bonds repaid from specific project revenues."
+    },
+    {
+        id: 165,
+        category: "Municipal Securities",
+        question: "A municipal bond's yield is often compared using:",
+        options: ["Pre-tax yield", "After-tax equivalent yield", "Gross yield", "Nominal yield"],
+        correct: 1,
+        explanation: "After-tax equivalent yield accounts for tax benefits."
+    },
+    {
+        id: 166,
+        category: "Municipal Securities",
+        question: "Municipal securities are typically:",
+        options: ["Registered bearer", "Registered in owner's name", "Book-entry only", "Unregistered"],
+        correct: 1,
+        explanation: "Most munis are registered in book-entry form."
+    },
+    {
+        id: 167,
+        category: "Municipal Securities",
+        question: "A bond anticipation note (BAN) is:",
+        options: ["Long-term debt", "Short-term anticipation of bond proceeds", "Equity", "Derivative"],
+        correct: 1,
+        explanation: "BANs = short-term notes anticipating bond issuance."
+    },
+    {
+        id: 168,
+        category: "Municipal Securities",
+        question: "Municipal brokers need:",
+        options: ["No license", "Series 52 (Muni)", "Series 7 only", "CFA"],
+        correct: 1,
+        explanation: "Municipal securities representatives need Series 52."
+    },
+    {
+        id: 169,
+        category: "Municipal Securities",
+        question: "Conduit revenue bonds are issued for:",
+        options: ["Government operations", "Private projects (airports, hospitals)", "Federal programs", "International projects"],
+        correct: 1,
+        explanation: "Conduit issuers finance private projects for third parties."
+    },
+    {
+        id: 170,
+        category: "Municipal Securities",
+        question: "The 'muni market' primarily trades:",
+        options: ["On exchanges", "Over-the-counter", "Only institutional", "Via futures"],
+        correct: 1,
+        explanation: "Municipal bonds trade OTC."
+    },
+    // GENERAL SECURITIES
+    {
+        id: 171,
+        category: "General Securities",
+        question: "A market order executes:",
+        options: ["At a specific price", "At best available price", "At opening only", "At closing only"],
+        correct: 1,
+        explanation: "Market order = buy/sell at best available price."
+    },
+    {
+        id: 172,
+        category: "General Securities",
+        question: "A limit order:",
+        options: ["Executes at any price", "Sets maximum buy or minimum sell price", "Is always filled", "Cancels automatically"],
+        correct: 1,
+        explanation: "Limit order = specified price or better."
+    },
+    {
+        id: 173,
+        category: "General Securities",
+        question: "A stop loss order:",
+        options: ["Guarantees profit", "Limits loss by triggering sale", "Is a market order", "Never executes"],
+        correct: 1,
+        explanation: "Stop loss triggers sale when price falls to limit losses."
+    },
+    {
+        id: 174,
+        category: "General Securities",
+        question: "A stop buy order is used to:",
+        options: ["Limit gains", "Limit losses on short position", "Buy at market", "Cancel existing order"],
+        correct: 1,
+        explanation: "Stop buy triggers when price rises - used for short positions."
+    },
+    {
+        id: 175,
+        category: "General Securities",
+        question: "Day orders are valid:",
+        options: ["Indefinitely", "One trading day only", "30 days", "One year"],
+        correct: 1,
+        explanation: "Day order expires at end of trading day if not filled."
+    },
+    {
+        id: 176,
+        category: "General Securities",
+        question: "GTC orders are valid:",
+        options: ["One day only", "Good until cancelled", "Only during market hours", "One week"],
+        correct: 1,
+        explanation: "GTC = Good Till Cancelled."
+    },
+    {
+        id: 177,
+        category: "General Securities",
+        question: "A short sale involves:",
+        options: ["Buying stock", "Selling borrowed stock", "Buying on margin", "Holding for dividends"],
+        correct: 1,
+        explanation: "Short sale = selling borrowed stock expecting price to drop."
+    },
+    {
+        id: 178,
+        category: "General Securities",
+        question: "To short a stock, you must:",
+        options: ["Own the stock", "Borrow it from a broker", "Have cash account", "Get special approval"],
+        correct: 1,
+        explanation: "Shorting requires borrowing shares from broker."
+    },
+    {
+        id: 179,
+        category: "General Securities",
+        question: "Short selling unlimited risk is because:",
+        options: ["Stock can rise indefinitely", "Limited to commission", "Only loses at expiration", "Has stop loss"],
+        correct: 0,
+        explanation: "Unlimited risk - stock can rise indefinitely, losses unlimited."
+    },
+    {
+        id: 180,
+        category: "General Securities",
+        question: "The bid price is:",
+        options: ["Price sellers will accept", "Price buyers will pay", "Highest price", "Opening price"],
+        correct: 1,
+        explanation: "Bid = price buyers are willing to pay."
+    },
+    {
+        id: 181,
+        category: "General Securities",
+        question: "The ask (offer) price is:",
+        options: ["Price buyers will pay", "Price sellers will accept", "Lowest price", "Closing price"],
+        correct: 1,
+        explanation: "Ask = price sellers will accept."
+    },
+    {
+        id: 182,
+        category: "General Securities",
+        question: "The spread is:",
+        options: ["Bid minus ask", "Ask minus bid", "Average price", "Trading volume"],
+        correct: 1,
+        explanation: "Spread = ask - bid."
+    },
+    {
+        id: 183,
+        category: "General Securities",
+        question: "A primary market is where:",
+        options: ["Existing securities trade", "New securities are issued", "Options trade", "Commodities trade"],
+        correct: 1,
+        explanation: "Primary = new issuances (IPOs, new bonds)."
+    },
+    {
+        id: 184,
+        category: "General Securities",
+        question: "A secondary market is where:",
+        options: ["New securities are issued", "Existing securities trade", "Only options trade", "Banks lend"],
+        correct: 1,
+        explanation: "Secondary = trading existing securities."
+    },
+    {
+        id: 185,
+        category: "General Securities",
+        question: "NYSE is:",
+        options: ["Electronic exchange", "Physical trading floor exchange", "Futures exchange", "Crypto exchange"],
+        correct: 1,
+        explanation: "NYSE has physical floor plus electronic trading."
+    },
+    {
+        id: 186,
+        category: "General Securities",
+        question: "NASDAQ is primarily:",
+        options: ["Floor exchange", "Electronic exchange", "Futures exchange", "Bond market"],
+        correct: 1,
+        explanation: "NASDAQ = all-electronic stock market."
+    },
+    {
+        id: 187,
+        category: "General Securities",
+        question: "A specialist/market maker:",
+        options: ["Only executes orders", "Provides liquidity and quotes prices", "Is a regulator", "Is a clearing firm"],
+        correct: 1,
+        explanation: "Market makers provide liquidity and quote prices."
+    },
+    {
+        id: 188,
+        category: "General Securities",
+        question: "A broker-dealer acting as agent:",
+        options: ["Takes principal position", "Facilitates customer trades for commission", "Underwrites securities", "Lends stock"],
+        correct: 1,
+        explanation: "Agent = executes for customers for commission, doesn't take principal position."
+    },
+    {
+        id: 189,
+        category: "General Securities",
+        question: "A broker-dealer acting as principal:",
+        options: ["Executes for customers only", "Trades from own account", "Is always regulated", "Cannot trade"],
+        correct: 1,
+        explanation: "Principal = trades from firm's own inventory."
+    },
+    {
+        id: 190,
+        category: "General Securities",
+        question: "Underwriting means:",
+        options: ["Listing securities", "Guaranteeing sale of new securities", "Trading existing securities", "Canceling orders"],
+        correct: 1,
+        explanation: "Underwriting = firm guarantees sale of new securities."
+    },
+    {
+        id: 191,
+        category: "General Securities",
+        question: "Best execution means:",
+        options: ["Always market order", "Getting best price reasonably available", "Guaranteeing profit", "Minimal commissions"],
+        correct: 1,
+        explanation: "Best execution = best price reasonably available per FINRA."
+    },
+    {
+        id: 192,
+        category: "General Securities",
+        question: "Payment for order flow is:",
+        options: ["Illegal", "Compensation from market makers to brokers for routing orders", "Customer payment", "Exchange fees"],
+        correct: 1,
+        explanation: "PFOF = market makers compensate brokers for routing orders."
+    },
+    {
+        id: 193,
+        category: "General Securities",
+        question: "A short squeeze occurs when:",
+        options: ["Buyers abandon stock", "Short sellers must buy to cover, driving price up", "Stock splits", "Dividends are paid"],
+        correct: 1,
+        explanation: "Short squeeze = short sellers forced to buy, pushing price up."
+    },
+    {
+        id: 194,
+        category: "General Securities",
+        question: "Circuit breakers:",
+        options: ["Prevent all trading", "Halt trading if market moves significantly", "Are optional", "Only apply to options"],
+        correct: 1,
+        explanation: "Circuit breakers halt trading on significant market drops."
+    },
+    {
+        id: 195,
+        category: "General Securities",
+        question: "Level 1 quotes show:",
+        options: ["All orders", "Best bid and ask", "Volume", "News"],
+        correct: 1,
+        explanation: "Level 1 = NBBO (best bid/ask)."
+    },
+    {
+        id: 196,
+        category: "General Securities",
+        question: "Level 2 quotes show:",
+        options: ["Only best bid/ask", "Multiple price levels of bids/asks", "Company financials", "Analyst ratings"],
+        correct: 1,
+        explanation: "Level 2 shows depth of market - multiple price levels."
+    },
+    {
+        id: 197,
+        category: "General Securities",
+        question: "An IPO is:",
+        options: ["Existing shares trading", "First public offering of stock", "Bond issuance", "Options listing"],
+        correct: 1,
+        explanation: "IPO = Initial Public Offering."
+    },
+    {
+        id: 198,
+        category: "General Securities",
+        question: "A secondary offering is:",
+        options: ["First sale of new stock", "Sale of existing shares by shareholders", "Bond offering", "Options offering"],
+        correct: 1,
+        explanation: "Secondary = existing shareholders sell shares."
+    },
+    {
+        id: 199,
+        category: "General Securities",
+        question: "SEC registration is required for:",
+        options: ["All securities", "Securities offered to public", "Only options", "Only stocks"],
+        correct: 1,
+        explanation: "SEC registration required for public offerings."
+    },
+    {
+        id: 200,
+        category: "General Securities",
+        question: "Exempt securities include:",
+        options: ["All stocks", "U.S. government securities, munis, bank CDs", "Penny stocks", "All corporate bonds"],
+        correct: 1,
+        explanation: "Exempt = government bonds, munis, bank CDs, etc."
+    },
+    // CUSTOMER ACCOUNTS - ADDITIONAL
+    {
+        id: 201,
+        category: "Client Accounts",
+        question: "A cash account requires payment by:",
+        options: ["Margin loan", "Settlement date", "Options only", "Next business day"],
+        correct: 1,
+        explanation: "Cash accounts require full payment by settlement date."
+    },
+    {
+        id: 202,
+        category: "Client Accounts",
+        question: "Regulation T governs:",
+        options: ["Options trading", "Margin requirements", "Corporate bonds", "Municipal bonds"],
+        correct: 1,
+        explanation: "Regulation T covers margin requirements for securities credit."
+    },
+    {
+        id: 203,
+        category: "Client Accounts",
+        question: "The purpose of margin is to:",
+        options: ["Increase risk", "Leverage buying power", "Reduce commissions", "Avoid taxes"],
+        correct: 1,
+        explanation: "Margin allows leverage - buy more with less cash."
+    },
+    {
+        id: 204,
+        category: "Client Accounts",
+        question: "A margin account agreement must include:",
+        options: ["Only customer signature", "Disclosure of risks and terms", "Broker's personal info", "Third party guarantees"],
+        correct: 1,
+        explanation: "Margin agreements disclose risks, terms, and requirements."
+    },
+    {
+        id: 205,
+        category: "Client Accounts",
+        question: "Householding means:",
+        options: ["One account per household", "Combining family accounts", "Multiple statements in one envelope", "Joint account only"],
+        correct: 2,
+        explanation: "Householding = sending single statement for multiple accounts."
+    },
+    {
+        id: 206,
+        category: "Client Accounts",
+        question: "Uniform Gifts to Minors Act (UGMA) allows:",
+        options: ["Adults to manage without fiduciary duty", "Tax-advantaged gifts to minors", "Unlimited contributions", "Tax-free trading"],
+        correct: 1,
+        explanation: "UGMA allows adults to establish accounts for minors with tax benefits."
+    },
+    {
+        id: 207,
+        category: "Client Accounts",
+        question: "A joint tenant with rights of survivorship:",
+        options: ["Each owner can sell separately", "Deceased owner's interest passes to survivors", "Requires all signatures to trade", "Is same as tenants in common"],
+        correct: 1,
+        explanation: "JTWROS = surviving owner gets deceased's share."
+    },
+    {
+        id: 208,
+        category: "Client Accounts",
+        question: "Tenants in common:",
+        options: ["Automatically inherit from each other", "Can have unequal ownership", "Requires survivorship", "Is same as JTWROS"],
+        correct: 1,
+        explanation: "Tenants in common can have unequal shares, no automatic survivorship."
+    },
+    {
+        id: 209,
+        category: "Client Accounts",
+        question: "A corporate account requires:",
+        options: ["Personal guarantee", "Corporate resolution authorizing trading", "CEO approval only", "No documentation"],
+        correct: 1,
+        explanation: "Corporate accounts need resolution authorizing individuals to trade."
+    },
+    {
+        id: 210,
+        category: "Client Accounts",
+        question: "A fiduciary account is one where:",
+        options: ["Broker makes all decisions", "Person acts for benefit of another", "Customer is always right", "No suitability required"],
+        correct: 1,
+        explanation: "Fiduciary = person acts in best interest of another party."
+    },
+    // ETFS AND STRUCTURED PRODUCTS
+    {
+        id: 211,
+        category: "ETFs",
+        question: "An ETF is:",
+        options: ["Actively managed fund", "Exchange-traded fund", "Closed-end fund only", "Hedge fund"],
+        correct: 1,
+        explanation: "ETF = Exchange-Traded Fund, trades like stock."
+    },
+    {
+        id: 212,
+        category: "ETFs",
+        question: "ETFs typically have lower expenses than:",
+        options: ["Hedge funds", "Mutual funds", "Private equity", "Commodities"],
+        correct: 1,
+        explanation: "ETFs generally have lower expense ratios than mutual funds."
+    },
+    {
+        id: 213,
+        category: "ETFs",
+        question: "ETF creation/redemption uses:",
+        options: ["Cash only", "In-kind exchange", "Options only", "Derivatives"],
+        correct: 1,
+        explanation: "ETFs use in-kind creation/redemption to manage tax efficiency."
+    },
+    {
+        id: 214,
+        category: "ETFs",
+        question: "A leveraged ETF:",
+        options: ["Tracks index exactly", "Uses debt/derivatives for amplified returns", "Is always safe", "Only holds bonds"],
+        correct: 1,
+        explanation: "Leveraged ETFs use derivatives for amplified (2x, 3x) returns."
+    },
+    {
+        id: 215,
+        category: "ETFs",
+        question: "Inverse ETFs:",
+        options: ["Move with market", "Move opposite to market", "Are always long", "Have no derivatives"],
+        correct: 1,
+        explanation: "Inverse ETFs profit when underlying index declines."
+    },
+    {
+        id: 216,
+        category: "ETFs",
+        question: "A listed ETF trades on:",
+        options: ["Only NYSE", "Stock exchange (NYSE, NASDAQ, etc.)", "Only futures exchanges", "Private markets"],
+        correct: 1,
+        explanation: "ETFs trade on stock exchanges like individual stocks."
+    },
+    {
+        id: 217,
+        category: "ETFs",
+        question: "ETFs are priced throughout the day based on:",
+        options: ["NAV only", "Supply and demand (intraday pricing)", "Fixed price", "Broker determination"],
+        correct: 1,
+        explanation: "ETFs trade at market price, not just NAV."
+    },
+    {
+        id: 218,
+        category: "ETFs",
+        question: "A passive ETF aims to:",
+        options: ["Beat the market", "Track an index", "Avoid the market", "Trade actively"],
+        correct: 1,
+        explanation: "Passive ETFs track an index, not outperform it."
+    },
+    {
+        id: 219,
+        category: "ETFs",
+        question: "ETFs unlike mutual funds:",
+        options: ["Are always NAV-priced", "Trade like stocks, have intraday pricing", "Never trade short", "Are not regulated"],
+        correct: 1,
+        explanation: "Key difference: ETFs trade like stocks with intraday pricing."
+    },
+    {
+        id: 220,
+        category: "ETFs",
+        question: "A sector ETF invests in:",
+        options: ["All market sectors", "Specific industry sector", "Only bonds", "International only"],
+        correct: 1,
+        explanation: "Sector ETFs focus on specific industries."
+    },
+    // COMMODITIES AND FUTURES
+    {
+        id: 221,
+        category: "Commodities",
+        question: "A futures contract obligates the holder to:",
+        options: ["Buy or sell only if desired", "Buy or sell at specified price/date", "Hold until expiration", "Pay premium"],
+        correct: 1,
+        explanation: "Futures = obligation to buy/sell at specified price/date."
+    },
+    {
+        id: 222,
+        category: "Commodities",
+        question: "Futures are primarily used for:",
+        options: ["Only speculation", "Hedging and speculation", "Dividend income", "Interest payments"],
+        correct: 1,
+        explanation: "Futures used for hedging risk and speculation."
+    },
+    {
+        id: 223,
+        category: "Commodities",
+        question: "The notional value of a futures contract is:",
+        options: ["Initial margin required", "Total contract value", "Daily settlement", "Broker fee"],
+        correct: 1,
+        explanation: "Notional value = contract size x underlying price."
+    },
+    {
+        id: 224,
+        category: "Commodities",
+        question: "Initial margin for futures is typically:",
+        options: ["50-100%", "5-15%", "25%", "100%"],
+        correct: 1,
+        explanation: "Futures margin typically 5-15% of notional value."
+    },
+    {
+        id: 225,
+        category: "Commodities",
+        question: "Mark-to-market means:",
+        options: ["Holding to maturity", "Daily settlement of gains/losses", "Tax accounting", "Initial pricing"],
+        correct: 1,
+        explanation: "Futures marked to market daily - gains/losses settled."
+    },
+    {
+        id: 226,
+        category: "Commodities",
+        question: "A commodity pool is:",
+        options: ["Physical storage", "Group investment in commodities/futures", "Government program", "Bank account"],
+        correct: 1,
+        explanation: "Commodity pool = group investment in commodities/futures."
+    },
+    {
+        id: 227,
+        category: "Commodities",
+        question: "Gold and silver are considered:",
+        options: ["Industrial metals only", "Precious metals", "Base metals", "Energy commodities"],
+        correct: 1,
+        explanation: "Gold and silver are precious metals."
+    },
+    {
+        id: 228,
+        category: "Commodities",
+        question: "Contango in futures markets means:",
+        options: ["Future price below spot", "Future price above spot", "Same price", "No relationship"],
+        correct: 1,
+        explanation: "Contango = futures prices above spot prices."
+    },
+    {
+        id: 229,
+        category: "Commodities",
+        question: "Backwardation means:",
+        options: ["Future price above spot", "Future price below spot", "Prices are stable", "Market is closed"],
+        correct: 1,
+        explanation: "Backwardation = futures prices below spot prices."
+    },
+    {
+        id: 230,
+        category: "Commodities",
+        question: "Commodity trading advisors (CTAs) must register with:",
+        options: ["FINRA", "CFTC/NFA", "SEC", "State governments"],
+        correct: 1,
+        explanation: "CTAs register with CFTC and NFA."
+    },
+    // VARIABLE ANNUITIES
+    {
+        id: 231,
+        category: "Variable Annuities",
+        question: "A variable annuity is:",
+        options: ["Fixed income product", "Insurance product with investment options", "Savings account", "Government bond"],
+        correct: 1,
+        explanation: "Variable annuities = insurance contracts with investment sub-accounts."
+    },
+    {
+        id: 232,
+        category: "Variable Annuities",
+        question: "Variable annuity payouts depend on:",
+        options: ["Fixed rate", "Underlying investment performance", "Government guarantee", "Broker recommendation"],
+        correct: 1,
+        explanation: "Variable annuity payouts vary based on underlying investments."
+    },
+    {
+        id: 233,
+        category: "Variable Annuities",
+        question: "The accumulation phase in an annuity is when:",
+        options: ["Payments are received", "Investments grow tax-deferred", "Annuity is surrendered", "Owner dies"],
+        correct: 1,
+        explanation: "Accumulation = when investments grow tax-deferred."
+    },
+    {
+        id: 234,
+        category: "Variable Annuities",
+        question: "The annuitization phase is when:",
+        options: ["Money goes in", "Payments go out to owner", "Only surrender charges apply", "No transactions occur"],
+        correct: 1,
+        explanation: "Annuitization = converting to periodic payments."
+    },
+    {
+        id: 235,
+        category: "Variable Annuities",
+        question: "Surrender charges in annuities are penalties for:",
+        options: ["Early withdrawal", "Late payments", "Trading frequency", "Holding too long"],
+        correct: 0,
+        explanation: "Surrender charges penalize early withdrawal before surrender period ends."
+    },
+    {
+        id: 236,
+        category: "Variable Annuities",
+        question: "A death benefit in variable annuities:",
+        options: ["Is illegal", "Pays beneficiaries upon owner's death", "Only pays to annuitant", "Is same as surrender value"],
+        correct: 1,
+        explanation: "Death benefit = pays beneficiaries if owner dies."
+    },
+    {
+        id: 237,
+        category: "Variable Annuities",
+        question: "Variable annuities have higher fees because:",
+        options: ["Government regulates less", "Include insurance features and investment management", "Are guaranteed", "Have no management"],
+        correct: 1,
+        explanation: "Higher fees due to insurance features and active management."
+    },
+    {
+        id: 238,
+        category: "Variable Annuities",
+        question: "Tax treatment of variable annuities:",
+        options: ["Taxed annually", "Tax-deferred until withdrawal", "Always tax-free", "Only state tax applies"],
+        correct: 1,
+        explanation: "Tax-deferred until withdrawal (like 401k)."
+    },
+    {
+        id: 239,
+        category: "Variable Annuities",
+        question: "A qualified annuity is:",
+        options: ["In a retirement account", "Not in a retirement account", "Taxed annually", "Not regulated"],
+        correct: 0,
+        explanation: "Qualified = held in tax-advantaged retirement account."
+    },
+    {
+        id: 240,
+        category: "Variable Annuities",
+        question: "A non-qualified annuity is:",
+        options: ["In IRA/401k", "Outside tax-advantaged accounts", "Taxed as earned income", "Government sponsored"],
+        correct: 1,
+        explanation: "Non-qualified = outside retirement accounts, tax-deferred."
+    },
+    // HEDGE FUNDS AND PRIVATE PLACEMENTS
+    {
+        id: 241,
+        category: "Alternative Investments",
+        question: "Hedge funds are typically:",
+        options: ["Regulated like mutual funds", "Private, less regulated investment pools", "Government programs", "Bank products"],
+        correct: 1,
+        explanation: "Hedge funds are private, lightly regulated investment pools."
+    },
+    {
+        id: 242,
+        category: "Alternative Investments",
+        question: "Hedge funds often require:",
+        options: ["No minimum investment", "High minimum investment (accredited investors)", "FDIC insurance", "Government registration"],
+        correct: 1,
+        explanation: "Hedge funds require accredited investor status and high minimums."
+    },
+    {
+        id: 243,
+        category: "Alternative Investments",
+        question: "A private placement is:",
+        options: ["Public offering", "Non-public sale of securities", "Government bond sale", "Bank loan"],
+        correct: 1,
+        explanation: "Private placement = securities sold privately, not public."
+    },
+    {
+        id: 244,
+        category: "Alternative Investments",
+        question: "Regulation D private placements:",
+        options: ["Are fully registered", "Are exempt from full registration", "Require SEC approval", "Are illegal"],
+        correct: 1,
+        explanation: "Reg D = exemptions from full registration requirements."
+    },
+    {
+        id: 245,
+        category: "Alternative Investments",
+        question: "Accredited investors include those with:",
+        options: ["Any income", "High income or net worth ($200k+/$1M+)", "Poor credit", "No investments"],
+        correct: 1,
+        explanation: "Accredited = $200k+ income or $1M+ net worth (excluding primary home)."
+    },
+    {
+        id: 246,
+        category: "Alternative Investments",
+        question: "Private equity funds invest in:",
+        options: ["Public stocks", "Private companies", "Government bonds", "Bank deposits"],
+        correct: 1,
+        explanation: "Private equity = invests in private companies."
+    },
+    {
+        id: 247,
+        category: "Alternative Investments",
+        question: "A limited partner in a private fund:",
+        options: ["Manages the fund", "Has limited liability and passive investment", "Has unlimited liability", "Makes management decisions"],
+        correct: 1,
+        explanation: "Limited partners invest passively with liability limited to investment."
+    },
+    {
+        id: 248,
+        category: "Alternative Investments",
+        question: "A general partner in a private fund:",
+        options: ["Only invests passively", "Manages the fund with unlimited liability", "Is always a limited partner", "Has no responsibility"],
+        correct: 1,
+        explanation: "General partner manages fund and has unlimited liability."
+    },
+    {
+        id: 249,
+        category: "Alternative Investments",
+        question: "Venture capital funds invest in:",
+        options: ["Mature companies", "Early-stage startups", "Government bonds", "Real estate only"],
+        correct: 1,
+        explanation: "VC funds invest in early-stage, high-growth startups."
+    },
+    {
+        id: 250,
+        category: "Alternative Investments",
+        question: "Private REITs are:",
+        options: ["Publicly traded", "Non-traded real estate investment trusts", "Government guaranteed", "Bank products"],
+        correct: 1,
+        explanation: "Private/non-traded REITs invest in real estate without public trading."
+    },
+    // RETIREMENT ACCOUNTS
+    {
+        id: 251,
+        category: "Retirement Accounts",
+        question: "A 401(k) allows employees to:",
+        options: ["Only contribute after-tax", "Contribute pre-tax and/or Roth", "Borrow unlimited amounts", "Avoid all taxes"],
+        correct: 1,
+        explanation: "401(k) allows pre-tax and/or Roth contributions."
+    },
+    {
+        id: 252,
+        category: "Retirement Accounts",
+        question: "Traditional IRA contributions are:",
+        options: ["Always after-tax", "May be tax-deductible", "Never deductible", "Taxed twice"],
+        correct: 1,
+        explanation: "Traditional IRA contributions may be tax-deductible."
+    },
+    {
+        id: 253,
+        category: "Retirement Accounts",
+        question: "Roth IRA contributions are:",
+        options: ["Tax-deductible", "Made with after-tax dollars", "Not allowed", "Matched by employer"],
+        correct: 1,
+        explanation: "Roth IRA = after-tax contributions, tax-free growth/withdrawals."
+    },
+    {
+        id: 254,
+        category: "Retirement Accounts",
+        question: "IRA contribution limit for 2024 is:",
+        options: ["Unlimited", "$7,000 ($8,000 if 50+)", "$10,000", "$15,000"],
+        correct: 1,
+        explanation: "IRA limit $7,000 ($8,000 if 50+) for 2024."
+    },
+    {
+        id: 255,
+        category: "Retirement Accounts",
+        question: "Early withdrawal from traditional IRA before 59½:",
+        options: ["No penalty", "10% penalty plus taxes", "Only taxes", "No taxes until withdrawal"],
+        correct: 1,
+        explanation: "Early withdrawal = 10% penalty plus income taxes."
+    },
+    {
+        id: 256,
+        category: "Retirement Accounts",
+        question: "Required Minimum Distribution (RMD) begins at age:",
+        options: ["59½", "70½ (73 for those born 1951+)", "65", "Never"],
+        correct: 1,
+        explanation: "RMDs begin at 70½ (73 for those born 1951 or later)."
+    },
+    {
+        id: 257,
+        category: "Retirement Accounts",
+        question: "A SEP IRA is for:",
+        options: ["Only large corporations", "Self-employed and small business owners", "Government employees", "Non-profits only"],
+        correct: 1,
+        explanation: "SEP IRA = Simplified Employee Pension for self-employed/small biz."
+    },
+    {
+        id: 258,
+        category: "Retirement Accounts",
+        question: "SIMPLE IRA is for:",
+        options: ["Large corporations only", "Small businesses with few employees", "Government employees", "Non-profits"],
+        correct: 1,
+        explanation: "SIMPLE = Savings Incentive Match for small employers."
+    },
+    {
+        id: 259,
+        category: "Retirement Accounts",
+        question: "Coverdell ESA is for:",
+        options: ["Retirement only", "Education expenses", "Business expenses", "Healthcare"],
+        correct: 1,
+        explanation: "Coverdell Education Savings Account for education expenses."
+    },
+    {
+        id: 260,
+        category: "Retirement Accounts",
+        question: "529 plan is used for:",
+        options: ["Retirement", "Education expenses", "Healthcare", "Business"],
+        correct: 1,
+        explanation: "529 plans for education expenses, named after tax code section."
+    },
+    // TAXATION
+    {
+        id: 261,
+        category: "Taxation",
+        question: "Long-term capital gains are on assets held:",
+        options: ["Less than one year", "More than one year", "Exactly one month", "Less than 6 months"],
+        correct: 1,
+        explanation: "Long-term = held more than one year."
+    },
+    {
+        id: 262,
+        category: "Taxation",
+        question: "Short-term capital gains are taxed at:",
+        options: ["Preferential rate", "Ordinary income tax rates", "Zero", "Flat 15%"],
+        correct: 1,
+        explanation: "Short-term gains taxed as ordinary income."
+    },
+    {
+        id: 263,
+        category: "Taxation",
+        question: "Long-term capital gains rates for most taxpayers are:",
+        options: ["37%", "0%, 15%, or 20%", "25%", "50%"],
+        correct: 1,
+        explanation: " LTCG rates: 0%, 15%, or 20% based on income."
+    },
+    {
+        id: 264,
+        category: "Taxation",
+        question: "A capital loss can be used to:",
+        options: ["Only offset gains", "Offset gains and up to $3,000 income", "Avoid all taxes", "Increase basis"],
+        correct: 1,
+        explanation: "Capital losses offset gains plus up to $3,000 ordinary income annually."
+    },
+    {
+        id: 265,
+        category: "Taxation",
+        question: "Wash sale rules prohibit:",
+        options: ["All sales", "Buying substantially identical security within 30 days of sale at loss", "Holding securities", "Dividend reinvestment"],
+        correct: 1,
+        explanation: "Wash sale = buying substantially identical within 30 days before/after loss sale."
+    },
+    {
+        id: 266,
+        category: "Taxation",
+        question: "Municipal bond interest is generally:",
+        options: ["Fully taxable", "Federal tax-exempt", "State tax-exempt only", "Subject to AMT"],
+        correct: 1,
+        explanation: "Muni interest generally federal tax-exempt."
+    },
+    {
+        id: 267,
+        category: "Taxation",
+        question: "Original Issue Discount (OID) bonds:",
+        options: ["Sold at par", "Sold at discount, taxed as interest", "Are tax-free", "Have no tax consequence"],
+        correct: 1,
+        explanation: "OID bonds taxed on accrued interest annually."
+    },
+    {
+        id: 268,
+        category: "Taxation",
+        question: "Tax-equivalent yield compares:",
+        options: ["Stock yields only", "Taxable and tax-free yields", "International yields", "Bond yields only"],
+        correct: 1,
+        explanation: "Tax-equivalent yield = taxable yield / (1 - tax rate)."
+    },
+    {
+        id: 269,
+        category: "Taxation",
+        question: "Net Investment Income Tax (NIIT) applies to:",
+        options: ["All investors", "High-income individuals ($200k+/$250k+)", "Low-income only", "Retirement accounts"],
+        correct: 1,
+        explanation: "NIIT = 3.8% on investment income for high earners."
+    },
+    {
+        id: 270,
+        category: "Taxation",
+        question: "Inherited securities get a:",
+        options: ["Original cost basis", "Step-up in basis to fair market value", "Zero basis", "Depreciated basis"],
+        correct: 1,
+        explanation: "Inherited securities get step-up in basis to date-of-death value."
+    },
+    // COMPLIANCE AND ETHICS
+    {
+        id: 271,
+        category: "Compliance",
+        question: "Anti-money laundering (AML) requires:",
+        options: ["No procedures", "Customer identification, monitoring, reporting", "Only large transactions", "Annual reports only"],
+        correct: 1,
+        explanation: "AML = CIP, monitoring, suspicious activity reporting."
+    },
+    {
+        id: 272,
+        category: "Compliance",
+        question: "Suspicious Activity Reports (SARs) must be filed for:",
+        options: ["All trades", "Transactions that appear suspicious", "Only large trades", "Customer complaints"],
+        correct: 1,
+        explanation: "SARs filed for suspicious transactions."
+    },
+    {
+        id: 273,
+        category: "Compliance",
+        question: "Know Your Customer (KYC) is required for:",
+        options: ["Only new accounts", "Opening accounts and ongoing", "Annual only", "Not required"],
+        correct: 1,
+        explanation: "KYC required at account opening and updated periodically."
+    },
+    {
+        id: 274,
+        category: "Compliance",
+        question: "FinCEN is:",
+        options: ["Stock exchange", "Financial crimes enforcement network", "Trade association", "Credit bureau"],
+        correct: 1,
+        explanation: "FinCEN = Financial Crimes Enforcement Network."
+    },
+    {
+        id: 275,
+        category: "Compliance",
+        question: "Pattern and practice violations involve:",
+        options: ["One-time errors", "Repeated violations", "Customer errors", "Market movements"],
+        correct: 1,
+        explanation: "Pattern and practice = repeated violations showing firm issues."
+    },
+    {
+        id: 276,
+        category: "Compliance",
+        question: "A material fact is one that:",
+        options: ["Is trivial", "Would affect investor's decision", "Is publicly known", "Only affects price"],
+        correct: 1,
+        explanation: "Material = would affect reasonable investor's decision."
+    },
+    {
+        id: 277,
+        category: "Compliance",
+        question: "Omitting material facts is:",
+        options: ["Allowed if unintentional", "Fraud if misleading", "Only a technical violation", "Not disclosure issue"],
+        correct: 1,
+        explanation: "Omitting material facts can be fraud if misleading."
+    },
+    {
+        id: 278,
+        category: "Compliance",
+        question: "Suitability documentation must be:",
+        options: ["Not required", "Maintained and available for review", "Destroyed after 30 days", "Only electronic"],
+        correct: 1,
+        explanation: "Suitability records must be maintained per FINRA rules."
+    },
+    {
+        id: 279,
+        category: "Compliance",
+        question: "Books and records must be kept for:",
+        options: ["1 year", "3-6 years depending on type", "10 years", "Indefinitely"],
+        correct: 1,
+        explanation: "Records kept 3-6 years depending on type."
+    },
+    {
+        id: 280,
+        category: "Compliance",
+        question: "Outside business activities require:",
+        options: ["No disclosure", "Written disclosure and approval", "Automatic approval", "Annual filing only"],
+        correct: 1,
+        explanation: "Outside activities must be disclosed and approved."
+    },
+    // SECURITY CUSTOMER PROTECTION
+    {
+        id: 281,
+        category: "Customer Protection",
+        question: "SIPC protects securities customers up to:",
+        options: ["$100,000", "$500,000 including $250,000 cash", "$1 million", "$10 million"],
+        correct: 1,
+        explanation: "SIPC = $500,000 (including $250,000 cash)."
+    },
+    {
+        id: 282,
+        category: "Customer Protection",
+        question: "SIPC does NOT protect against:",
+        options: ["Broker failure", "Market losses", "Fraud", "Misappropriation"],
+        correct: 1,
+        explanation: "SIPC protects against broker failure, not market losses."
+    },
+    {
+        id: 283,
+        category: "Customer Protection",
+        question: "A customer complaint should be:",
+        options: ["Ignored initially", "Addressed promptly and documented", "Handled only by compliance", "Never recorded"],
+        correct: 1,
+        explanation: "Complaints must be promptly addressed and documented."
+    },
+    {
+        id: 284,
+        category: "Customer Protection",
+        question: "The customer protection rule requires:",
+        options: ["No protections needed", "Safeguarding customer securities and funds", "Only recordkeeping", "Annual audits only"],
+        correct: 1,
+        explanation: "Rule 8c-1 and 15c3-3 require safeguarding customer assets."
+    },
+    {
+        id: 285,
+        category: "Customer Protection",
+        question: "Free credit balances must be:",
+        options: ["Kept by broker", "Paid to customer or invested", "Held indefinitely", "Used for firm operations"],
+        correct: 1,
+        explanation: "Free credit balances must be paid to customer or in customer securities."
+    },
+    // TRADING AND EXECUTION
+    {
+        id: 286,
+        category: "Trading",
+        question: "A market maker maintains:",
+        options: ["Only buy orders", "Bid and ask quotes", "Only limit orders", "No quotes"],
+        correct: 1,
+        explanation: "Market makers provide continuous bid and ask quotes."
+    },
+    {
+        id: 287,
+        category: "Trading",
+        question: "Nasdaq Level III allows:",
+        options: ["View only", "Enter quotes and orders", "No trading", "Administrative access"],
+        correct: 1,
+        explanation: "Level III = market maker functionality to enter quotes/orders."
+    },
+    {
+        id: 288,
+        category: "Trading",
+        question: "Institutional vs retail order flow:",
+        options: ["Same handling", "Institutional gets priority", "Both get same price improvement", "No difference"],
+        correct: 1,
+        explanation: "Institutional often gets better execution and softer dollar research."
+    },
+    {
+        id: 289,
+        category: "Trading",
+        question: "Order routing disclosure is required under:",
+        options: ["Rule 10b-5", "Regulation NMS", "Rule 5310", "SEC Act of 1934"],
+        correct: 1,
+        explanation: "Reg NMS requires order routing disclosure."
+    },
+    {
+        id: 290,
+        category: "Trading",
+        question: "Directed brokerage arrangements:",
+        options: ["Are prohibited", "Allow firms to direct orders to broker providing support", "Must be disclosed", "Are confidential"],
+        correct: 2,
+        explanation: "Directed brokerage must be disclosed to customers."
+    },
+    // CORPORATE ACTIONS
+    {
+        id: 291,
+        category: "Corporate Actions",
+        question: "A stock split increases:",
+        options: ["Total value", "Number of shares with proportionate price decrease", "Stock price", "Dividends"],
+        correct: 1,
+        explanation: "Split increases shares, price adjusts proportionally - total value unchanged."
+    },
+    {
+        id: 292,
+        category: "Corporate Actions",
+        question: "A reverse split decreases:",
+        options: ["Stock price", "Number of shares, increases price", "Total value", "Dividend payments"],
+        correct: 1,
+        explanation: "Reverse split reduces shares, increases price - total value unchanged."
+    },
+    {
+        id: 293,
+        category: "Corporate Actions",
+        question: "A stock dividend:",
+        options: ["Is cash payment", "Issues additional shares", "Decreases equity", "Is taxable event"],
+        correct: 1,
+        explanation: "Stock dividend = additional shares to shareholders."
+    },
+    {
+        id: 294,
+        category: "Corporate Actions",
+        question: "Cash dividends are:",
+        options: ["Stock distributions", "Cash payments to shareholders", "Automatically reinvested", "Tax-free"],
+        correct: 1,
+        explanation: "Cash dividends = cash payments (taxable as income)."
+    },
+    {
+        id: 295,
+        category: "Corporate Actions",
+        question: "Ex-dividend date means:",
+        options: ["Stock trades with dividend", "Stock trades without dividend", "Dividend reinvestment", "Record date"],
+        correct: 1,
+        explanation: "Ex-dividend = buyer doesn't receive declared dividend."
+    },
+    {
+        id: 296,
+        category: "Corporate Actions",
+        question: "The record date is for:",
+        options: ["Determining who receives dividend", "Trading shares", "Options expiration", "Tax reporting"],
+        correct: 0,
+        explanation: "Record date determines who is shareholder of record to receive dividend."
+    },
+    {
+        id: 297,
+        category: "Corporate Actions",
+        question: "A spin-off creates:",
+        options: ["New company from existing company", "New shares for existing", "Merger", "Bankruptcy"],
+        correct: 0,
+        explanation: "Spin-off = new independent company from existing division."
+    },
+    {
+        id: 298,
+        category: "Corporate Actions",
+        question: "A merger combines:",
+        options: ["One company", "Two companies into one", "Three companies", "Only assets"],
+        correct: 1,
+        explanation: "Merger = two companies combining into one entity."
+    },
+    {
+        id: 299,
+        category: "Corporate Actions",
+        question: "An acquisition is:",
+        options: ["Equal merger", "One company buying another", "Stock split", "Dividend distribution"],
+        correct: 1,
+        explanation: "Acquisition = one company purchases/controls another."
+    },
+    {
+        id: 300,
+        category: "Corporate Actions",
+        question: "Rights offerings give shareholders:",
+        options: ["New shares automatically", "Right to buy new shares at discount", "Voting rights", "Dividends"],
+        correct: 1,
+        explanation: "Rights = option to buy new shares at predetermined price."
+    },
+    // FUNDAMENTALS AND ANALYSIS
+    {
+        id: 301,
+        category: "Fundamental Analysis",
+        question: "Fundamental analysis examines:",
+        options: ["Only stock price", "Financial statements, economics, industry", "Technical indicators", "Market sentiment only"],
+        correct: 1,
+        explanation: "Fundamental = analyzing financials, management, competition, economy."
+    },
+    {
+        id: 302,
+        category: "Fundamental Analysis",
+        question: "P/E ratio indicates:",
+        options: ["Price to earnings relationship", "Profit to equity", "Probability of earnings", "Payment of earnings"],
+        correct: 0,
+        explanation: "P/E = price per share divided by earnings per share."
+    },
+    {
+        id: 303,
+        category: "Fundamental Analysis",
+        question: "A high P/E typically suggests:",
+        options: ["Stock is undervalued", "Investors expect higher growth", "Low risk", "Poor fundamentals"],
+        correct: 1,
+        explanation: "High P/E = investors expect higher future earnings growth."
+    },
+    {
+        id: 304,
+        category: "Fundamental Analysis",
+        question: "P/B ratio compares:",
+        options: ["Price to bonds", "Price to book value", "Profit to business", "Payments to basis"],
+        correct: 1,
+        explanation: "P/B = market cap divided by book value."
+    },
+    {
+        id: 305,
+        category: "Fundamental Analysis",
+        question: "Return on Equity (ROE) measures:",
+        options: ["Revenue growth", "Profitability relative to shareholder equity", "Risk", "Dividend yield"],
+        correct: 1,
+        explanation: "ROE = net income / shareholder equity."
+    },
+    {
+        id: 306,
+        category: "Fundamental Analysis",
+        question: "Current ratio measures:",
+        options: ["Profitability", "Liquidity (current assets/liabilities)", "Leverage", "Growth"],
+        correct: 1,
+        explanation: "Current ratio = current assets / current liabilities."
+    },
+    {
+        id: 307,
+        category: "Fundamental Analysis",
+        question: "Debt-to-equity ratio measures:",
+        options: ["Profitability", "Liquidity", "Leverage/financial structure", "Growth rate"],
+        correct: 2,
+        explanation: "D/E = total debt / shareholder equity."
+    },
+    {
+        id: 308,
+        category: "Fundamental Analysis",
+        question: "EPS stands for:",
+        options: ["Equity per share", "Earnings per share", "Exchange price system", "Estimated price subject"],
+        correct: 1,
+        explanation: "EPS = earnings per share."
+    },
+    {
+        id: 309,
+        category: "Fundamental Analysis",
+        question: "Dividend yield is:",
+        options: ["Annual dividend / stock price", "Stock price / dividend", "Dividend / earnings", "Total dividends / assets"],
+        correct: 0,
+        explanation: "Dividend yield = annual dividend / stock price."
+    },
+    {
+        id: 310,
+        category: "Fundamental Analysis",
+        question: "Free cash flow is:",
+        options: ["Total revenue", "Operating cash flow minus capital expenditures", "Net income", "Gross profit"],
+        correct: 1,
+        explanation: "FCF = cash from operations - capital expenditures."
+    },
+    // TECHNICAL ANALYSIS
+    {
+        id: 311,
+        category: "Technical Analysis",
+        question: "Technical analysis studies:",
+        options: ["Financial statements", "Price and volume patterns", "Company management", "Economic factors"],
+        correct: 1,
+        explanation: "Technical = price, volume, chart patterns."
+    },
+    {
+        id: 312,
+        category: "Technical Analysis",
+        question: "A support level is where:",
+        options: ["Stock rarely trades", "Buying pressure stops decline", "Selling pressure increases", "Stock splits"],
+        correct: 1,
+        explanation: "Support = price level where buying tends to exceed selling."
+    },
+    {
+        id: 313,
+        category: "Technical Analysis",
+        question: "A resistance level is where:",
+        options: ["Stock rarely trades", "Selling pressure stops advance", "Buying pressure increases", "Dividends paid"],
+        correct: 1,
+        explanation: "Resistance = price level where selling tends to exceed buying."
+    },
+    {
+        id: 314,
+        category: "Technical Analysis",
+        question: "Moving averages smooth:",
+        options: ["Earnings", "Price data over time", "Volume", "Dividends"],
+        correct: 1,
+        explanation: "Moving averages smooth price data to show trends."
+    },
+    {
+        id: 315,
+        category: "Technical Analysis",
+        question: "A golden cross is:",
+        options: ["Bearish signal", "50-day MA crossing above 200-day MA (bullish)", "Price gap down", "High volume day"],
+        correct: 1,
+        explanation: "Golden cross = 50-day MA crosses above 200-day MA (bullish)."
+    },
+    {
+        id: 316,
+        category: "Technical Analysis",
+        question: "A death cross is:",
+        options: ["Bullish signal", "50-day MA crossing below 200-day MA (bearish)", "Stock dividend", "Split announcement"],
+        correct: 1,
+        explanation: "Death cross = 50-day MA crosses below 200-day MA (bearish)."
+    },
+    {
+        id: 317,
+        category: "Technical Analysis",
+        question: "RSI measures:",
+        options: ["Revenue growth", "Price momentum/overbought-oversold", "Risk metrics", "Dividend safety"],
+        correct: 1,
+        explanation: "RSI = Relative Strength Index, 0-100, overbought >70, oversold <30."
+    },
+    {
+        id: 318,
+        category: "Technical Analysis",
+        question: "MACD is:",
+        options: ["Moving average convergence divergence", "Maximum average calculation", "Market analysis method", "Monthly payment calculation"],
+        correct: 0,
+        explanation: "MACD = Moving Average Convergence Divergence."
+    },
+    {
+        id: 319,
+        category: "Technical Analysis",
+        question: "Bollinger Bands show:",
+        options: ["Dividend dates", "Price volatility around moving average", "Earnings dates", "Interest rates"],
+        correct: 1,
+        explanation: "Bollinger Bands = price envelope around moving average."
+    },
+    {
+        id: 320,
+        category: "Technical Analysis",
+        question: "Volume confirms:",
+        options: ["Company earnings", "Trend strength", "Dividend safety", "Management quality"],
+        correct: 1,
+        explanation: "High volume confirms price movement strength."
+    },
+    // TYPES OF SECURITIES OFFERINGS
+    {
+        id: 321,
+        category: "Offerings",
+        question: "A best efforts offering:",
+        options: ["Guarantees sale", "Broker sells what's possible, no guarantee", "Underwriter buys all", "Is illegal"],
+        correct: 1,
+        explanation: "Best efforts = broker tries to sell, no guarantee to issuer."
+    },
+    {
+        id: 322,
+        category: "Offerings",
+        question: "A firm commitment offering:",
+        options: ["No guarantee", "Underwriter buys entire issue", "Broker only lists", "Is a mutual fund"],
+        correct: 1,
+        explanation: "Firm commitment = underwriter buys entire issue."
+    },
+    {
+        id: 323,
+        category: "Offerings",
+        question: "A rights offering is:",
+        options: ["Public offering", "Existing shareholders get rights to buy", "New IPO", "Bond offering only"],
+        correct: 1,
+        explanation: "Rights = existing shareholders get first chance to buy new shares."
+    },
+    {
+        id: 324,
+        category: "Offerings",
+        question: "A shelf registration allows:",
+        options: ["Unlimited offerings", "Issuer to register securities for future sales", "Instant sale", "Private placement"],
+        correct: 1,
+        explanation: "Shelf registration = register now, sell later over time."
+    },
+    {
+        id: 325,
+        category: "Offerings",
+        question: "Direct public offering (DPO):",
+        options: ["Through underwriters", "Company sells directly to public", "Only to institutions", "Is illegal"],
+        correct: 1,
+        explanation: "DPO = company sells directly to public without underwriters."
+    },
+    {
+        id: 326,
+        category: "Offerings",
+        question: "A private placement to accredited investors:",
+        options: ["Requires full registration", "Is exempt from registration", "Must be public", "Requires FINRA approval"],
+        correct: 1,
+        explanation: "Private placement = exempt from registration per Reg D."
+    },
+    {
+        id: 327,
+        category: "Offerings",
+        question: "Reg D allows:",
+        options: ["Public offerings", "Exempt private placements", "Unlimited selling", "No restrictions"],
+        correct: 1,
+        explanation: "Reg D = private placement exemption from registration."
+    },
+    {
+        id: 328,
+        category: "Offerings",
+        question: "Rule 144A allows:",
+        options: ["Public offerings", "Private resale of restricted securities to QIBs", "Unlimited sales", "Retail sales only"],
+        correct: 1,
+        explanation: "144A = private resale of restricted securities to qualified institutional buyers."
+    },
+    {
+        id: 329,
+        category: "Offerings",
+        question: "A crowdfunding offering:",
+        options: ["Only through portals", "Small investments from many people", "Requires $5M minimum", "Is exempt from all rules"],
+        correct: 1,
+        explanation: "Crowdfunding = small investments from many via registered portals."
+    },
+    {
+        id: 330,
+        category: "Offerings",
+        question: "Intrastate offerings are exempt from:",
+        options: ["State registration", "Federal registration", "All regulations", "Taxation"],
+        correct: 1,
+        explanation: "Intrastate (Reg A+) exempt from federal registration per Sec 3(a)(11)."
+    },
+    // BROKER-DEALER OPERATIONS
+    {
+        id: 331,
+        category: "Broker-Dealer",
+        question: "A full-service broker provides:",
+        options: ["Execution only", "Research, advice, and execution", "No advice", "Limited services"],
+        correct: 1,
+        explanation: "Full-service = research, advice, execution, various services."
+    },
+    {
+        id: 332,
+        category: "Broker-Dealer",
+        question: "A discount broker provides:",
+        options: ["Full advice", "Execution services only at lower cost", "Research only", "Portfolio management"],
+        correct: 1,
+        explanation: "Discount = execution only, no advice, lower costs."
+    },
+    {
+        id: 333,
+        category: "Broker-Dealer",
+        question: "Net capital rule requires brokers to:",
+        options: ["Keep unlimited capital", "Maintain minimum net capital", "Have no debt", "Be owned by banks"],
+        correct: 1,
+        explanation: "Net capital rule (Rule 15c3-1) requires minimum net capital."
+    },
+    {
+        id: 334,
+        category: "Broker-Dealer",
+        question: "Customer protection rule requires:",
+        options: ["No requirements", "Segregation of customer securities", "Joint accounts", "Government holding"],
+        correct: 1,
+        explanation: "Customer securities must be segregated from firm assets."
+    },
+    {
+        id: 335,
+        category: "Broker-Dealer",
+        question: "A clearing firm:",
+        options: ["Advises customers", "Settles trades between broker-dealers", "Underwrites offerings", "Registers securities"],
+        correct: 1,
+        explanation: "Clearing firms settle trades between broker-dealers."
+    },
+    {
+        id: 336,
+        category: "Broker-Dealer",
+        question: "Prime brokers provide services to:",
+        options: ["Retail customers", "Hedge funds", "Small businesses", "Individual investors"],
+        correct: 1,
+        explanation: "Prime brokers serve hedge funds and institutional clients."
+    },
+    {
+        id: 337,
+        category: "Broker-Dealer",
+        question: "Introducing broker-dealer:",
+        options: ["Clears own trades", "Introduces customers to clearing firm", "Only underwrites", "Only advises"],
+        correct: 1,
+        explanation: "Introducing broker = clears through another firm."
+    },
+    {
+        id: 338,
+        category: "Broker-Dealer",
+        question: "Carrying broker-dealer:",
+        options: ["Does not hold customer accounts", "Holds and maintains customer accounts", "Only executes trades", "No customer functions"],
+        correct: 1,
+        explanation: "Carrying broker holds and maintains customer accounts/positions."
+    },
+    {
+        id: 339,
+        category: "Broker-Dealer",
+        question: "Soft dollar arrangements involve:",
+        options: ["Customer payments", "Broker using client commissions for research", "Firm revenue", "Interest payments"],
+        correct: 1,
+        explanation: "Soft dollars = research paid for by client commission dollars."
+    },
+    {
+        id: 340,
+        category: "Broker-Dealer",
+        question: "Markup policy applies to:",
+        options: ["Only stocks", "Principal transactions with customers", "Only options", "Retirement accounts"],
+        correct: 1,
+        explanation: "Markups apply to principal (dealer) transactions with customers."
+    },
+    // REGISTERED REPRESENTATIVE DUTIES
+    {
+        id: 341,
+        category: "Registered Representative",
+        question: "A registered representative's primary duty is to:",
+        options: ["Maximize firm profits", "Serve the customer and comply with rules", "Avoid all risk", "Sell products only"],
+        correct: 1,
+        explanation: "RRs must serve customers and comply with regulations."
+    },
+    {
+        id: 342,
+        category: "Registered Representative",
+        question: "Uniform Application for Securities Industry Registration is:",
+        options: ["Form BD", "Form U4", "Form 10-K", "Form 8-K"],
+        correct: 1,
+        explanation: "U4 = Uniform Application for Securities Industry Registration."
+    },
+    {
+        id: 343,
+        category: "Registered Representative",
+        question: "Form U4 contains:",
+        options: ["Only employment history", "Personal info, employment, disciplinary history", "Customer names only", "Trading history"],
+        correct: 1,
+        explanation: "U4 = personal info, employment, disciplinary disclosure."
+    },
+    {
+        id: 344,
+        category: "Registered Representative",
+        question: "A registered representative must update U4:",
+        options: ["Never", "Within 30 days of material changes", "Only when leaving firm", "Annually"],
+        correct: 1,
+        explanation: "U4 amendments required within 30 days of material changes."
+    },
+    {
+        id: 345,
+        category: "Registered Representative",
+        question: " Continuing education for RRs includes:",
+        options: ["No requirements", "Regulatory element and firm element", "Only firm element", "One-time training"],
+        correct: 1,
+        explanation: "CE = regulatory element (annual) + firm element (ongoing)."
+    },
+    {
+        id: 346,
+        category: "Registered Representative",
+        question: "Outside accounts of RR require:",
+        options: ["No approval", "Written disclosure and approval", "Automatic approval", "Annual filing only"],
+        correct: 1,
+        explanation: "Outside accounts require disclosure and firm approval."
+    },
+    {
+        id: 347,
+        category: "Registered Representative",
+        question: "Gifts to customers:",
+        options: ["Unlimited", "Must be reasonable and disclosed", "Are prohibited", "Are tax-free"],
+        correct: 1,
+        explanation: "Gifts must be reasonable and disclosed per firm policy."
+    },
+    {
+        id: 348,
+        category: "Registered Representative",
+        question: "Political contributions:",
+        options: ["Unlimited", "Subject to pay-to-play rules", "No restrictions", "Anonymous"],
+        correct: 1,
+        explanation: "Political contributions subject to SEC pay-to-play rules for municipal advisors."
+    },
+    {
+        id: 349,
+        category: "Registered Representative",
+        question: "Public appearances by RRs:",
+        options: ["No oversight", "Subject to supervision and recordkeeping", "Are confidential", "Are not monitored"],
+        correct: 1,
+        explanation: "Public appearances supervised and recorded."
+    },
+    {
+        id: 350,
+        category: "Registered Representative",
+        question: "Correspondence includes:",
+        options: ["Only in-person meetings", "All communications with public", "Only formal letters", "Nothing requiring retention"],
+        correct: 1,
+        explanation: "Correspondence = all communications with public, must be retained."
+    },
+    // INVESTMENT COMPANY ACT
+    {
+        id: 351,
+        category: "Investment Companies",
+        question: "The Investment Company Act of 1940 primarily regulates:",
+        options: ["Individual stocks", "Mutual funds, hedge funds, ETFs", "Corporate bonds", "Options"],
+        correct: 1,
+        explanation: "1940 Act regulates investment companies including mutual funds."
+    },
+    {
+        id: 352,
+        category: "Investment Companies",
+        question: "An open-end fund is also called:",
+        options: ["Closed-end fund", "Mutual fund", "Hedge fund", "Unit investment trust"],
+        correct: 1,
+        explanation: "Open-end = mutual fund (continuously issues/redeems shares)."
+    },
+    {
+        id: 353,
+        category: "Investment Companies",
+        question: "Closed-end funds:",
+        options: ["Continuously issue shares", "Have fixed capital, trade like stocks", "Are always NAV-priced", "Are not regulated"],
+        correct: 1,
+        explanation: "Closed-end = fixed capital, trades on exchange at market price."
+    },
+    {
+        id: 354,
+        category: "Investment Companies",
+        question: "A unit investment trust (UIT):",
+        options: ["Actively managed", "Fixed portfolio, set termination date", "Hedge fund", "Private equity"],
+        correct: 1,
+        explanation: "UIT = fixed portfolio, terminates at specified date."
+    },
+    {
+        id: 355,
+        category: "Investment Companies",
+        question: "Mutual fund NAV is calculated:",
+        options: ["Continuously", "Once per day after market close", "Weekly", "Monthly"],
+        correct: 1,
+        explanation: "Mutual fund NAV calculated once daily after market close."
+    },
+    {
+        id: 356,
+        category: "Investment Companies",
+        question: "12b-1 fees are for:",
+        options: ["Management", "Distribution and marketing", "Custody", "Audit"],
+        correct: 1,
+        explanation: "12b-1 fees cover distribution and marketing expenses."
+    },
+    {
+        id: 357,
+        category: "Investment Companies",
+        question: "Load funds charge:",
+        options: ["No fee", "Sales charge", "Management fee only", "Redemption fee"],
+        correct: 1,
+        explanation: "Load = sales charge (front-end, back-end, or level)."
+    },
+    {
+        id: 358,
+        category: "Investment Companies",
+        question: "No-load funds:",
+        options: ["Have no fees", "Have no sales charge", "Have no management fee", "Are illegal"],
+        correct: 1,
+        explanation: "No-load = no sales charge, but may have other fees."
+    },
+    {
+        id: 359,
+        category: "Investment Companies",
+        question: "Class A shares typically have:",
+        options: ["Highest expenses", "Front-end sales charge, lower ongoing fees", "No minimum", "No restrictions"],
+        correct: 1,
+        explanation: "Class A = front-end load, lower 12b-1 and expenses."
+    },
+    {
+        id: 360,
+        category: "Investment Companies",
+        question: "Class B shares typically have:",
+        options: ["Front-end load", "Contingent deferred sales charge (CDSC), higher expenses", "Lowest expenses", "No sales charge"],
+        correct: 1,
+        explanation: "Class B = CDSC (back-end load), higher 12b-1 fees."
+    },
+    {
+        id: 361,
+        category: "Investment Companies",
+        question: "Class C shares typically have:",
+        options: ["Front or back-end load", "Level load (1% ongoing), CDSC", "No fees", "Highest fees"],
+        correct: 1,
+        explanation: "Class C = level load (about 1%) and short CDSC."
+    },
+    {
+        id: 362,
+        category: "Investment Companies",
+        question: "A mutual fund's investment objective describes:",
+        options: ["Past performance", "Types of securities and goals", "Management team", "Fees"],
+        correct: 1,
+        explanation: "Objective = what fund invests in and goals (growth, income, etc.)."
+    },
+    {
+        id: 363,
+        category: "Investment Companies",
+        question: "Growth funds seek:",
+        options: ["Income only", "Capital appreciation", "Preservation", "Tax efficiency"],
+        correct: 1,
+        explanation: "Growth funds focus on capital appreciation."
+    },
+    {
+        id: 364,
+        category: "Investment Companies",
+        question: "Value funds seek:",
+        options: ["Hot stocks", "Undervalued securities", "Momentum stocks", "Small caps only"],
+        correct: 1,
+        explanation: "Value = securities trading below intrinsic value."
+    },
+    {
+        id: 365,
+        category: "Investment Companies",
+        question: "Income funds seek:",
+        options: ["Maximum growth", "Current income", "Tax avoidance", "Speculation"],
+        correct: 1,
+        explanation: "Income = regular income through dividends/interest."
+    },
+    {
+        id: 366,
+        category: "Investment Companies",
+        question: "Index funds:",
+        options: ["Try to beat the market", "Track an index", "Are always actively managed", "Have high turnover"],
+        correct: 1,
+        explanation: "Index funds track a market index like S&P 500."
+    },
+    {
+        id: 367,
+        category: "Investment Companies",
+        question: "Sector funds invest in:",
+        options: ["All sectors", "One industry sector", "Only bonds", "Cash equivalents"],
+        correct: 1,
+        explanation: "Sector funds focus on specific industry sector."
+    },
+    {
+        id: 368,
+        category: "Investment Companies",
+        question: "International funds invest in:",
+        options: ["Only US stocks", "Foreign securities", "Only domestic", "Government bonds only"],
+        correct: 1,
+        explanation: "International = foreign securities outside home country."
+    },
+    {
+        id: 369,
+        category: "Investment Companies",
+        question: "Global funds invest in:",
+        options: ["Only domestic", "Worldwide including US", "Single country only", "Emerging markets only"],
+        correct: 1,
+        explanation: "Global = worldwide including investor's home country."
+    },
+    {
+        id: 370,
+        category: "Investment Companies",
+        question: "Emerging market funds invest in:",
+        options: ["Developed countries only", "Less developed countries with growth potential", "US only", "Europe only"],
+        correct: 1,
+        explanation: "Emerging markets = developing countries like China, India, Brazil."
+    },
+    // WRAP FEES AND ADVISORY ACCOUNTS
+    {
+        id: 371,
+        category: "Advisory Accounts",
+        question: "A wrap fee program:",
+        options: ["Charges separately for advice and trading", "Bundles advisory fee into one charge", "Is a type of margin", "Is prohibited"],
+        correct: 1,
+        explanation: "Wrap fee = all-inclusive fee for advice, trading, custody."
+    },
+    {
+        id: 372,
+        category: "Advisory Accounts",
+        question: "Advisory accounts are regulated under:",
+        options: ["Securities Act of 1933", "Investment Advisers Act of 1940", "Securities Exchange Act", "Commodity Exchange Act"],
+        correct: 1,
+        explanation: "Advisers regulated under 1940 Advisers Act."
+    },
+    {
+        id: 373,
+        category: "Advisory Accounts",
+        question: "Registered Investment Advisers (RIAs) must:",
+        options: ["Register with FINRA", "Register with SEC or state", "Be broker-dealers", "Be banks only"],
+        correct: 1,
+        explanation: "RIAs register with SEC (>$110M AUM) or state."
+    },
+    {
+        id: 374,
+        category: "Advisory Accounts",
+        question: "Fiduciary duty for advisors means:",
+        options: ["Act in client's best interest", "Maximize advisor compensation", "Follow market trends", "Avoid all risk"],
+        correct: 0,
+        explanation: "Fiduciary = legal duty to act in client's best interest."
+    },
+    {
+        id: 375,
+        category: "Advisory Accounts",
+        question: "Discretionary authority means advisor:",
+        options: ["Needs approval for each trade", "Can trade without prior approval", "Cannot trade", "Only advises"],
+        correct: 1,
+        explanation: "Discretionary = can trade without client pre-approval."
+    },
+    {
+        id: 376,
+        category: "Advisory Accounts",
+        question: "Performance fees:",
+        options: ["Are always allowed", "Subject to restrictions", "Are prohibited", "Are unregulated"],
+        correct: 1,
+        explanation: "Performance fees have restrictions (e.g., can't exceed 15% hedge fund rule)."
+    },
+    {
+        id: 377,
+        category: "Advisory Accounts",
+        question: "A managed account is:",
+        options: ["Same as mutual fund", "Individually managed for client", "Unmanaged account", "Retirement only"],
+        correct: 1,
+        explanation: "Managed account = individually managed portfolio."
+    },
+    {
+        id: 378,
+        category: "Advisory Accounts",
+        question: "Separately Managed Accounts (SMAs):",
+        options: ["Pooled investment", "Individual portfolios using manager's strategies", "Mutual funds", "ETFs only"],
+        correct: 1,
+        explanation: "SMAs = individual accounts using manager's separate strategies."
+    },
+    {
+        id: 379,
+        category: "Advisory Accounts",
+        question: "Asset-based compensation creates potential conflict:",
+        options: ["No conflict", "Where advisor benefits from recommending certain products", "Is illegal", "Must be disclosed"],
+        correct: 1,
+        explanation: "Asset-based fees create conflicts that must be disclosed."
+    },
+    {
+        id: 380,
+        category: "Advisory Accounts",
+        question: "A fee-based account charges:",
+        options: ["Commissions", "Asset-based fees", "Transaction fees only", "Nothing"],
+        correct: 1,
+        explanation: "Fee-based = asset-based fee instead of per-trade commissions."
+    },
+    // REGULATION BEST INTEREST (REG BI)
+    {
+        id: 381,
+        category: "Reg BI",
+        question: "Regulation Best Interest (Reg BI) applies to:",
+        options: ["Only RIAs", "Broker-dealers and their representatives", "Only institutional investors", "Advisors only"],
+        correct: 1,
+        explanation: "Reg BI applies to broker-dealers and registered representatives."
+    },
+    {
+        id: 382,
+        category: "Reg BI",
+        question: "Reg BI requires:",
+        options: ["Fiduciary standard", "Care standard and disclosure", "No specific standard", "Lowest cost only"],
+        correct: 1,
+        explanation: "Reg BI = care standard, disclosure, conflicts, and controls."
+    },
+    {
+        id: 383,
+        category: "Reg BI",
+        question: "Under Reg BI, a recommendation must be:",
+        options: ["Always execute", "Suitable for the customer", "Approved by compliance", "In writing"],
+        correct: 1,
+        explanation: "Reg BI requires recommendations be in customer's best interest."
+    },
+    {
+        id: 384,
+        category: "Reg BI",
+        question: "Disclosure obligation under Reg BI requires:",
+        options: ["No disclosure", "Full disclosure of conflicts", "Only fees", "Annual disclosure only"],
+        correct: 1,
+        explanation: "Disclose all material conflicts before and at recommendation."
+    },
+    {
+        id: 385,
+        category: "Reg BI",
+        question: "Conflict of interest mitigation under Reg BI includes:",
+        options: ["Ignore conflicts", "Identify, disclose, and mitigate conflicts", "Hide conflicts", "Only disclose"],
+        correct: 1,
+        explanation: "Identify, disclose, and mitigate material conflicts."
+    },
+    // CYBERSECURITY
+    {
+        id: 386,
+        category: "Cybersecurity",
+        question: "Firms must protect customer information under:",
+        options: ["No rules", "Regulation S-P", "SEC Act of 1934", "FINRA only"],
+        correct: 1,
+        explanation: "Reg S-P requires safeguards for customer information."
+    },
+    {
+        id: 387,
+        category: "Cybersecurity",
+        question: "A cybersecurity policy should include:",
+        options: ["No elements", "Prevention, detection, response procedures", "Only trading rules", "Marketing guidelines"],
+        correct: 1,
+        explanation: "Cybersecurity = written policies on prevention, detection, response."
+    },
+    {
+        id: 388,
+        category: "Cybersecurity",
+        question: "Customer personal information must be:",
+        options: ["Shared freely", "Protected and kept confidential", "Sold for marketing", "Released to regulators only"],
+        correct: 1,
+        explanation: "PII must be protected per privacy regulations."
+    },
+    {
+        id: 389,
+        category: "Cybersecurity",
+        question: "Phishing attempts:",
+        options: ["Are safe", "Trick users into revealing credentials", "Are illegal", "Are monitored only"],
+        correct: 1,
+        explanation: "Phishing = fraudulent attempts to obtain sensitive information."
+    },
+    {
+        id: 390,
+        category: "Cybersecurity",
+        question: "Multi-factor authentication provides:",
+        options: ["No additional security", "Additional security layer", "Less security", "One-time login"],
+        correct: 1,
+        explanation: "MFA = multiple verification methods for added security."
+    },
+    // BUSINESS CONTINUITY
+    {
+        id: 391,
+        category: "Business Continuity",
+        question: "Business Continuity Plans (BCP) must address:",
+        options: ["Only trading", "Business disruption, data backup, communication", "Marketing plans", "Employee hiring"],
+        correct: 1,
+        explanation: "BCP addresses disruptions, data protection, communication plans."
+    },
+    {
+        id: 392,
+        category: "Business Continuity",
+        question: "Customer notifications during disruption:",
+        options: ["No requirement", "Must have procedures to notify customers", "Only via mail", "Are prohibited"],
+        correct: 1,
+        explanation: "BCP includes customer notification procedures."
+    },
+    {
+        id: 393,
+        category: "Business Continuity",
+        question: "Data backup should be:",
+        options: ["Not necessary", "Offsite and tested regularly", "Only local", "Annual only"],
+        correct: 1,
+        explanation: "Data backed up offsite and tested for recovery."
+    },
+    {
+        id: 394,
+        category: "Business Continuity",
+        question: "FINRA requires firms to test BCP:",
+        options: ["No requirement", "Periodically", "Once ever", "Only after incidents"],
+        correct: 1,
+        explanation: "BCP must be periodically reviewed and tested."
+    },
+    {
+        id: 395,
+        category: "Business Continuity",
+        question: "Third-party vendor risks:",
+        options: ["No responsibility", "Must be assessed and monitored", "Are not relevant", "Are handled by vendors"],
+        correct: 1,
+        explanation: "Firms responsible for vendor risk management."
+    },
+    // ANTI-FRAUD
+    {
+        id: 396,
+        category: "Anti-Fraud",
+        question: "Section 10(b) prohibits:",
+        options: ["All trading", "Fraudulent activities in connection with securities", "Options trading", "Foreign trading"],
+        correct: 1,
+        explanation: "Sec 10(b) = anti-fraud rule for securities trading."
+    },
+    {
+        id: 397,
+        category: "Anti-Fraud",
+        question: "Rule 10b-5 implements:",
+        options: ["Section 10(b)", "Securities Act of 1933", "Investment Company Act", "Advisers Act"],
+        correct: 0,
+        explanation: "10b-5 implements Sec 10(b) anti-fraud provisions."
+    },
+    {
+        id: 398,
+        category: "Anti-Fraud",
+        question: "Insider trading is prohibited because:",
+        options: ["Is not illegal", "Involves trading on material nonpublic information", "Is regulated only", "Requires registration"],
+        correct: 1,
+        explanation: "Insider trading = trading on material nonpublic info."
+    },
+    {
+        id: 399,
+        category: "Anti-Fraud",
+        question: "Material information is that which:",
+        options: ["Is publicly available", "Would affect investor decision", "Is trivial", "Is historical"],
+        correct: 1,
+        explanation: "Material = would affect reasonable investor's decision."
+    },
+    {
+        id: 400,
+        category: "Anti-Fraud",
+        question: "Misrepresentation includes:",
+        options: ["Only lies", "Omitting material facts or making false statements", "Opinions only", "Facts only"],
+        correct: 1,
+        explanation: "Misrepresentation = false statements or omitting material facts."
+    },
+    // ADDITIONAL SIE TOPICS
+    {
+        id: 401,
+        category: "Options",
+        question: "An option's intrinsic value is:",
+        options: ["Time remaining until expiration", "In-the-money amount", "Total premium", "Volatility measure"],
+        correct: 1,
+        explanation: "Intrinsic value = in-the-money amount (for calls: stock price - strike; for puts: strike - stock price)."
+    },
+    {
+        id: 402,
+        category: "Options",
+        question: "Time value of an option is:",
+        options: ["Intrinsic value", "Premium minus intrinsic value", "Strike price", "Stock price"],
+        correct: 1,
+        explanation: "Time value = premium minus intrinsic value, represents chance of profit before expiration."
+    },
+    {
+        id: 403,
+        category: "Options",
+        question: "At expiration, an option's value equals:",
+        options: ["Time value only", "Intrinsic value only", "Premium", "Volatility"],
+        correct: 1,
+        explanation: "At expiration, only intrinsic value remains - time value is zero."
+    },
+    {
+        id: 404,
+        category: "Options",
+        question: "Long call maximum loss is:",
+        options: ["Strike price", "Premium paid", "Unlimited", "Stock price"],
+        correct: 1,
+        explanation: "Long call buyer can lose only the premium paid."
+    },
+    {
+        id: 405,
+        category: "Options",
+        question: "Long put maximum loss is:",
+        options: ["Unlimited", "Premium paid", "Strike price", "Stock price"],
+        correct: 1,
+        explanation: "Long put buyer can lose only the premium paid."
+    },
+    {
+        id: 406,
+        category: "Options",
+        question: "Writing a naked call exposes writer to:",
+        options: ["Limited loss", "Unlimited loss", "No risk", "Fixed loss"],
+        correct: 1,
+        explanation: "Naked call writer has unlimited loss potential if stock rises significantly."
+    },
+    {
+        id: 407,
+        category: "Options",
+        question: "A straddle involves:",
+        options: ["One call and one put at same strike", "Two calls", "Two puts", "Stock and bond"],
+        correct: 0,
+        explanation: "Straddle = buying call and put at same strike, profits from volatility."
+    },
+    {
+        id: 408,
+        category: "Options",
+        question: "A strangle involves:",
+        options: ["Same strike call and put", "Different strike call and put", "Two calls", "Two puts"],
+        correct: 1,
+        explanation: "Strangle = call and put at different strikes, profits from significant move either direction."
+    },
+    {
+        id: 409,
+        category: "Options",
+        question: "LEAPs are:",
+        options: ["Short-term options", "Long-term equity anticipation securities", "Index options", "Futures"],
+        correct: 1,
+        explanation: "LEAPs = Long-term Equity Anticipation Securities, long-term options."
+    },
+    {
+        id: 410,
+        category: "Options",
+        question: "Equity options settle:",
+        options: ["In cash", "By physical delivery of stock", "In bonds", "No settlement"],
+        correct: 1,
+        explanation: "Equity options settle by physical delivery of underlying stock."
+    },
+    {
+        id: 411,
+        category: "Options",
+        question: "Index options typically settle:",
+        options: ["By physical delivery", "In cash", "By delivery of ETFs", "No settlement"],
+        correct: 1,
+        explanation: "Index options settle in cash based on index value."
+    },
+    {
+        id: 412,
+        category: "Options",
+        question: "An option that gives the right to buy is a:",
+        options: ["Put", "Call", "Swap", "Future"],
+        correct: 1,
+        explanation: "Call = right to buy."
+    },
+    {
+        id: 413,
+        category: "Options",
+        question: "An option that gives the right to sell is a:",
+        options: ["Call", "Put", "Future", "Swap"],
+        correct: 1,
+        explanation: "Put = right to sell."
+    },
+    {
+        id: 414,
+        category: "Options",
+        question: "The strike price is:",
+        options: ["Current market price", "Price at which option can be exercised", "Premium", "Commission"],
+        correct: 1,
+        explanation: "Strike = fixed price at which option can be exercised."
+    },
+    {
+        id: 415,
+        category: "Options",
+        question: "In-the-money call means:",
+        options: ["Stock price below strike", "Stock price above strike", "Stock at strike", "Near expiration"],
+        correct: 1,
+        explanation: "In-the-money call = stock price > strike price."
+    },
+    {
+        id: 416,
+        category: "Options",
+        question: "Out-of-the-money call means:",
+        options: ["Stock price above strike", "Stock price below strike", "At expiration", "Has value"],
+        correct: 1,
+        explanation: "Out-of-the-money call = stock price < strike price."
+    },
+    {
+        id: 417,
+        category: "Options",
+        question: "At-the-money option means:",
+        options: ["Strike equals market price", "Strike above market", "Strike below market", "Near expiration"],
+        correct: 0,
+        explanation: "ATM = strike price approximately equals stock price."
+    },
+    {
+        id: 418,
+        category: "Options",
+        question: "Option holders typically:",
+        options: ["Must exercise", "Can let expire or exercise", "Cannot trade", "Must hold to expiration"],
+        correct: 1,
+        explanation: "Option holders can exercise, sell, or let expire."
+    },
+    {
+        id: 419,
+        category: "Options",
+        question: "American-style options can be exercised:",
+        options: ["Only at expiration", "Anytime before expiration", "Only at specific dates", "Never"],
+        correct: 1,
+        explanation: "American options = exercise anytime before expiration."
+    },
+    {
+        id: 420,
+        category: "Options",
+        question: "European-style options can be exercised:",
+        options: ["Anytime", "Only at expiration", "Before expiration", "Daily"],
+        correct: 1,
+        explanation: "European options = exercise only at expiration."
+    },
+    // SUITABILITY - ADDITIONAL
+    {
+        id: 421,
+        category: "Suitability",
+        question: "Risk tolerance assessment should consider:",
+        options: ["Only age", "Age, financial situation, investment goals, risk capacity", "Only income", "Only net worth"],
+        correct: 1,
+        explanation: "Risk tolerance considers multiple factors including age, finances, goals."
+    },
+    {
+        id: 422,
+        category: "Suitability",
+        question: "A conservative investor typically prefers:",
+        options: ["High-growth stocks", "Bonds, stable value", "Options", "Commodities"],
+        correct: 1,
+        explanation: "Conservative = lower risk, income-focused investments."
+    },
+    {
+        id: 423,
+        category: "Suitability",
+        question: "An aggressive investor typically accepts:",
+        options: ["No risk", "Higher volatility for potential returns", "Only bonds", "Guaranteed returns"],
+        correct: 1,
+        explanation: "Aggressive = higher risk tolerance for higher potential returns."
+    },
+    {
+        id: 424,
+        category: "Suitability",
+        question: "Investment objectives include:",
+        options: ["Only growth", "Growth, income, preservation, speculation", "Tax avoidance", "Commission minimization"],
+        correct: 1,
+        explanation: "Objectives = growth, income, capital preservation, speculation."
+    },
+    {
+        id: 425,
+        category: "Suitability",
+        question: "Time horizon is important because:",
+        options: ["It affects only taxes", "It determines appropriate investments and risk", "It sets commissions", "It is required by law"],
+        correct: 1,
+        explanation: "Time horizon helps determine suitable investments and risk level."
+    },
+    {
+        id: 426,
+        category: "Suitability",
+        question: "A young investor with long horizon can typically:",
+        options: ["Only invest in bonds", "Take more risk", "Avoid stocks", "Choose guaranteed products"],
+        correct: 1,
+        explanation: "Long horizon = more time to recover from downturns = higher risk capacity."
+    },
+    {
+        id: 427,
+        category: "Suitability",
+        question: "Near-retirement investors should typically:",
+        options: ["Maximize growth", "Reduce risk, preserve capital", "Invest in speculative stocks", "Ignore volatility"],
+        correct: 1,
+        explanation: "Near retirement = shift to capital preservation and income."
+    },
+    {
+        id: 428,
+        category: "Suitability",
+        question: "Liquid assets are important for:",
+        options: ["Long-term goals only", "Emergency funds and short-term needs", "Only investments", "Tax planning"],
+        correct: 1,
+        explanation: "Liquidity = ability to access funds quickly without loss."
+    },
+    {
+        id: 429,
+        category: "Suitability",
+        question: "Tax considerations in recommendations:",
+        options: ["Should be ignored", "Should be considered for overall return", "Are illegal to discuss", "Only affect retirement"],
+        correct: 1,
+        explanation: "Tax implications affect after-tax returns and suitability."
+    },
+    {
+        id: 430,
+        category: "Suitability",
+        question: "A concentration risk occurs when:",
+        options: ["Portfolio is diversified", "Too much in one investment/sector", "Balanced", "Has many positions"],
+        correct: 1,
+        explanation: "Concentration = too much in single investment increases risk."
+    },
+    {
+        id: 431,
+        category: "Suitability",
+        question: "Diversification reduces:",
+        options: ["Returns", "Risk through variety", "Taxes", "Commissions"],
+        correct: 1,
+        explanation: "Diversification = spreading risk across investments."
+    },
+    {
+        id: 432,
+        category: "Suitability",
+        question: "A breakpoint in mutual funds:",
+        options: ["Is a penalty", "Provides volume discount on sales charge", "Increases fees", "Is required by law"],
+        correct: 1,
+        explanation: "Breakpoints = reduced sales charge at higher investment levels."
+    },
+    {
+        id: 433,
+        category: "Suitability",
+        question: "Switching between mutual funds:",
+        options: ["Always recommended", "May have sales charges and tax consequences", "Never has costs", "Is tax-free"],
+        correct: 1,
+        explanation: "Fund switches can trigger sales charges and capital gains taxes."
+    },
+    {
+        id: 434,
+        category: "Suitability",
+        question: "Class A vs Class C shares:",
+        options: ["Same cost", "A has front-load, lower expenses; C has level load, higher expenses", "Identical", "No difference in fees"],
+        correct: 1,
+        explanation: "Class A = front load + lower ongoing; Class C = level load + higher ongoing."
+    },
+    {
+        id: 435,
+        category: "Suitability",
+        question: "For long-term investors, Class A shares are often better because:",
+        options: ["Higher expenses", "Lower ongoing expenses offset front-load over time", "No sales charge", "Are guaranteed"],
+        correct: 1,
+        explanation: "Lower 12b-1 fees on A shares benefit long-term holders."
+    },
+    // REGULATION - ADDITIONAL
+    {
+        id: 436,
+        category: "Regulation",
+        question: "Securities Act of 1933 primarily deals with:",
+        options: ["Broker-dealer registration", "New securities offerings", "Trading", "Advisory services"],
+        correct: 1,
+        explanation: "1933 Act regulates NEW securities offerings to the public."
+    },
+    {
+        id: 437,
+        category: "Regulation",
+        question: "Registration statement under 1933 Act requires:",
+        options: ["No disclosure", "Financial and business information", "Only CEO info", "No filing needed"],
+        correct: 1,
+        explanation: "Registration includes financial, business, and risk disclosures."
+    },
+    {
+        id: 438,
+        category: "Regulation",
+        question: "Prospectus purpose is to:",
+        options: ["Marketing only", "Provide material information to investors", "Hide information", "Set prices"],
+        correct: 1,
+        explanation: "Prospectus = disclosure document for investors."
+    },
+    {
+        id: 439,
+        category: "Regulation",
+        question: "Exempt securities include:",
+        options: ["All corporate stocks", "US gov, munis, bank CDs, not-for-profit", "Penny stocks", "All derivatives"],
+        correct: 1,
+        explanation: "Exempt = government, municipal, certain bank products."
+    },
+    {
+        id: 440,
+        category: "Regulation",
+        question: "Exempt transactions include:",
+        options: ["All public offerings", "Private placements, Regulation D, intrastate", "Public auctions", "Exchange trades"],
+        correct: 1,
+        explanation: "Exempt = private placements, Reg D, intrastate offerings."
+    },
+    {
+        id: 441,
+        category: "Regulation",
+        question: "Registration requirements can be met through:",
+        options: ["No filing", "SEC registration or exemption", "State only", "FINRA only"],
+        correct: 1,
+        explanation: "Securities must be registered OR exempt from registration."
+    },
+    {
+        id: 442,
+        category: "Regulation",
+        question: "Broker-dealer registration with SEC requires:",
+        options: ["No requirements", "Form BD, net capital, recordkeeping", "Only state registration", "No filing"],
+        correct: 1,
+        explanation: "BDs register via Form BD, meet net capital, maintain records."
+    },
+    {
+        id: 443,
+        category: "Regulation",
+        question: "Investment adviser registration requires:",
+        options: ["Only FINRA", "Form ADV to SEC or state", "No registration", "State only"],
+        correct: 1,
+        explanation: "Advisers file Form ADV with SEC ($110M+) or state."
+    },
+    {
+        id: 444,
+        category: "Regulation",
+        question: "Registered representatives must pass:",
+        options: ["Only SIE", "SIE and appropriate qualification exams", "No exam", "CFA only"],
+        correct: 1,
+        explanation: "RRs need SIE + appropriate series exams."
+    },
+    {
+        id: 445,
+        category: "Regulation",
+        question: "SIE exam covers:",
+        options: ["Product-specific knowledge", "Basic industry knowledge", "Advanced strategies", "Tax planning"],
+        correct: 1,
+        explanation: "SIE = basic securities industry knowledge."
+    },
+    {
+        id: 446,
+        category: "Regulation",
+        question: "Series 7 allows sale of:",
+        options: ["Mutual funds only", "General securities including options", "Commodities only", "Insurance only"],
+        correct: 1,
+        explanation: "Series 7 = General Securities Representative, broad product license."
+    },
+    {
+        id: 447,
+        category: "Regulation",
+        question: "Series 63 is:",
+        options: ["National exam", "Uniform Securities Agent State Law Exam", "Registration exam", "Advanced exam"],
+        correct: 1,
+        explanation: "Series 63 = Uniform Securities Agent State Law Exam."
+    },
+    {
+        id: 448,
+        category: "Regulation",
+        question: "Continuing education includes:",
+        options: ["No requirements", "Regulatory element and firm element", "Annual exam", "One-time training"],
+        correct: 1,
+        explanation: "CE = regulatory (annual) + firm element (ongoing)."
+    },
+    {
+        id: 449,
+        category: "Regulation",
+        question: "Fingerprints for registration:",
+        options: ["Not required", "Required for most registered persons", "Optional", "Only for managers"],
+        correct: 1,
+        explanation: "Fingerprints required for BD and RRs."
+    },
+    {
+        id: 450,
+        category: "Regulation",
+        question: "Statistical tests in registration:",
+        options: ["Required", "Background and credit checks", "Only for supervisors", "Not required"],
+        correct: 1,
+        explanation: "Background investigations required for registration."
+    },
+    // ECONOMICS - ADDITIONAL
+    {
+        id: 451,
+        category: "Economics",
+        question: "Federal Reserve Board governs:",
+        options: ["Fiscal policy", "Monetary policy", "Tax policy", "Trade policy"],
+        correct: 1,
+        explanation: "Fed controls monetary policy."
+    },
+    {
+        id: 452,
+        category: "Economics",
+        question: "Open market operations involve:",
+        options: ["Stock trading", "Buying/selling government securities", "Corporate bonds", "Currency trading"],
+        correct: 1,
+        explanation: "Open market operations = Fed buying/selling Treasuries."
+    },
+    {
+        id: 453,
+        category: "Economics",
+        question: "Discount rate is:",
+        options: ["Mortgage rate", "Rate Fed charges banks for loans", "Savings rate", "Corporate rate"],
+        correct: 1,
+        explanation: "Discount rate = Fed lending rate to banks."
+    },
+    {
+        id: 454,
+        category: "Economics",
+        question: "Reserve requirements:",
+        options: ["Set by Congress", "Amount banks must hold", "Are zero", "Are voluntary"],
+        correct: 1,
+        explanation: "Reserve requirements = minimum reserves banks must hold."
+    },
+    {
+        id: 455,
+        category: "Economics",
+        question: "Quantitative easing is:",
+        options: ["Tax increase", "Fed buying securities to increase money supply", "Interest rate hike", "Budget cuts"],
+        correct: 1,
+        explanation: "QE = Fed buying securities to inject liquidity."
+    },
+    {
+        id: 456,
+        category: "Economics",
+        question: "Stagflation is:",
+        options: ["Growth with low inflation", "Slow growth with high inflation", "No inflation", "Deflation"],
+        correct: 1,
+        explanation: "Stagflation = stagnant economy + high inflation."
+    },
+    {
+        id: 457,
+        category: "Economics",
+        question: "Leading economic indicators:",
+        options: ["Predict future economic activity", "Show past performance", "Are always accurate", "Include unemployment only"],
+        correct: 0,
+        explanation: "Leading indicators predict future economic direction."
+    },
+    {
+        id: 458,
+        category: "Economics",
+        question: "Recession is typically defined as:",
+        options: ["Any decline", "Two consecutive quarters of negative GDP", "Stock market decline", "Inflation"],
+        correct: 1,
+        explanation: "Recession = two consecutive quarters negative GDP."
+    },
+    {
+        id: 459,
+        category: "Economics",
+        question: "Unemployment rate measures:",
+        options: ["All adults", "Labor force not employed seeking work", "Total population", "Retirees"],
+        correct: 1,
+        explanation: "Unemployment = % of labor force seeking work but unemployed."
+    },
+    {
+        id: 460,
+        category: "Economics",
+        question: "CPI measures:",
+        options: ["Stock prices", "Consumer price index/inflation", "Corporate profits", "GDP"],
+        correct: 1,
+        explanation: "CPI = Consumer Price Index, measures inflation."
+    },
+    {
+        id: 461,
+        category: "Economics",
+        question: "Interest rates and bond prices:",
+        options: ["Move together", "Move inversely", "Are unrelated", "Always equal"],
+        correct: 1,
+        explanation: "Interest rates and bond prices move inversely."
+    },
+    {
+        id: 462,
+        category: "Economics",
+        question: "Yield curve slope indicates:",
+        options: ["Stock market direction", "Market expectations for interest rates", "Inflation only", "Tax rates"],
+        correct: 1,
+        explanation: "Yield curve reflects expectations for future rates."
+    },
+    {
+        id: 463,
+        category: "Economics",
+        question: "Normal yield curve is:",
+        options: ["Flat", "Upward sloping (longer maturities higher)", "Inverted", "Negative"],
+        correct: 1,
+        explanation: "Normal = upward sloping (longer rates > short rates)."
+    },
+    {
+        id: 464,
+        category: "Economics",
+        question: "Liquidity preference theory states:",
+        options: ["Long rates = short rates", "Investors prefer liquidity, so longer rates higher", "Rates are fixed", "No relationship"],
+        correct: 1,
+        explanation: "Liquidity preference = investors want premium for longer maturities."
+    },
+    {
+        id: 465,
+        category: "Economics",
+        question: "Exchange rates:",
+        options: ["Are fixed", "Value of one currency vs another", "Set by Fed", "Do not affect imports/exports"],
+        correct: 1,
+        explanation: "Exchange rate = value of one currency in terms of another."
+    },
+    // EQUITIES - ADDITIONAL
+    {
+        id: 466,
+        category: "Equities",
+        question: "Preemptive right gives shareholders:",
+        options: ["Guaranteed dividends", "First right to buy new shares", "Voting control", "Free shares"],
+        correct: 1,
+        explanation: "Preemptive right = first chance to maintain ownership % in new offerings."
+    },
+    {
+        id: 467,
+        category: "Equities",
+        question: "Proxy gives:",
+        options: ["Stock ownership", "Right to vote for another", "Dividend rights", "Priority in IPO"],
+        correct: 1,
+        explanation: "Proxy = authorization to vote on behalf of shareholder."
+    },
+    {
+        id: 468,
+        category: "Equities",
+        question: "Voting rights typically based on:",
+        options: ["Per share one vote", "Per shareholder one vote", "Dollar amount invested", "Tenure"],
+        correct: 0,
+        explanation: "Usually per share = one vote each."
+    },
+    {
+        id: 469,
+        category: "Equities",
+        question: "Cumulative voting:",
+        options: ["One vote per issue", "Can accumulate votes for one candidate", "No voting", "Automatic voting"],
+        correct: 1,
+        explanation: "Cumulative = vote all shares for one candidate, helps minority."
+    },
+    {
+        id: 470,
+        category: "Equities",
+        question: "Annual meeting:",
+        options: ["Optional", "Required yearly shareholder meeting", "Held quarterly", "Only for large companies"],
+        correct: 1,
+        explanation: "Annual meeting = required yearly shareholder meeting."
+    },
+    {
+        id: 471,
+        category: "Equities",
+        question: "Quarterly earnings:",
+        options: ["Only annual reports required", "Public companies report quarterly", "Not required", "Only for small companies"],
+        correct: 1,
+        explanation: "Public companies must file quarterly reports (10-Q)."
+    },
+    {
+        id: 472,
+        category: "Equities",
+        question: "Form 10-K is:",
+        options: ["Quarterly report", "Annual report", "Current report", "Proxy statement"],
+        correct: 1,
+        explanation: "10-K = annual filing with detailed company info."
+    },
+    {
+        id: 473,
+        category: "Equities",
+        question: "Form 10-Q is:",
+        options: ["Annual report", "Quarterly report", "Current report", "Insider trading report"],
+        correct: 1,
+        explanation: "10-Q = quarterly filing."
+    },
+    {
+        id: 474,
+        category: "Equities",
+        question: "Form 8-K is:",
+        options: ["Annual report", "Quarterly report", "Current/material event report", "Proxy"],
+        correct: 2,
+        explanation: "8-K = current report for material events."
+    },
+    {
+        id: 475,
+        category: "Equities",
+        question: "Proxy statement relates to:",
+        options: ["Annual meeting voting", "Stock splits", "Dividends", "Options"],
+        correct: 0,
+        explanation: "Proxy = voting information for shareholder meetings."
+    },
+    {
+        id: 476,
+        category: "Equities",
+        question: "Ticker symbol:",
+        options: ["Is optional", "Identifies stock for trading", "Changes daily", "Is the CEO's initials"],
+        correct: 1,
+        explanation: "Ticker = unique symbol for trading."
+    },
+    {
+        id: 477,
+        category: "Equities",
+        question: "Bid price:",
+        options: ["Price asked by seller", "Price offered by buyer", "Average price", "Opening price"],
+        correct: 1,
+        explanation: "Bid = what buyer will pay."
+    },
+    {
+        id: 478,
+        category: "Equities",
+        question: "Ask/Offer price:",
+        options: ["Price buyer will pay", "Price seller will accept", "Lowest price", "Previous close"],
+        correct: 1,
+        explanation: "Ask = seller's price."
+    },
+    {
+        id: 479,
+        category: "Equities",
+        question: "Market order:",
+        options: ["Price limit specified", "Buy/sell at best available price", "Only buy", "Only sell"],
+        correct: 1,
+        explanation: "Market = executes immediately at best price."
+    },
+    {
+        id: 480,
+        category: "Equities",
+        question: "Limit order:",
+        options: ["No price restriction", "Buy below or sell above specified price", "Guaranteed fill", "Market order"],
+        correct: 1,
+        explanation: "Limit = specified price or better."
+    },
+    {
+        id: 481,
+        category: "Equities",
+        question: "Stop order:",
+        options: ["Executes at market", "Becomes market when price reached", "Is always filled", "Has no price"],
+        correct: 1,
+        explanation: "Stop = triggers to market when price reached."
+    },
+    {
+        id: 482,
+        category: "Equities",
+        question: "Day order:",
+        options: ["Good until cancelled", "Expires at end of trading day", "Good for 30 days", "Good for 1 year"],
+        correct: 1,
+        explanation: "Day order expires if not executed that day."
+    },
+    {
+        id: 483,
+        category: "Equities",
+        question: "GTC order:",
+        options: ["Expires at close", "Good until cancelled", "Day only", "Specialist only"],
+        correct: 1,
+        explanation: "GTC = Good Till Cancelled."
+    },
+    {
+        id: 484,
+        category: "Equities",
+        question: "All-or-none (AON):",
+        options: ["Partial fill OK", "Must fill entire order or none", "Optional", "Market order"],
+        correct: 1,
+        explanation: "AON = must execute full quantity or none."
+    },
+    {
+        id: 485,
+        category: "Equities",
+        question: "Immediate or cancel (IOC):",
+        options: ["Must fill completely", "Fill what's possible, cancel rest", "Hold until filled", "Cancel immediately"],
+        correct: 1,
+        explanation: "IOC = fill what possible, cancel remainder."
+    },
+    {
+        id: 486,
+        category: "Equities",
+        question: "Fill or kill (FOK):",
+        options: ["Partial fill OK", "Must fill immediately in full or cancel", "Hold indefinitely", "Price limit only"],
+        correct: 1,
+        explanation: "FOK = execute entirely immediately or cancel."
+    },
+    {
+        id: 487,
+        category: "Equities",
+        question: "Short sale proceeds:",
+        options: ["Can be used immediately", "Must be held by broker", "Cannot be used", "Go to customer only"],
+        correct: 1,
+        explanation: "Short sale proceeds held as collateral by broker."
+    },
+    {
+        id: 488,
+        category: "Equities",
+        question: "Regulation T requires:",
+        options: ["50% margin for short sales", "100% margin", "No margin", "Only cash accounts"],
+        correct: 0,
+        explanation: "Reg T requires 50% initial margin for short positions."
+    },
+    {
+        id: 489,
+        category: "Equities",
+        question: " uptick rule:",
+        options: ["Can short anytime", "Can only short on uptick or flat-to-up", "Only at bid", "No restriction"],
+        correct: 1,
+        explanation: "Uptick rule = short only on uptick, prevents pushing stock down."
+    },
+    {
+        id: 490,
+        category: "Equities",
+        question: "Ex-dividend date determines:",
+        options: ["Record date", "Who receives dividend (seller keeps if ex-div)", "Payment date", "Declaration date"],
+        correct: 1,
+        explanation: "Ex-div = buyer doesn't get dividend, seller keeps it."
+    },
+    {
+        id: 491,
+        category: "Equities",
+        question: "Stock record date:",
+        options: ["When stock trades", "Determines who is shareholder of record for dividend", "Dividend payment", "Stock split"],
+        correct: 1,
+        explanation: "Record date determines dividend recipient."
+    },
+    {
+        id: 492,
+        category: "Equities",
+        question: "Dividend payment date:",
+        options: ["When declared", "When actually paid to shareholders", "Record date", "Ex-div date"],
+        correct: 1,
+        explanation: "Payment date = when dividend actually paid."
+    },
+    {
+        id: 493,
+        category: "Equities",
+        question: "Quarterly dividend:",
+        options: ["Paid once yearly", "Paid four times yearly", "Paid monthly", "Not common"],
+        correct: 1,
+        explanation: "Most dividends paid quarterly."
+    },
+    {
+        id: 494,
+        category: "Equities",
+        question: "Stock dividend:",
+        options: ["Cash payment", "Additional shares", "Dividend in kind", "One-time payment"],
+        correct: 1,
+        explanation: "Stock dividend = additional shares."
+    },
+    {
+        id: 495,
+        category: "Equities",
+        question: "Ex-rights date:",
+        options: ["When rights expire", "When stock trades without rights", "When rights are issued", "At expiration"],
+        correct: 1,
+        explanation: "Ex-rights = buyer doesn't receive subscription rights."
+    },
+    // DEBT - ADDITIONAL
+    {
+        id: 496,
+        category: "Debt",
+        question: "Corporate bonds:",
+        options: ["Government guaranteed", "Backed by corporation", "Always AAA", "No credit risk"],
+        correct: 1,
+        explanation: "Corporate bonds = backed by issuing corporation's credit."
+    },
+    {
+        id: 497,
+        category: "Debt",
+        question: "Zero-coupon bond:",
+        options: ["Pays interest", "No periodic interest, sold at discount", "Pays high interest", "Is preferred stock"],
+        correct: 1,
+        explanation: "Zero-coupon = no interest, bought at deep discount."
+    },
+    {
+        id: 498,
+        category: "Debt",
+        question: "Callable bond:",
+        options: ["Cannot be redeemed", "Issuer can redeem early", "Holder can redeem", "Is perpetual"],
+        correct: 1,
+        explanation: "Callable = issuer can redeem before maturity."
+    },
+    {
+        id: 499,
+        category: "Debt",
+        question: "Convertible bond:",
+        options: ["Cannot convert", "Can convert to stock", "Is always redeemed", "Has no features"],
+        correct: 1,
+        explanation: "Convertible = can convert to predetermined # of shares."
+    },
+    {
+        id: 500,
+        category: "Debt",
+        question: "Puttable bond:",
+        options: ["Issuer can redeem", "Holder can put (sell back) to issuer", "Is perpetual", "Has no features"],
+        correct: 1,
+        explanation: "Puttable = holder can sell back to issuer."
+    }
+];
 
         var player = { level: 1, streak: 0, correct: 0, total: 0 };
         var currentQuestion = 0;
